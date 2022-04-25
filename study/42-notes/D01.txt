@@ -1,0 +1,43 @@
+1.
+NEW and DELETE
+Memory Management
+
+malloc objects in classes won't work (because it won't call the constructors/destructors).
+
+STACK       	 HEAP
+
+main		dynamic
+(static)			mem
+
+when pointing/allocating to heap make sure to use new array[] and then delete[] at the end of function().
+
+
+2.
+REFERENCES
+
+BALLS BALLS BAAAAALLLSSSSS. quoted by Kanye West
+
+HOW TO DESCRIBE IT:
+upgrader to pointer (simpler) = alias to an existing variable, 
+or better said: it's a pointer that is constant and always unreferenced and never void.
+
+Cant reference to nothing. You gotta declare/assign it to a var.
+
+
+Oh damnnnn he is talking about weapons now. Returning references - WTF.
+
+
+
+3.
+INPUT/OUTPUT FILE-STREAM
+
+(We have already learned how to handle standard in/output + error).
+Now we can interact with files.
+
+ifstream (input file-stream) ofstream (output)
+
+Extra ones:
+std::sstream
+std::istringstream
+std::ostringstream
+
