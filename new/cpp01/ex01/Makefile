@@ -2,7 +2,7 @@
 NAME		=	Moarrrrbrainzzzz!
 SRC			=	Zombie.cpp main.cpp ZombieHorde.cpp
 FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
-CPP			=	clang++
+CPP			=	c++
 
 OBJ			=	$(SRC:%.cpp=%.o)
 
@@ -21,9 +21,6 @@ $(NAME): $(OBJ)
 	@mkdir -p obj
 	@mv $(OBJ) obj
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
-	touch .gitignore
-	@echo $(NAME) >> .gitignore
-	@echo .gitignore >> .gitignore
 
 %.o: %.c
 	@echo "\n$(P)Compiling$(W) $< $@"

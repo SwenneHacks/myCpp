@@ -1,39 +1,35 @@
 
-#include "ZombieHorde.hpp"
+#include "Zombie.hpp"
 
-ZombieHorde::ZombieHorde(int N) : _counter(N) {
-    std::string italians[] = 
+Zombie* zombieHorde(int N, std::string name){
+    std::string names[] = 
     {
-                            "Mario"
-                            "Carlo"
-                            "Luigi"
-                            "Julio"
-                            "Pablo"
+        "Mario"
+        "Carlo"
+        "Luigi"
+        "Julio"
+        "Pablo"
     };
     std::string types[] = 
     {
-                            "nerd eater"
-                            "shooter"
-                            "speedo"
-                            "jumpy"
-                            "lurker"
-                            "brainiac"
-                            "creeper"
+        "nerd eater"
+        "shooter"
+        "speedo"
+        "jumpy"
+        "lurker"
+        "brainiac"
+        "creeper"
     };
-    ZombieHorde::_horde = new Zombie[N];
+    horde = new Zombie[N];
     for (int i = 0; i < N; i++){
         std::srand(std::time(NULL));
-        ZombieHorde::_horde[i].setName(italians[std::rand() % 5]);
-        ZombieHorde::_horde[i].setType(types[std::rand() % 7]);
+        horde[i].setName(names[std::rand() % 5]);
+        horde[i].setType(types[std::rand() % 7]);
     }
 }
 
-void ZombieHorde::announce(){
-    for (int i = 0; i < ZombieHorde::_counter; i++){
-        ZombieHorde::_horde[i].announce();
+void Zombie::announce(){
+    for (int i = 0; i < counter; i++){
+        horde[i].announce();
     }
-}
-
-ZombieHorde::~ZombieHorde(){
-    delete [] _horde;
 }

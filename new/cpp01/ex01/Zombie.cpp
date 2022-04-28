@@ -1,6 +1,5 @@
 
 #include "Zombie.hpp"
-#include "ZombieHorde.hpp"
 
 Zombie::Zombie(){
 	std::cout << "[A " << Zombie::_type << "zombie raised out of a constructor's grave]." << std::endl;
@@ -15,9 +14,9 @@ void Zombie::announce() {
 }
 
 void Zombie::setName(std::string name){
-	Zombie::_name = name;
+	this->_name = name;
 }
 
 void Zombie::setType(std::string type){
-	Zombie::_type = type;
+	this->_type = type;
 }
