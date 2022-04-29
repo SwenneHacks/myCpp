@@ -7,8 +7,6 @@
 class Zombie;
 
 Zombie* zombieHorde(int N, std::string name);
-Zombie* horde;
-int  counter;
 
 class Zombie {
 	public:
