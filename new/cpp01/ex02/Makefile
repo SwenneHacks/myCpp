@@ -1,6 +1,6 @@
 
-NAME		=	apocalypse
-SRC			=	Zombie.cpp main.cpp ZombieEvent.cpp
+NAME		=	hello
+SRC			=	main.cpp
 FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
 CPP			=	clang++
 
@@ -16,12 +16,13 @@ W = \x1b[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(GIT)
 	$(CPP) -o $(NAME) $^
 	@mkdir -p obj
 	@mv $(OBJ) obj
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
-	touch .gitignore
+	@touch .gitignore
+	@echo *.o >> .gitignore
 	@echo $(NAME) >> .gitignore
 	@echo .gitignore >> .gitignore
 
