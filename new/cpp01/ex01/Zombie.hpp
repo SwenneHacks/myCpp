@@ -5,7 +5,6 @@
 # include <iostream>
 
 class Zombie;
-
 Zombie* zombieHorde(int N, std::string name);
 
 class Zombie {

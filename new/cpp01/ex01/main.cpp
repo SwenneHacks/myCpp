@@ -2,37 +2,20 @@
 #include "Zombie.hpp"
 
 int main(void) {
-    Zombie  *zombie;
-    Zombie	*test;
-    int 	counter;
+  Zombie zombie;
+  Zombie	*test;
+  int 	counter;
 
-    counter = 2;
-    zombie = zombieHorde(counter, "weirdo");
-    test = zombieHorde(counter, "testing");
-    for (int i = 0; i < counter; i++)
-    {
-        zombie[i].announce();
-		test[i].announce();
-    }
-    delete[] zombie;
-    delete[] test;
-    // Zombie *test;
-    // std::string names[] = {
-    //     "Mario"
-    //     "Carlo"
-    //     "Luigi"
-    //     "Julio"
-    //     "Pablo"
-    // };
-    // for (int i = 0; i < 8; i++){
-    //     std::srand(std::time(NULL));
-    //     test[i].setName(names[std::rand() % 5]);
-    // }
-    // for (int i = 0; i < 8; i++){
-    //     test->announce();
-    // }
-    // test = zombieHorde(8, "Jill");
-    // test->announce();
+  counter = 4;
+  zombie.setName("Mario");
+  zombie.announce();
+
+  test = zombieHorde(counter, "Luigi");
+  for (int i = 0; i < counter; i++)
+  {
+    test->announce();
+  }
+  delete[] test;
 	return 0;
 }
 
