@@ -23,6 +23,7 @@ $(NAME): $(OBJ)
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 	touch .gitignore
 	@echo $(NAME) >> .gitignore
+	@echo $(OBJ)  >> .gitignore
 	@echo .gitignore >> .gitignore
 
 %.o: %.c

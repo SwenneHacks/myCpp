@@ -21,6 +21,9 @@ $(NAME): $(OBJ)
 	@mkdir -p obj
 	@mv $(OBJ) obj
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
+	touch .gitignore
+	@echo $(NAME) >> .gitignore
+	@echo .gitignore >> .gitignore
 
 %.o: %.c
 	@echo "\n$(P)Compiling$(W) $< $@"
