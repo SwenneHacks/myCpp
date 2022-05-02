@@ -16,12 +16,12 @@ void HumanB::attack() {
 
 HumanB::HumanB(const std::string &name) : _weaponBPtr(), _name(name){
 
-	std::cout << GREEN << "[HumanA] constructor is called and created human [" << this->_getName() << "]." << RESET << std::endl;
+	std::cout << GREEN << "[HumanA constructor] is called and created human " << RESET << this->_getName() << std::endl;
 }
 
 HumanB::~HumanB() {
 
-	std::cout << RED << "[HumanB] destructor is called and destroyed human [" << this->_getName() << "]." << RESET << std::endl;
+	std::cout << RED << "[HumanB destructor] is called and destroyed human " << RESET << this->_getName() << std::endl;
 }
 
 void HumanB::setWeapon(Weapon& weaponName) {
