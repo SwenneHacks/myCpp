@@ -22,7 +22,7 @@ They are helpful for tracing program execution in a production environment.
 Example: "I cannot believe adding extra bacon costs more money. You didn’t put
 enough bacon in my burger! If you did, I wouldn’t be asking for more!"
 
-#"WARNING" level:
+# "WARNING" level:
 Warning messages indicate a potential issue in the system.
 However, it can be handled or ignored.
 
@@ -51,5 +51,4 @@ void complain( std::string level );
 The goal of this exercise is to use pointers to member functions. This is not a suggestion. 
 Harl has to complain without using a forest of if/else if/else. It doesn’t think twice!
 
-Create and turn in tests to show that Harl complains a lot. You can use the example
-comments.
+Create and turn in tests to show that Harl complains a lot. You can use the example comments.
