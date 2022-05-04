@@ -10,6 +10,7 @@
 # define BLUE	"\033[34m"	
 # define GREEN	"\033[32m"	
 
+
 class Harl 
 {
 private:
@@ -19,7 +20,10 @@ private:
         void error( void );
 
 public:
-        void complain( std::string level );
+        void    complain( std::string level );
+
+        Harl();
+        ~Harl();
 };
 
 #endif
