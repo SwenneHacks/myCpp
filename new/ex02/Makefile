@@ -2,7 +2,7 @@
 NAME		=	hello
 SRC			=	main.cpp
 FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
-CPP			=	clang++
+CPP			=	c++
 
 OBJ			=	$(SRC:%.cpp=%.o)
 
