@@ -1,7 +1,4 @@
 # myCpp
-Practicing C++ (42Network)
-
-
 
 [![Logo](https://github.com/qingqingqingli/readme_images/blob/master/codam_logo_1.png)](https://www.codam.nl/en/studying-at-codam)
 
