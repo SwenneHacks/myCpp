@@ -1,11 +1,11 @@
 # myCpp
-
-***This project contains the fundamentals of C++.***
+Practicing C++ (42Network)
 
 
 
 [![Logo](https://github.com/qingqingqingli/readme_images/blob/master/codam_logo_1.png)](https://www.codam.nl/en/studying-at-codam)
 
+***This project contains the fundamentals of C++.***
 
 ### Module 00 ([wiki](https://github.com/SwenneHacks/myCpp/blob/main/subjects/2021/en.subject%20(0).pdf)) 
 
