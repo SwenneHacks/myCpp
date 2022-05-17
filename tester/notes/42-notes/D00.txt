@@ -5,25 +5,15 @@ NOTIONS:
 Namespace - way of putting together some symbols and functions, having a semantic relationship, and making some kind of bag. 
 
 Input and output streams (stdio) - bay to handle standard in/output + errors (new syntax)
-
 Class and Instances - object-oriented programming tools 
-
 Member attribute & function - method to call functions belonging to a class 
-
 This - instance variable (pointer)
-
 Init_list - list initialization, creating instances with unusual syntax to initialize constants and classes
-
 Const(ants) - syntaxt of a constant in a class
-
 Encapsulation - private/public thingy (structures) 
-
 Assessors - access private attributes to give/update values in a safe way
-
 Comparisons - knowing how instances will behave in a bowling comparison?
-
 non_member - Static Attributes keyword ( different from C )
-
 Pointers - not possible with memmber attributes
 
 
