@@ -28,9 +28,7 @@ Now in C++: split them into small files and still have these symbols together, b
 SYNTAX:
 
 namespace 		______(name) = _______ (alias)
-
 :: scope resolution operator 
-
 std:: (standard c library)
 
 
@@ -40,10 +38,10 @@ INPUT AND OUTPUT:
 
 std i/o manipulation 
 (write and read)
-
 used in C: get_next_line (quite a hassle)
+
 now in c++: provides magical objects - cout & cin (allows to fetch or write data)
-			also provide two new operators such as >> << (allow you to coppy data flows)
+also provide two new operators such as >> << (allow you to coppy data flows)
 
 endl : object corresponding to the carriage return (character output + newline)
 
@@ -171,10 +169,11 @@ define many functions accepting the same name but different parameters.
 
 2.
 OPERATOR OVERLOAD
-
+?
 
 3.
 CANONICAL FROM
+?
 
 
 4.
