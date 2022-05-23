@@ -1,11 +1,10 @@
+
+
 C++ - Module 02
-
 [ Ad-hoc polymorphism, operators overload and canonical classes ]
-
 Summary: This document contains the subject for Module 02 of the C++ modules.
 
 
-Chapter I
 General rules
 
 • Any function implemented in a header (except in the case of templates), and any
@@ -33,7 +32,6 @@ not obvious in the exercise’s description. If something seems ambiguous, you d
 understand C++ enough.
 • Since you are allowed to use the C++ tools you learned about since the beginning,
 you are not allowed to use any external library. And before you ask, that also means
-2
 C++ - Module 02 Ad-hoc polymorphism, operators overload and canonical classes
 no C++11 and derivates, nor Boost or anything your awesomely skilled friend told
 you C++ can’t exist without.
@@ -58,20 +56,10 @@ long as the result is not graded by a program.
 be absolutely sure you understand what’s expected of you, and that you did it in
 the best possible way.
 • By Odin, by Thor! Use your brain!!!
-3
 
 
-Chapter II
-Bonus rules
 
-• From now on, each class you write MUST be in canonical (Coplien) form: At least
-one default constructor, a copy contructor, an assignation operator overload and a
-destructor. We won’t ask again.
-4
-Chapter III
-Exercise 00: My First Canonical
-Class
-
+_______________________________
 Exercise : 00
 My First Canonical Class
 
@@ -94,12 +82,15 @@ As C++ lacks fixed point numbers, you’re going to add them yourself today. I�
 you have no idea what Berkeley is, read this section of their wikipedia page.
 
 
-C++ - Module 02 Ad-hoc polymorphism, operators overload and canonical classes
 Write a canonical class to represent fixed point numbers:
+
 • Private members:
+
 ◦ An integer to store the fixed point value.
 ◦ A static constant integer to store the number of fractional bits. This constant will always be the litteral 8.
+
 • Public members:
+
 ◦ A default constructor that initializes the fixed point value to 0.
 ◦ A destructor.
 ◦ A copy constructor.
