@@ -7,7 +7,7 @@ const int Fixed::_fractional_bits = 8;
 
 Fixed::Fixed() : _fixed_point_value(0)
 {
-    std::cout << "Default Destructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &src)
@@ -18,7 +18,7 @@ Fixed::Fixed(const Fixed &src)
 
 Fixed& Fixed::operator=(const Fixed& ref)
 {
-    std::cout << "Copy Assignation operator called" << std::endl;
+    std::cout << "Copy assignation operator called" << std::endl;
     if (this != &ref)
         this->_fixed_point_value = ref.getRawBits();
     return(*this);
