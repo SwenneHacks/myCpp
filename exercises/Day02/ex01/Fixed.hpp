@@ -11,7 +11,7 @@ public:
 	Fixed(float const n);
     ~Fixed(void);
 
-	Fixed &		operator=(Fixed const &rhs);
+	std::ostream& operator<<(std::ostream & out, Fixed const & in);
 	int			getRawBits(void) const;
 	void		setRawBits(int const raw);
 	float 		toFloat( void ) const;
