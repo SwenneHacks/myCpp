@@ -1,6 +1,5 @@
 #include "Zombie.hpp"
 
-
 void        randomChump(std::string name) {
     static std:: string type[5] = {
         "<brainless>",
