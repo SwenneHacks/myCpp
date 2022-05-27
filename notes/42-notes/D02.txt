@@ -1,0 +1,28 @@
+
+D02
+[3 new notions to add to our cpp arsenal]
+
+
+
+_________________________________________________________________________________________________________________
+
+AD HOC POLYMORPHISM - function overloading
+
+define many functions accepting the same name but different parameters.
+
+
+_________________________________________________________________________________________________________________
+
+OPERATOR OVERLOAD
+?
+
+_________________________________________________________________________________________________________________
+
+CANONICAL FROM
+?
+
+
+_________________________________________________________________________________________________________________
+
+CONCLUSION
+HE got angry and then stole her look/outfit, he got back on screen as a unicorn.
