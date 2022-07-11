@@ -1,0 +1,12 @@
+-pedantic -std=c++98 (alleen voor cpp)
+-pedantic -std=c89 (alleen voor c)
+
+-g++ ipv gcc
+
+ifdef debugging_on
+    'change flags'
+else
+    normal flags.
+endif
+
+cplusplus.com
