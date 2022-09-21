@@ -5,7 +5,6 @@ Zombie::Zombie(){
 	//std::cout << "[ A zombie raised out of a constructor's grave ]." << std::endl;
 }
 
-
 void Zombie::announce() {
 	std::cout << Zombie::_name << " > Braiiiiiiinnnssss..." << std::endl;
 }
