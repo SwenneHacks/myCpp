@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2022/05/16 16:59:48 by swofferh      ########   odam.nl          #
+#    Updated: 2022/09/21 15:21:44 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ $(NAME): $(OBJ)
 	touch .gitignore
 	@echo $(NAME) >> .gitignore
 	@echo .gitignore >> .gitignore
+	@echo obj >> .gitignore
 
 %.o: %.c
 	@echo "\n$(P)Compiling$(W) $< $@"

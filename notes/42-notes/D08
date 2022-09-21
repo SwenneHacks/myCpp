@@ -15,7 +15,7 @@ standard container on STL or even a container you made yourself.
 
 OPERATIONS 
 - functions existent in containers to manipulate specific data 
-(lists/vectors/deques)
+(lists/vectors/deques).
 
 ITERATORS 
 - basically it's the STL container equivalent of pointers 
