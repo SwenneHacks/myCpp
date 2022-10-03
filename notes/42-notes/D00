@@ -74,12 +74,17 @@ _____________________________________________________________________________
 
 MEMBER ATTRIBUTES/FUNCTIONS
 
-
+now you can access variables in the current instances with a DOT
+instance.var = 42;
+instance(.function();
 _____________________________________________________________________________
 
 THIS
 
-Instance pointer
+Instance pointer to refer to the current instance.
+
+this->var = 1;
+this->function();
 _____________________________________________________________________________
 
 INITIALIZATION list
@@ -103,7 +108,8 @@ to keep private inside your class. To hide the implementation details of your cl
 from outside only the part that will be useful to your users.
 
 Syntax: use _underscore prefix for private identifiers (or after if you like), 
-Private dudys can only be used inside the class. Wanna call it in the main? Wont work.
+Private dudys can only be used inside the class. 
+Wanna call it in the main? Wont work.
 
 _____________________________________________________________________________
 
