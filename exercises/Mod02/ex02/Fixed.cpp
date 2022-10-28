@@ -13,7 +13,9 @@ Fixed::~Fixed()
 { std::cout << "Destructor called" << std::endl; }
 
 Fixed&	Fixed::operator=(const Fixed& ref)
-{ 	std::cout << "Standard Assignation operator called" << std::endl; return(*this); }
+{ 	std::cout << "Standard Assignation operator called" << std::endl; 
+	return(*this); 
+}
 
 /* COMPARISON OPERATORS */
 
