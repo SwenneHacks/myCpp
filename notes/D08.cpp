@@ -8,10 +8,12 @@ class IOperation;
 int main(){
     //templed containers<types>
     std::list<int>                      lst; // just a simple list containing ints
+    std::map<std::string, IOperation*>  map; // IOperation map, index on strings. 
     std::vector<int>                    vecN; // 
-    std::vector<int>                    vecF(2,1);
-    std::map<std::string, IOperation*>  map; // a cpp version of the c hash table {that's a data structure which stores data in an associative manner. In hash table, the data is stored in an array format where each data value has its own unique index value. Access of data becomes very fast, if we know the index of the desired data.}
-    //       
+    std::vector<int>                    vecF(2,100); // 2 entries, containing 100 by default
+    // Map is a cpp version of the c hash table (that's a data structure which stores data in an associative manner). 
+    // In hash table, the data is stored in an array format where each data value has its own unique index value. 
+    // Access of data becomes very fast, if we know the index of the desired data.}    
 
     //operations
     lst.push_back(3);
@@ -27,7 +29,7 @@ int main(){
     // lst.end() it's actually a value meaning that we are over the last element (used to compare with first)
     // that's whar we are doing next (compare 'it' to 'ite'):
     
-    for (it = lst.begin(); it != ite; it++) // on C you loop to while it reaches \0 character (null terminator)
+    for (it = lst.begin(); it != ite; ++it) // on C you loop to while it reaches \0 character (null terminator)
         std::cout << *it << std::endl;
 
     return (0);

@@ -6,10 +6,12 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2020/11/01 18:07:57 by swofferh      ########   odam.nl          #
+#    Updated: 2020/11/07 16:22:15 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+NAME		=	awesome
+SRC			=	Array.cpp
 FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
 CPP			=	clang++
 
@@ -21,19 +23,28 @@ G = \x1b[32m
 R = \x1b[31m
 W = \x1b[0m
 
-t0:
-	@$(CPP) D00.cpp
-	@./a.out
-	@echo "\n$(P)\______ Done testing d00 _____/ $(W)\n"
+all: $(NAME)
 
-t1:
-	@$(CPP) D01.cpp
-	@echo ""
-	@./a.out
-	cat example.txt
-	@echo "\n$(P)\______ Done testing d01 _____/ $(W)\n"
+$(NAME):
+	clang++ -o $(NAME) $(SRC)
+	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
+	@touch .gitignore
+	@echo $(NAME) >> .gitignore
+	@echo .gitignore >> .gitignore
+
+test: re
+	./$(NAME)
+	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
 clean:
-	$(RM) a.out example.txt
+	@rm -rf a.out .gitignore 
 	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
 
+fclean: clean
+	$(RM) $(NAME)
+	@echo "\n$(R)\______ Done $(B)f$(R)cleaning _____/ $(W)\n"
+
+re:	fclean all
+	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
+
+.PHONY:	all clean fclean re

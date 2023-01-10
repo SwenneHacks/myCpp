@@ -4,6 +4,7 @@ ________________________________________________________________________________
 
 NEW | DELETE
 
+
 Memory Management
 malloc objects in classes won't work 
 (because it won't call the constructors/destructors)
@@ -17,7 +18,13 @@ use new array[] and then delete[]
 at the end of function()
 
 
+new is used to allocate memory for a C++ class object, 
+    the object's constructor is called after the memory is allocated. 
+delete is used to deallocate the memory allocated by the new operator.
+
+
 _____________________________________________________________________________________________
+
 
 REFERENCES
 
@@ -25,15 +32,22 @@ upgrader to pointer (simpler) = alias to an existing variable,
 or better said: it's a pointer that is constant and always unreferenced and never void.
 Cant reference to nothing. You gotta declare/assign it to a var.
 
+
 _____________________________________________________________________________________________
 
-INPUT/OUTPUT FILE-STREAM
 
-(We have already learned how to handle standard in/output + error).
+FILE - STREAM
+
+
+INPUT / OUTPUT streams 
 Now we can interact with files.
 
-ifstream (input file-stream) 
-ofstream (output)
+(We have already learned how to handle standard in/output + error).
+
+ifstream (input filestream)  
+ofstream (output filestream)
+
+Don't forget to ifs.close() afterwards!
 
 Extra ones:
 std::sstream
