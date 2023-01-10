@@ -1,7 +1,36 @@
 
-(smart arrays)
+
+# STL: Standard Template Library
+contains a few important things:
+
+CONTAINERS 
+- generic templated containers (able to contain anything and are very very
+ good implementation of most container types you might want to use as a developer).
+
+ALGORITHMS 
+- is a collection of algorithimical functions, that are pre implemented, allowing to make operations on a collection, 
+which can be a standard container on STL or even a container you made yourself.
+
+OPERATIONS 
+- functions existent in containers to manipulate specific data (lists/vectors/deques)
+
+ITERATORS 
+- basically it's the STL container equivalent of pointers (not exactly the same),
+ you gotta instantiate, syntax bah, use dots to call.
+
+MAP 
+- it's a cpp version of a hash table. d
+ictionary associate of ARRAY (the thing of a billion names)
+ but we don't have to use strings as keys for our values.
+
+VECTORS 
+- basically a smart array that contains whatever we need and we can use it in many ways,
+ you can declare it and give a value by default.
+
+
 
 # Deque and Vector data structures
+(smart arrays)
 
 - Both allows insertion and deletion of elements, and they do that like a flash of light, but here's the difference:
 
@@ -33,8 +62,7 @@ VEC: used to store spatial data.
 
 
 # Lists vs Vector 
-
-- Insertion and Deletion
+Insertion and Deletion:
 
 LIST: 
 - very efficient as compared to vector

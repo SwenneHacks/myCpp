@@ -1,20 +1,9 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         ::::::::             #
-#    notes.txt                                          :+:    :+:             #
-#                                                      +:+                     #
-#    By: greed <greed@student.codam.nl>               +#+                      #
-#                                                    +#+                       #
-#    Created: 2020/07/24 18:01:04 by greed         #+#    #+#                  #
-#    Updated: 2020/10/09 20:30:45 by swofferh      ########   odam.nl          #
-#                                                                              #
-# **************************************************************************** #
-
-Cpp is strange as shit, so let's compile a notesheet so I don't forget
-everything.
 
 ** -- **				** -- **				** -- **
+
 Includes, not sure what is inside of these yet so lets find out!
+
+** -- **				** -- **				** -- **
 
 #include <iostream> :
 -
@@ -99,6 +88,7 @@ _________  ++					_________  +++++  _________				_________  ++
 
 SIMPLE FUNCTIONS
 ** HELLO WORLD **
+
 int	main(){
 	std::cout << "Hello World" << std::endl;
 	return (0);
