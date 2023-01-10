@@ -6,20 +6,20 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2022/09/21 15:21:44 by swofferh      ########   odam.nl          #
+#    Updated: 2023/01/10 18:20:31 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	canonical
+NAME		=	operators
 SRC			=	Fixed.cpp main.cpp
 FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
-CPP			=	clang++
+CPP			=	c++ $(FLAGS)
 
 OBJ			=	$(SRC:%.cpp=%.o)
 
 #RAINBOW
 P = \x1b[35m
-B = \x1b[34m
+B = \x1b[34;1m
 Y = \x1b[33m
 G = \x1b[32m
 R = \x1b[31m
@@ -27,19 +27,9 @@ W = \x1b[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CPP) -o $(NAME) $^
-	@mkdir -p obj
-	@mv $(OBJ) obj
+$(NAME):
+	$(CPP) $(SRC) -o $(NAME)
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
-	touch .gitignore
-	@echo $(NAME) >> .gitignore
-	@echo .gitignore >> .gitignore
-	@echo obj >> .gitignore
-
-%.o: %.c
-	@echo "\n$(P)Compiling$(W) $< $@"
-	$(CPP) $(FLAGS) -c $< -o $@
 
 test: re
 	./$(NAME)
@@ -47,12 +37,11 @@ test: re
 
 clean:
 	$(RM) $(OBJ)
-	@rm -rf obj .gitignore
 	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	@echo "\n$(R)\______ Done $(B)f$(R)cleaning _____/ $(W)\n"
+	@echo "\n$(R)\______ Done $(B)F$(R)cleaning _____/ $(W)\n"
 
 re:	fclean all
 	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
