@@ -11,25 +11,24 @@ std::cout << a.getRawBits() << std::endl;
 std::cout << b.getRawBits() << std::endl;
 std::cout << c.getRawBits() << std::endl;
 
-std::cout << RED 
-<<"_________" << BLUE 
-<< "MY TEST" << RED 
-<< "________\n" << RESET 
+std::cout << 
+RED << "_________" << 
+BLUE << "MY TEST" << 
+RED << "________\n" << 
+RESET 
 << std::endl;
 
-a.setRawBits(1);
-a = b;
-b.setRawBits(1);
-c = b;
-std::cout << a.getRawBits() <<" = a"<< std::endl;
-std::cout << b.getRawBits() <<" = b"<< std::endl;
-std::cout << c.getRawBits() <<" = c"<< std::endl;
-return 0;
+a.setRawBits(5);
+std::cout << a.getRawBits() <<" (a) "<< std::endl;
+b.setRawBits(7);
+std::cout << b.getRawBits() <<" (b) "<< std::endl;
+c = a;
+std::cout << c.getRawBits() <<" (c) "<< std::endl;
+
 }
 
-int		main(int ac, char **av)
+void	check_leaks(int ac, char **av)
 {
-	test();
 	std::cout << std::endl;
 	std::string	s = av[0];
 	s = "leaks " + s.erase(0,2);
@@ -42,6 +41,12 @@ int		main(int ac, char **av)
 		system("grep \"total leaked bytes\" leaks.txt");
 		system("rm leaks.txt");
 	}
+}
+
+int		main(int ac, char **av)
+{
+	test();
+	check_leaks(ac, av);
 	return (0);
 }
 
