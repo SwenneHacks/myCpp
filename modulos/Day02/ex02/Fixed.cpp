@@ -27,27 +27,27 @@ std::ostream	&operator<<(std::ostream &o, const Fixed &ref){
 
 /* COMPARISON OPERATORS */
 
-bool Fixed::operator<(const Fixed& A) const{}
+bool Fixed::operator<(const Fixed& A) const { return (this->_fp < A._fp); }
 
-bool Fixed::operator>(const Fixed& A) const{}
+bool Fixed::operator>(const Fixed& A) const { return (this->_fp > A._fp); }
 
-bool Fixed::operator==(const Fixed& A) const{}
+bool Fixed::operator==(const Fixed& A) const { return (this->_fp == A._fp); }
 
-bool Fixed::operator!=(const Fixed& A) const{}
+bool Fixed::operator!=(const Fixed& A) const { return (this->_fp != A._fp); }
 
-bool Fixed::operator>=(const Fixed& A) const{}
+bool Fixed::operator>=(const Fixed& A) const { return (this->_fp >= A._fp); }
 
-bool Fixed::operator<=(const Fixed& A) const{}
+bool Fixed::operator<=(const Fixed& A) const { return (this->_fp <= A._fp); }
 
 /* ARITHMETIC OPERATORS */
 
-Fixed	Fixed::operator+(const Fixed& A) const{}
+Fixed	Fixed::operator+(const Fixed& A) const { return (Fixed(toInt() + A.toInt())); }
 
-Fixed	Fixed::operator-(const Fixed& A) const{}
+Fixed	Fixed::operator-(const Fixed& A) const { return (Fixed(toInt() - A.toInt())); }
 
-Fixed	Fixed::operator*(const Fixed& A) const{}
+Fixed	Fixed::operator*(const Fixed& A) const { return (Fixed(toInt() * A.toInt())); }
 
-Fixed	Fixed::operator/(const Fixed& A) const{}
+Fixed	Fixed::operator/(const Fixed& A) const { return (Fixed(toInt() / A.toInt())); }
 
 //* INC/DEC-METRIC OPERATORS */
 
