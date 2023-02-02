@@ -6,11 +6,11 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/01/10 18:19:30 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/02 15:03:49 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	fixed_point
+NAME		=	Fixed_1
 SRC			=	Fixed.cpp main.cpp
 FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
 CPP			=	c++ $(FLAGS)

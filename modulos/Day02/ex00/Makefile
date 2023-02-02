@@ -6,16 +6,18 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2022/09/21 15:21:44 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/02 15:06:34 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	canonical
+NAME		=	Fixed_00
 SRC			=	Fixed.cpp main.cpp
-FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
-CPP			=	clang++
+FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98 -o
+CPP			=	c++
 
 OBJ			=	$(SRC:%.cpp=%.o)
+RM			= 	rm -rf
+NEW_DIR		= 	mkdir -p
 
 #RAINBOW
 P = \x1b[35m
@@ -29,7 +31,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CPP) -o $(NAME) $^
-	@mkdir -p obj
+	@$(NEW_DIR) obj
 	@mv $(OBJ) obj
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 	touch .gitignore
@@ -41,13 +43,13 @@ $(NAME): $(OBJ)
 	@echo "\n$(P)Compiling$(W) $< $@"
 	$(CPP) $(FLAGS) -c $< -o $@
 
-test: re
+run: re
 	./$(NAME)
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
 clean:
 	$(RM) $(OBJ)
-	@rm -rf obj .gitignore
+	$(RM) obj .gitignore
 	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
 
 fclean: clean
