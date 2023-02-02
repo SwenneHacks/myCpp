@@ -18,8 +18,8 @@ public:
 		~Fixed();
 
 private:
-		static const int	_fractional_bits;
-		int					_fixed_point_value;
+		static const int	_bits; // fractional bits
+		int					_value; // fixed point value
 };
 
 #endif

@@ -11,16 +11,16 @@ std::cout << a.getRawBits() << std::endl;
 std::cout << b.getRawBits() << std::endl;
 std::cout << c.getRawBits() << std::endl;
 
-std::cout << 
-RED << "_________" << 
-BLUE << "MY TEST" << 
-RED << "________\n" << 
-RESET 
-<< std::endl;
+std::cout
+<< RED << "_________"
+<< BLUE << "MY TEST"
+<< RED << "________\n"
+<< RESET << 
+std::endl;
 
-a.setRawBits(5);
+a.setRawBits(55 / 7);
 std::cout << a.getRawBits() <<" (a) "<< std::endl;
-b.setRawBits(7);
+b.setRawBits(000000000007);
 std::cout << b.getRawBits() <<" (b) "<< std::endl;
 c = a;
 std::cout << c.getRawBits() <<" (c) "<< std::endl;
@@ -34,8 +34,7 @@ void	check_leaks(int ac, char **av)
 	s = "leaks " + s.erase(0,2);
 	if (ac > 1 && !strcmp(av[1],"leaks"))
 		system(s.c_str());
-	else
-	{
+	else {
 		s += " >> leaks.txt";
 		system(s.c_str());
 		system("grep \"total leaked bytes\" leaks.txt");
