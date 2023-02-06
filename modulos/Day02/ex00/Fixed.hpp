@@ -1,6 +1,7 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+# define N				"\n"
 # define RED			"\033[31m"
 # define BLUE			"\033[34m"	
 # define GREEN			"\033[32m"	
@@ -11,7 +12,7 @@ class	Fixed
 {
 public:
 		Fixed();
-		Fixed(const Fixed& src);
+		Fixed(const Fixed &copy);
 		Fixed& 		operator=(const Fixed& ref);
 		int			getRawBits(void) const;
 		void		setRawBits(int const raw);
