@@ -6,20 +6,21 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/02 15:06:34 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/06 12:24:08 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+#PROJECT:
 NAME		=	Fixed_00
 SRC			=	Fixed.cpp main.cpp
-FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98 -o
-CPP			=	c++
+FLAGS		=	-Wall -Wextra -Werror -std=c++98 -o
 
-OBJ			=	$(SRC:%.cpp=%.o)
+#SETUP:
+CPP			=	c++
 RM			= 	rm -rf
 NEW_DIR		= 	mkdir -p
 
-#RAINBOW
+#COLORS:
 P = \x1b[35m
 B = \x1b[34m
 Y = \x1b[33m
@@ -27,21 +28,21 @@ G = \x1b[32m
 R = \x1b[31m
 W = \x1b[0m
 
-all: $(NAME)
+#OBJECTS:
+OBJ	=	$(SRC:%.cpp=%.o)
+%.o: %.c
+	@echo "\n$(P)Compiling$(W) $< $@"
+	$(CPP) $(FLAGS) -c $< -o $@
 
+#RULES:
+
+all: $(NAME)
+	
 $(NAME): $(OBJ)
 	$(CPP) -o $(NAME) $^
 	@$(NEW_DIR) obj
 	@mv $(OBJ) obj
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
-	touch .gitignore
-	@echo $(NAME) >> .gitignore
-	@echo .gitignore >> .gitignore
-	@echo obj >> .gitignore
-
-%.o: %.c
-	@echo "\n$(P)Compiling$(W) $< $@"
-	$(CPP) $(FLAGS) -c $< -o $@
 
 run: re
 	./$(NAME)
