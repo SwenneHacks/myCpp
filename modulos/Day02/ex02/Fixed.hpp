@@ -3,17 +3,23 @@
 #include <iostream>
 #include <string>
 
-class Fixed {
+class Fixed 
+{
+	private:
+		static const int	_fractional_bits = 8;
+		int					_fixed_point;
+
 	public:
 		Fixed( void );
 		~Fixed( void );
-		Fixed( const Fixed &ref );
+	
+		Fixed( const Fixed &copy );
 		Fixed( const int val );
-		Fixed( const float val);
+		Fixed( const float f );
 	
 		int		toInt(void) const;
 		float	toFloat(void) const;
-		Fixed	&operator=( const Fixed &duplicate );
+		Fixed	&operator=( const Fixed &ref );
 
 		bool	operator>( const Fixed &A ) const;
 		bool	operator<( const Fixed &A ) const;
@@ -34,12 +40,8 @@ class Fixed {
 		static Fixed		&max( Fixed &first, Fixed &second );
 		static const Fixed	&min( const Fixed &first, const Fixed &second );
 		static const Fixed	&max( const Fixed &first, const Fixed &second );
-	
-	private:
-		int					_fp;
-		static const int	_fractional_bits = 8;
 };
 
-std::ostream	&operator<<(std::ostream &o, Fixed const &ref);
+std::ostream	&operator<<(std::ostream &out, Fixed const &in);
 
 #endif
