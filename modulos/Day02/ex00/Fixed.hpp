@@ -10,6 +10,9 @@
 
 class	Fixed
 {
+private:
+		static const int	_bits; // fractional bits
+		int					_value; // fixed point value
 public:
 		Fixed();
 		Fixed(const Fixed &copy);
@@ -18,9 +21,6 @@ public:
 		void		setRawBits(int const raw);
 		~Fixed();
 
-private:
-		static const int	_bits; // fractional bits
-		int					_value; // fixed point value
 };
 
 #endif
