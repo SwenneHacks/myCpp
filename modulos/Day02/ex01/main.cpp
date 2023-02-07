@@ -2,8 +2,9 @@
 #include <iostream>
 #include "Fixed.hpp"
 
-int main( void ) 
-{
+
+Fixed subject_test(void)
+{  
     Fixed a;
     Fixed b( 10 );
     Fixed c( 42.42f );
@@ -21,10 +22,20 @@ int main( void )
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-    std::cout << "a is " << a.toFloat() << " as float" << std::endl;
-	std::cout << "b is " << b.toFloat() << " as float" << std::endl;
-	std::cout << "c is " << c.toFloat() << " as float" << std::endl;
-	std::cout << "d is " << d.toFloat() << " as float" << std::endl;
+    // MY TEST YOOOOoooooO
+    Fixed e;
+    e = Fixed( b = a = Fixed(c) );
+    std::cout << YELLOW << "e is " << e << std::endl;
+    std::cout << "e is " << e.toInt() << " as int" << std::endl;
+    return(e);
+}
 
+int main( void ) 
+{
+    Fixed f;
+    f = subject_test();
+
+    std::cout << "f is " << f << std::endl;
+    std::cout << "f is " << f.toInt() << " as int" << std::endl;
     return 0;
 }
