@@ -6,26 +6,22 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/07 14:52:39 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/07 18:32:52 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 #PROJECT:
-
 NAME		=	Fixed_01
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 
 SRC			=	Fixed.cpp main.cpp
 OBJ			=	$(SRC:%.cpp=%.o)
 
 #SETUP:
-
 CPP			=	c++
 RM			= 	rm -rf
 NEW_DIR		= 	mkdir -p
 
-
 #COLORS:
-
 P = \x1b[35m
 B = \x1b[34;1m
 Y = \x1b[33m
@@ -34,7 +30,6 @@ R = \x1b[31m
 W = \x1b[0m
 
 #RULES:
-
 all: $(NAME)
 
 $(NAME): $(OBJ)

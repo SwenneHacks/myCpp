@@ -6,16 +6,17 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/02 15:03:44 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/07 18:23:33 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	Fixed_2
 SRC			=	Fixed.cpp main.cpp
 FLAGS		=	-Wall -Wextra -Werror -pedantic -std=c++98
-CPP			=	c++ $(FLAGS)
-
 OBJ			=	$(SRC:%.cpp=%.o)
+
+CPP			=	c++ 
+
 
 #RAINBOW
 P = \x1b[35m
@@ -28,7 +29,7 @@ W = \x1b[0m
 all: $(NAME)
 
 $(NAME):
-	$(CPP) $(SRC) -o $(NAME)
+	$(CPP) $(FLAGS) $(SRC) -o $(NAME)
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
 test: re

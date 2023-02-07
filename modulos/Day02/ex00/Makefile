@@ -6,13 +6,13 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/07 14:48:22 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/07 18:36:41 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 #PROJECT:
 NAME		=	Fixed_00
-FLAGS		=	-Wall -Wextra -Werror -std=c++98 -o
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
 SRC			=	Fixed.cpp main.cpp
 OBJ			=	$(SRC:%.cpp=%.o)
 
@@ -31,15 +31,14 @@ W = \x1b[0m
 
 #OBJECTS:
 %.o: %.cpp
-	@echo "\n$(P)Compiling$(W) $< $@"
-	$(CPP) $(FLAGS) -c $< -o $@
+	@echo "$(P)Compiling$(W) $<"
+	@$(CPP) $(FLAGS) -c $< -o $@
 
 #RULES:
-
 all: $(NAME)
 	
 $(NAME): $(OBJ)
-	$(CPP) $(FLAGS) $(NAME) $^
+	$(CPP) $(FLAGS) $^ -o $(NAME) 
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
 run: re
