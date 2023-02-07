@@ -2,6 +2,14 @@
 #include <iostream>
 #include "Fixed.hpp"
 
+Fixed my_own_test(Fixed x, Fixed y, Fixed z)
+{
+    Fixed e;
+    e = Fixed( x = y = Fixed(z) );
+    std::cout << BLUE << "e is " << e << std::endl;
+    std::cout << "e is " << e.toInt() << " as int" << std::endl;
+    return e;
+}
 
 Fixed subject_test(void)
 {  
@@ -22,20 +30,26 @@ Fixed subject_test(void)
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-    // MY TEST YOOOOoooooO
-    Fixed e;
-    e = Fixed( b = a = Fixed(c) );
-    std::cout << YELLOW << "e is " << e << std::endl;
-    std::cout << "e is " << e.toInt() << " as int" << std::endl;
-    return(e);
+    // a = my_own_test(a, b, c);
+    return a;
 }
 
-int main( void ) 
+void check_leaks(char **av)
 {
-    Fixed f;
-    f = subject_test();
+	std::cout << RED << std::endl;
+	std::string	s = av[0];
+	s = "leaks " + s.erase(0,2);
+	s += " >> leaks.txt";
+	system(s.c_str());
+	system("grep \"total leaked bytes\" leaks.txt");
+	system("rm leaks.txt");
+}
 
-    std::cout << "f is " << f << std::endl;
-    std::cout << "f is " << f.toInt() << " as int" << std::endl;
+int main(int ac, char **av) 
+{
+    subject_test();
+
+    (void)ac;
+	check_leaks(av);
     return 0;
 }
