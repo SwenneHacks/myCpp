@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/07 18:32:52 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/08 17:53:01 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,11 @@ Y = \x1b[33m
 G = \x1b[32m
 R = \x1b[31m
 W = \x1b[0m
+
+#OBJECTS:
+%.o: %.cpp
+	@echo "$(P)Compiling$(W) $<"
+	@$(CPP) $(FLAGS) -c $< -o $@
 
 #RULES:
 all: $(NAME)

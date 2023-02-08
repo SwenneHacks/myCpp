@@ -4,12 +4,12 @@
 #include <string>
 #include <iostream>
 
-Fixed::Fixed(void) : _fixed_point(0) {}
-Fixed::~Fixed(void) {}
-
 /*
 ** CANONICAL
 */
+
+Fixed::Fixed(void) : _fixed_point(0) {}
+Fixed::~Fixed(void) {}
 
 Fixed::Fixed(const Fixed &copy) 
 { *this = copy; }
@@ -80,7 +80,6 @@ const Fixed	&Fixed::max(const Fixed &first, const Fixed &second){
 	return (second);
 }
 
-
 /* 
 ** COMPARISON 
 */
@@ -115,7 +114,7 @@ Fixed	Fixed::operator/(const Fixed &A) const { return (Fixed(toFloat() / A.toFlo
 */
 
 Fixed	Fixed::operator++( int ) 
-{ 						//Post-Increment (changes it)
+{ 							//Pos
 	Fixed a(*this); 
 	++(*this);
 	return (a); 
@@ -128,20 +127,20 @@ Fixed	Fixed::operator++( void )
 }
 
 Fixed	Fixed::operator--( int ) 
-{ //Post-Decrement (changes the value)
+{ 							//Post
 	Fixed a(*this); 
 	--(*this);
 	return (a); 
 }
 
 Fixed	Fixed::operator--( void ) 
-{ //Post-Decrement
+{ 							//Post
 	this->_fixed_point--;
 	return (*this); 
 }
 
 /* 
-** EXTRA (I added it because I want it) 
+** EXTRAS (I added it because I want it) 
 */
 
 Fixed 	Fixed::operator+=(int value) {
