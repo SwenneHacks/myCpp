@@ -15,56 +15,41 @@ Fixed::Fixed(const Fixed &copy)
 { *this = copy; }
 
 Fixed &Fixed::operator=(const Fixed &ref)
-{ return(*this); }
+{ _fixed_point = ref._fixed_point;
+	return(*this); }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &in) 
-{ return (out << in.toFloat()); }
+{ out << in.toFloat();
+	return(out); }
 
 /*
-** CONVERTERS
+** GET & SET
 */
 
-Fixed::Fixed(int const val) { _fixed_point = val * (1 << _fractional_bits); }
-Fixed::Fixed(float const f){ _fixed_point = roundf(f * (1 << _fractional_bits)); }
+void Fixed::setRawBits(int const raw) { 
+	this->_fixed_point = raw; }
 
-/* 
-** COMPARISON
-*/
-
-bool Fixed::operator<(const Fixed& A) const { return (this->_fixed_point < A._fixed_point); }
-
-bool Fixed::operator>(const Fixed& A) const { return (this->_fixed_point > A._fixed_point); }
-
-bool Fixed::operator==(const Fixed& A) const { return (this->_fixed_point == A._fixed_point); }
-
-bool Fixed::operator!=(const Fixed& A) const { return (this->_fixed_point != A._fixed_point); }
-
-bool Fixed::operator>=(const Fixed& A) const { return (this->_fixed_point >= A._fixed_point); }
-
-bool Fixed::operator<=(const Fixed& A) const { return (this->_fixed_point <= A._fixed_point); }
+int	Fixed::getRawBits(void) const { 
+	return (this->_fixed_point); }
 
 /*
-** ARITHMETIC
+** SHIFTERS
 */
 
-Fixed	Fixed::operator+(const Fixed& A) const { return (Fixed(toInt() + A.toInt())); }
-
-Fixed	Fixed::operator-(const Fixed& A) const { return (Fixed(toInt() - A.toInt())); }
-
-Fixed	Fixed::operator*(const Fixed& A) const { return (Fixed(toInt() * A.toInt())); }
-
-Fixed	Fixed::operator/(const Fixed& A) const { return (Fixed(toInt() / A.toInt())); }
-
-/* 
-** INC/DEC-METRIC 
-*/
-
-Fixed	Fixed::operator++( int value ) {
-	return (++value);
+Fixed::Fixed(int const val){ 
+	_fixed_point = (val << _bits); 
 }
 
-Fixed	Fixed::operator--( int value ) {
-	return (--value);
+int Fixed::toInt( void ) const { 
+	return (_fixed_point >> _bits); 
+}
+
+Fixed::Fixed(float const f){ 
+	_fixed_point = roundf(f * (1 << _bits)); 
+}
+
+float Fixed::toFloat( void ) const { 
+	return (static_cast<float>(_fixed_point) / (1 << _bits)); 
 }
 
 /* 
@@ -93,4 +78,91 @@ const Fixed	&Fixed::max(const Fixed &first, const Fixed &second){
 	if (first > second)
 		return (first);
 	return (second);
+}
+
+
+/* 
+** COMPARISON 
+*/
+
+bool Fixed::operator<(const Fixed &A) const { return (this->_fixed_point < A._fixed_point); }
+
+bool Fixed::operator>(const Fixed &A) const { return (this->_fixed_point > A._fixed_point); }
+
+bool Fixed::operator==(const Fixed &A) const { return (this->_fixed_point == A._fixed_point); }
+
+bool Fixed::operator!=(const Fixed &A) const { return (this->_fixed_point != A._fixed_point); }
+
+bool Fixed::operator>=(const Fixed &A) const { return (this->_fixed_point >= A._fixed_point); }
+
+bool Fixed::operator<=(const Fixed &A) const { return (this->_fixed_point <= A._fixed_point); }
+
+
+/*
+** ARITHMETIC (temporary values)
+*/
+
+Fixed	Fixed::operator+(const Fixed &A) const { return (Fixed(toFloat() + A.toFloat())); }
+
+Fixed	Fixed::operator-(const Fixed &A) const { return (Fixed(toFloat() - A.toFloat())); }
+
+Fixed	Fixed::operator*(const Fixed &A) const { return (Fixed(toFloat() * A.toFloat())); }
+
+Fixed	Fixed::operator/(const Fixed &A) const { return (Fixed(toFloat() / A.toFloat())); }
+
+/* 
+** DECREASE /INCREASE
+*/
+
+Fixed	Fixed::operator++( int ) 
+{ 						//Post-Increment (changes it)
+	Fixed a(*this); 
+	++(*this);
+	return (a); 
+}
+
+Fixed	Fixed::operator++( void ) 
+{ 							//Pre
+	this->_fixed_point++;
+	return (*this); 
+}
+
+Fixed	Fixed::operator--( int ) 
+{ //Post-Decrement (changes the value)
+	Fixed a(*this); 
+	--(*this);
+	return (a); 
+}
+
+Fixed	Fixed::operator--( void ) 
+{ //Post-Decrement
+	this->_fixed_point--;
+	return (*this); 
+}
+
+/* 
+** EXTRA (I added it because I want it) 
+*/
+
+Fixed 	Fixed::operator+=(int value) {
+	(*this) = (*this) + value;
+	return (*this);
+}
+
+Fixed 	Fixed::operator+=(const Fixed &A) { 
+	Fixed a(*this);
+	(*this) = a + A;
+	return (a);
+}
+
+Fixed 	Fixed::operator-=(int value) {
+	(*this) = (*this) - value;
+	return (*this);
+}
+
+
+Fixed 	Fixed::operator-=(const Fixed &A) { 
+	Fixed a(*this);
+	(*this) = a - A;
+	return (a);
 }
