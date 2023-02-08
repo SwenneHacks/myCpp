@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/07 18:23:33 by swofferh      ########   odam.nl          #
+#    Updated: 2023/02/08 15:16:08 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME):
 	$(CPP) $(FLAGS) $(SRC) -o $(NAME)
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
-test: re
+run: re
 	./$(NAME)
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
