@@ -6,7 +6,7 @@
 class IOperation;
 
 int main(){
-    //templed containers<types>
+    // templed containers<types>
     std::list<int>                      lst; // just a simple list containing ints
     std::map<std::string, IOperation*>  map; // IOperation map, index on strings. 
     std::vector<int>                    vecN; // 
@@ -31,6 +31,5 @@ int main(){
     
     for (it = lst.begin(); it != ite; ++it) // on C you loop to while it reaches \0 character (null terminator)
         std::cout << *it << std::endl;
-
     return (0);
 }
