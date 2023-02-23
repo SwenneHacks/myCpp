@@ -7,25 +7,21 @@
 
 /*______________________ ERROR HANDLING _______________________*/
 
-void check_errorMaxSize(unsigned int size, unsigned int max){
-	if (size >= max)
-		throw (std::length_error("Error: Could not add, limit (max size) exeeded"));
+void check_errorMaxSize(unsigned int size, unsigned int max) { if (size >= max)
+	throw (std::length_error("Error: Could not add, limit (max size) exeeded"));
 }
 
-void check_errorMinSize(unsigned int size){
-	if (size <= 1)
-		throw (std::runtime_error("Error: Array empty or only contains 1 integer"));
+void check_errorMinSize(unsigned int size){ if (size <= 1)
+	throw (std::runtime_error("Error: Array empty or only contains 1 integer"));
 }
 
-void check_errorEmpty(unsigned int N){
-	if (!N)
-		throw (std::length_error("Error: Could not create a Span with length of 0"));
+void check_errorEmpty(unsigned int N){ if (!N)
+	throw (std::length_error("Error: Could not create a Span with length of 0"));
 }
 
 /*_______________________ BUILD UP _________________________*/
 
-Span::Span(unsigned int N) : _length(N), counter(0){
-	check_errorEmpty(N);
+Span::Span(unsigned int N) : _length(N), counter(0) { check_errorEmpty(N);
 	this->_numbers = std::vector<int>();
 }
 
@@ -99,7 +95,7 @@ unsigned int Span::longestSpan() const {
 	unsigned int		max = *(std::max_element(copy.begin(), copy.end()));
 	unsigned int		min = *(std::min_element(copy.begin(), copy.end()));
 	unsigned int 		ret = max - min;
-
+	
 	check_errorMinSize(this->_numbers.size());
 	std::sort(copy.begin(), copy.end());
 	return (ret);

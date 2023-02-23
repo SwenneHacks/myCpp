@@ -25,8 +25,7 @@ int		main(int ac, char **av)
 	try { other.addNumber(-4); }
 	catch (const std::exception &e) {std::cerr << e.what() << std::endl;}
 	
-	/* _________________________________________________________________*/
-	std::cout << Y << "Span(0). New empty Span array, not allowed." << W;
+	/* ___________________________________________, not allowed." << W;
 	try { Span empty = Span(0); }
 	catch (const std::exception &e) {std::cerr << e.what() << std::endl;}
 	
