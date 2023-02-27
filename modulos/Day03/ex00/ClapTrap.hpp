@@ -7,20 +7,28 @@
 
 class	ClapTrap
 {
-public:
-	ClapTrap(std::string Name);
-	ClapTrap(const ClapTrap &copy);
-	ClapTrap& operator=(const ClapTrap &copy);
-	~ClapTrap();
-	// Member Functions:
-	void 		attack(const std::string& target);
-	void 		takeDamage(unsigned int amount);
-	void 		beRepaired(unsigned int amount);
-private:
+	private:
+
 	std::string _name;
 	int			_hits;
 	int			_energy;
 	int			_damage;
+
+	public:
+
+	ClapTrap(std::string Name);
+	ClapTrap(const ClapTrap &copy);
+	~ClapTrap();
+
+	// Operators :
+	ClapTrap	&operator=(const ClapTrap &copy);
+
+	// Member Functions :
+	void 		attack(const std::string& target);
+	void 		takeDamage(unsigned int amount);
+	void 		beRepaired(unsigned int amount);
 };
 
 #endif
+
+std::ostream	&operator<<(std::ostream &out, ClapTrap const &in);

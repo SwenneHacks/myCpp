@@ -11,22 +11,30 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
 {   *this = copy; 
 }
 
-ClapTrap&	ClapTrap::operator=(const ClapTrap& copy)
-{   return(*this); 
+ClapTrap&	ClapTrap::operator=(const ClapTrap& target)
+{   
+    this->_name = target._name;
+	this->_hits = target._hits;
+	this->_energy = target._energy;
+	this->_damage = target._damage;
+    return(*this); 
+}
+
+std::ostream &operator<<(std::ostream &
+out, const ClapTrap &in) 
+{   out << in; return(out); 
 }
 
 ClapTrap::~ClapTrap() 
 {   std::cout << "Destructor called for" << *this << std::endl; 
 }
 
-std::ostream &operator<<(std::ostream &out, const ClapTrap &in) 
-{   out << in; return(out); 
-}
-
 void 	ClapTrap::attack(const std::string& target)
 {   
-    this->_damage--;
-    std::cout << target << "got attacked. Damage is now: " << this->_damage << RESET << std::endl;
+    this->_name = target;
+    this->_damage = _damage - 1;
+    this->_energy--;
+    std::cout << target << "got DAMAGED. Damage is now: " << this->_damage << RESET << std::endl;
 }
 
 void 	ClapTrap::takeDamage(unsigned int amount)
@@ -36,5 +44,7 @@ void 	ClapTrap::takeDamage(unsigned int amount)
 
 void 	ClapTrap::beRepaired(unsigned int amount)
 {
-
+    this->_damage = _damage - amount;
+    this->_energy--;
+    std::cout << this->_name << "got HEALED. Damage is now: " << this->_damage << RESET << std::endl;
 }
