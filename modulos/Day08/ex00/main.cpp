@@ -77,7 +77,7 @@ void test_strings(T array){
 		std::cout << N << "Choose the value to be found: ";
 		std::cin >> find;
 		stringfind(array, find);
-		{ std::cout << Y << " [found it]" << R << std::endl; }}
+		{ std::cout << Y << "[found it]" << R << std::endl; }}
     catch (const std::exception &e) 
 		{ std::cerr << Y << " [not found]" << R << std::endl; }
 }
