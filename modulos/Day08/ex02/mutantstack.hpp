@@ -17,7 +17,7 @@ static const std::string Y = "\x1b[33m";
 static const std::string B = "\x1b[34m";
 static const std::string R = "\x1b[0m\n";
 
-//					container adaptor (stack is build on deque container)
+// container adaptor (stack is build on deque container)
 template<typename T>
 class MutantStack: public std::stack<T>
 {

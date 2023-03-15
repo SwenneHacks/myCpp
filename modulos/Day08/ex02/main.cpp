@@ -19,13 +19,14 @@ void test_mutant() {
 	std::cout << "scope stack:";
 	inScope.push(10); std::cout << " 10,";
 	inScope.push(11); std::cout << " 11,";
-	inScope.push(12); std::cout << " 5,";
-	inScope.push(13); std::cout << " 9";
+	inScope.push(5); std::cout << " 5,";
+	inScope.push(9); std::cout << " 9";
 	//-----------------//
 	MutantStack<int> Mutant;
 	Mutant.push(2);
 	Mutant.push(5);
 	Mutant.push(7);
+	Mutant.push(1);
 
 	// Now using iterator to print MutantStack function, from begin to end.
 	std::cout << "\nmutant stack: ";
@@ -53,15 +54,16 @@ void test_mutant() {
 
 	// NOW TESTING A LIST
 	std::list<int> now_a_list;
+	now_a_list.push_back(2);
 	now_a_list.push_back(5);
-	now_a_list.push_back(3);
-	now_a_list.push_back(4);
+	now_a_list.push_back(7);
+	now_a_list.push_back(1);
 	//--------------------//
-	std::cout << Y << "\n[PRINTING LIST]" << R << std::endl;
+	std::cout << Y << "\n[LIST]" << R << std::endl;
 	std::list<int>::iterator iterator = now_a_list.begin(); 
 	std::list<int>::iterator it_end = now_a_list.end(); 
 	while (iterator != it_end) { std::cout << *iterator << ", "; ++iterator;}
-	std::cout << "\nnow_a_list [SIZE]: " << now_a_list.size() <<std::endl;
+	std::cout << "\n[SIZE]: " << now_a_list.size() <<std::endl;
 }
 
 int leaks(char **av)

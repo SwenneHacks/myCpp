@@ -6,14 +6,14 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/16 16:15:43 by swofferh      ########   odam.nl          #
+#    Updated: 2023/03/10 18:00:57 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	spanspan
 SRC			=	main.cpp span.cpp
-FLAGS		=	-Wall -Wextra -Werror -std=c++98
-CPP			=	c++
+FLAGS		=	-Wall -Wextra -Werror 
+CPP			=	c++ -std=c++98
 OBJ			=	$(SRC:%.cpp=%.o)
 
 #RAINBOW

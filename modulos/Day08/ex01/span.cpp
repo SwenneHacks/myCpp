@@ -50,7 +50,7 @@ std::ostream &operator<<(std::ostream &out, const std::vector<T> &v){
 	return out;
 }
 
-/*______________________ PRINT NUMBER ________________________*/
+/*______________________ Extra function ________________________*/
 
 void Span::printNumbers(void){
 	std::vector<int>::iterator it = this->_numbers.begin();
@@ -59,7 +59,7 @@ void Span::printNumbers(void){
 	std::cout << std::endl;
 }
 
-/*______________________ ADD NUMBER FUN ______________________*/
+/*______________________ ADD Number ______________________*/
 
 void Span::addNumber(unsigned int n) {
 	check_errorMaxSize(this->_numbers.size(), this->_length);
@@ -76,16 +76,16 @@ void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterato
 /*______________________ SHORTEST SPAN _______________________*/
 
 unsigned int Span::shortestSpan() const{
-	std::vector<int>    copy = std::vector<int>(this->_numbers);
-	unsigned int        rett = std::numeric_limits<unsigned int>::max();
+	std::vector<int>    numbers = std::vector<int>(this->_numbers);
+	unsigned int        result = std::numeric_limits<unsigned int>::max();
 	unsigned int      	diff = 0;
 
 	check_errorMinSize(this->_numbers.size());
-	std::sort(copy.begin(), copy.end());
-	for (unsigned int i = 0; i < copy.size() - 1; i++){
-		diff = copy[i + 1] - copy[i];
-		rett = std::min<unsigned int> (diff, rett);}
-	return (rett);
+	std::sort(numbers.begin(), numbers.end());
+	for (unsigned int i = 0; i < numbers.size() - 1; i++){
+		diff = numbers[i + 1] - numbers[i];
+		result = std::min<unsigned int> (diff, result);}
+	return (result);
 }
 
 /*______________________ LONGEST SPAN ________________________*/
@@ -95,7 +95,7 @@ unsigned int Span::longestSpan() const {
 	unsigned int		max = *(std::max_element(copy.begin(), copy.end()));
 	unsigned int		min = *(std::min_element(copy.begin(), copy.end()));
 	unsigned int 		ret = max - min;
-	
+
 	check_errorMinSize(this->_numbers.size());
 	std::sort(copy.begin(), copy.end());
 	return (ret);

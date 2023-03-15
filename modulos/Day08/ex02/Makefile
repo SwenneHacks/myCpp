@@ -6,15 +6,15 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/02/16 16:16:52 by swofferh      ########   odam.nl          #
+#    Updated: 2023/03/10 18:01:16 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	mutantstack
 SRC			=	main.cpp
-FLAGS		=	-Wall -Wextra -Werror -std=c++98
+FLAGS		=	-Wall -Wextra -Werror 
 OBJ			=	$(SRC:%.cpp=%.o)
-CPP			=	c++ 
+CPP			=	c++ -std=c++98
 
 #RAINBOW
 P = \x1b[35m

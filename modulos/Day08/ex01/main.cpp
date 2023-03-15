@@ -6,26 +6,27 @@
 
 int		main(int ac, char **av)
 {
-	Span other = Span(5);
-	other.addNumber(11);
-	other.addNumber(5);
-	other.addNumber(17);
-	other.addNumber(9);
-	other.addNumber(3);
+	Span test = Span(5);
+	test.addNumber(11);
+	test.addNumber(5);
+	test.addNumber(17);
+	test.addNumber(9);
+	test.addNumber(3);
 	std::cout << Y << "Numbers: " << W;
-	other.printNumbers();
+	test.printNumbers();
 	
 	/* _________________________________________________________________*/
 	std::cout << Y << "Now testing basic functionality (subject main)" << W;
-	std::cout << "SHORTEST: " << other.shortestSpan() << std::endl;
-	std::cout << "LONGEST: " << other.longestSpan() << std::endl;
+	std::cout << "SHORTEST: " << test.shortestSpan() << std::endl;
+	std::cout << "LONGEST: " << test.longestSpan() << std::endl;
 	
 	/* _________________________________________________________________*/
 	std::cout << Y << "Span(5) adding extra element (already at 5)" << W;
-	try { other.addNumber(-4); }
+	try { test.addNumber(-4); }
 	catch (const std::exception &e) {std::cerr << e.what() << std::endl;}
 	
-	/* ___________________________________________, not allowed." << W;
+	/* _________________________________________________________________*/
+	std::cout << Y << "Span(0). New empty Span array, not allowed." << W;
 	try { Span empty = Span(0); }
 	catch (const std::exception &e) {std::cerr << e.what() << std::endl;}
 	
