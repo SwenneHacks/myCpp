@@ -1,6 +1,9 @@
 #ifndef CLAP_TRAP_HPP
 # define CLAP_TRAP_HPP
 
+#include <string>
+#include <iostream>
+
 #define YELLOW 	"\x1b[34m"
 #define BLUE 	"\x1b[34m"
 #define RESET 	"\x1b[0m\n"
