@@ -4,9 +4,9 @@
 #include <string>
 #include <iostream>
 
-#define YELLOW 	"\x1b[34m"
-#define BLUE 	"\x1b[34m"
-#define RESET 	"\x1b[0m\n"
+#define BLUE "\x1b[34m"
+#define RED "\x1b[34m"
+#define END	"\x1b[0m\n"
 
 class	ClapTrap
 {
@@ -34,4 +34,4 @@ class	ClapTrap
 
 #endif
 
-std::ostream	&operator<<(std::ostream &out, ClapTrap const &in);
+std::ostream &operator<<(std::ostream &out, ClapTrap const &in);
