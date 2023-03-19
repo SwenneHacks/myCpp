@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/03/17 13:26:47 by swofferh      ########   odam.nl          #
+#    Updated: 2023/03/19 14:21:51 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME		=	ClapTrap
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 
 SRC			=	ClapTrap.cpp main.cpp
 OBJ			=	$(SRC:%.cpp=%.o)
-INC			=	. 
 
 #SETUP:
 CPP			=	c++
@@ -33,13 +32,14 @@ W = \x1b[0m
 #OBJECTS:
 %.o: %.cpp
 	@echo "$(P)Compiling$(W) $<"
-	@$(CPP) $(FLAGS) -c $< -o $@ 
+	@$(CPP) $(FLAGS) -I . -c $< -o $@ 
 
 #RULES:
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CPP) $(FLAGS) $^ -o $(NAME)
+	@echo "$(P)Compiling$(W) with $(FLAGS)"
+	@$(CPP) $(FLAGS) $^ -o $(NAME)
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
 test: re
