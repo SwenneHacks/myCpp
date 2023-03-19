@@ -7,7 +7,7 @@ ClapTrap::ClapTrap(std::string Name) : _name(Name), _health(10), _energy(10), _d
 }
 
 ClapTrap::ClapTrap(void) : _name("ClapTrap"), _health(10), _energy(10), _damage(0) { 
-    std::cout << CYAN << "ClapTrap has been constructed" << std::endl;
+    std::cout << CYAN << "default ClapTrap has been constructed" << std::endl;
     std::cout << "Health and Energy initialized with 10" << END; 
 }
 
