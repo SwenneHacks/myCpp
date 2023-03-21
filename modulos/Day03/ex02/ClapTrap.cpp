@@ -2,22 +2,17 @@
 
 
 
-ClapTrap::ClapTrap(std::string Name) : _name(Name), _health(10), _energy(10), _damage(0) {   
-    std::cout << Name << " is ready to fight" << std::endl;
-}
+ClapTrap::ClapTrap(std::string Name) : _name(Name), _health(10), _energy(10), _damage(0) 
+{ std::cout << Name << " is ready to fight" << std::endl; }
 
-ClapTrap::ClapTrap(void) : _name("default"), _health(10), _energy(10), _damage(0) { 
-    std::cout << CYAN << "Default ClapTrap has been constructed" << std::endl;
-    std::cout << "Health and Energy initialized with 10" << END; 
-}
+ClapTrap::ClapTrap(void) : _name("inherited"), _health(10), _energy(10), _damage(0) 
+{ std::cout << CYAN << "inherited ClapTrap has been constructed" << END; }
 
-ClapTrap::ClapTrap(const ClapTrap& copy){   
-    *this = copy;
-}
+ClapTrap::ClapTrap(const ClapTrap& copy)
+{ *this = copy; }
 
-ClapTrap::~ClapTrap() { 
-    std::cout << "Destructor called for " << this->_name << std::endl;
-}
+ClapTrap::~ClapTrap() 
+{ std::cout << "Destructor called for " << this->_name << std::endl; }
 
 /*_______________________ OPERATORS _________________________*/
 
@@ -34,14 +29,10 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& target){
 void 	ClapTrap::attack(const std::string& target) { std::cout << BLUE << this->_name << " ATTACK " << "[ClapTrap]" << END;   
 
     if (this->_energy <= 0) // NO ENERGY
-    {
-        std::cout << RED << "No energy points left for " << this->_name << END;
+    { std::cout << RED << "No energy points left for " << this->_name << END;
         return ;
 	}
     else {
-        //ClapTrap Target(target);
-        //CurrentTarget = target;
-        //Target.takeDamage(10);
         this->_energy -= 1;
         std::cout << target << " got attacked badly" << std::endl;
     }
