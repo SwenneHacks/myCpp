@@ -6,14 +6,14 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/03/19 16:07:56 by swofferh      ########   odam.nl          #
+#    Updated: 2023/03/21 15:37:58 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 #PROJECT:
 NAME		=	ClapTrap
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 
-SRC			=	ClapTrap.cpp ScavTrap.cpp main.cpp
+SRC			=	ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp
 OBJ			=	$(SRC:%.cpp=%.o)
 
 #SETUP:
