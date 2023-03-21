@@ -2,11 +2,13 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void my_own_test(void)
 {
-	ClapTrap Bob("Bob");
-	ScavTrap test;
+	ClapTrap Bob("Alessandro");
+	ScavTrap test("Giacomo");
+	FragTrap last("Damiano");
 
 	std::cout << std::endl << " >>>> ClapTrap <<<< " << std::endl;
 	Bob.takeDamage(5);
@@ -20,6 +22,14 @@ void my_own_test(void)
 	test.beRepaired(10);
 	test.takeDamage(1200);
 	test.attack("Bob");
+	test.guardGate();
+
+	std::cout << std::endl << " >>>> FragTrap <<<< " << std::endl;
+	last.attack("Tim");
+	last.beRepaired(10);
+	last.takeDamage(300);
+	last.attack("Tim");
+	last.highFiveGuys();
 
 	std::cout << std::endl << " >>>> Destructors <<<< " << std::endl;
 }
