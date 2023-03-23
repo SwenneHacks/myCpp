@@ -9,8 +9,8 @@ class Animal
         int         _legs;
         std::string _type;
     protected: 
-		// Quadruped   _legs[4];
-        // Bird        _legs[2];
+		Quadruped   _legs[4];
+        Bird        _legs[2];
     public:
         Animal(std::string type) : _type(type) {std::cout << "Animal:" << type << std::endl;};
         Animal(Animal const &) {std::cout << "Copy:" << this->_type << std::endl;};
@@ -26,9 +26,7 @@ class Quadruped : public Animal
 {
 	private:
 		int _legs = 4;
-    protected:
-        // Dog();
-        // Cat();
+        std::string _type = "quadruped"; 
 	public:
         void superRun(Animal Quadruped, int distance) {Quadruped.run(distance * 4);};
 };
@@ -36,18 +34,17 @@ class Quadruped : public Animal
 class Bird : public Animal
 {
 	private:
+        int legs = 2;
 		std::string _type = "bird"; 
-    protected:
-        // Duck();
 	public:
-        void slowRun(Animal Bird,int distance) {Bird.run(distance * 4);};
-        void superfly(int distance) {g_distance * 2;};
+        void slowRun(Animal Bird, int distance) {Bird.run(distance * 2);};
+        void superfly(int distance) {g_distance * 10;};
 };
 
 class Duck : public Bird
 {
     public:
-        // Duck() {std::cout << "duck goes\n";};
+        Duck() {std::cout << "duck goes\n";};
         // Duck(Duck const &copy);
         // Duck &operator=(Duck const &);
         // ~Duck();
