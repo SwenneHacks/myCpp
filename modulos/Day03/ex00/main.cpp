@@ -11,7 +11,7 @@ void my_own_test(void)
 	Jelle.takeDamage(5);
 	Abbi.attack("Jelle");
 	Jelle.takeDamage(4);
-	Jelle.beRepaired(10);
+	Jelle.beRepaired(2);
 	Jelle.attack("Dudi");
 	Jelle.attack("Dudi");
 	Jelle.attack("Dudi");
