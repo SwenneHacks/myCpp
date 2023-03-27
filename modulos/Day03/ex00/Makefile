@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/03/19 14:21:51 by swofferh      ########   odam.nl          #
+#    Updated: 2023/03/24 14:25:30 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,6 @@ $(NAME): $(OBJ)
 	@$(CPP) $(FLAGS) $^ -o $(NAME)
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
-test: re
-	./$(NAME)
-	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
-
 clean:
 	$(RM) $(OBJ)
 	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
@@ -56,5 +52,9 @@ fclean: clean
 
 re:	fclean all
 	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
+
+run: re
+	./$(NAME)
+	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
 .PHONY:	all clean fclean re
