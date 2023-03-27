@@ -3,7 +3,11 @@
 #include <string>
 #include <iostream>
 
-DiamondTrap::DiamondTrap() { std::cout << "Deafault constructor called on DiamondTrap" << std::endl; }
+DiamondTrap::DiamondTrap() 
+{ 
+	std::cout << "Deafault constructor called on DiamondTrap" << std::endl;
+	return ;
+}
 
 DiamondTrap::DiamondTrap(std::string Name)
 {
@@ -15,13 +19,18 @@ DiamondTrap::DiamondTrap(std::string Name)
 	this->_health = frag._health;
 	this->_damage = frag._damage;
 	this->_energy = ScavTrap::_energy;
+	return ;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& copy)
-{ *this = copy;}
+{ 
+	*this = copy;
+	return ;
+}
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& ref)
-{ std::cout << "DiamondTrap: Copy assignment operator called" << std::endl;
+{ 
+	std::cout << "DiamondTrap: Copy assignment operator called" << std::endl;
 	_name = ref._name;
 	_health = ref._health;
 	_energy = ref._energy;
@@ -30,7 +39,8 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& ref)
 }
 
 void DiamondTrap::attack(const std::string& target) 
-{ std::cout << YELLOW << "ATTACK [DiamondTrap]" << END;
+{ 
+	std::cout << YELLOW << "ATTACK [DiamondTrap]" << END;
 	if (_energy > 0 && _health > 0) {
 		std::cout << "DiamondTrap " << _name << " attacks " << std::endl;
         std::cout << target << " damaged with " << _damage << " points" << std::endl;
