@@ -5,10 +5,8 @@
 
 void my_own_test(void)
 {
-	ClapTrap Bob("Bob");
-	ScavTrap test;
-
 	std::cout << std::endl << " >>>> ClapTrap <<<< " << std::endl;
+	ClapTrap Bob("Bob");
 	Bob.takeDamage(5);
 	Bob.beRepaired(3);
 	Bob.attack("Xander");
@@ -16,10 +14,12 @@ void my_own_test(void)
 	Bob.beRepaired(3);
 
 	std::cout << std::endl << " >>>> ScavTrap <<<< " << std::endl;
+	ScavTrap test("Franco");
 	test.attack("Bob");
 	test.beRepaired(10);
 	test.takeDamage(1200);
 	test.attack("Bob");
+	test.guardGate();
 
 	std::cout << std::endl << " >>>> Destructors <<<< " << std::endl;
 }
