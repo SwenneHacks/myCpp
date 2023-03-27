@@ -15,12 +15,11 @@ class	ClapTrap
 	private:
 
 	std::string _name;
-	int			_health;
+	int			_health; //hit points
 	int			_energy;
 	int			_damage;
 
 	public:
-
 	ClapTrap();
 	ClapTrap(std::string Name);
 	ClapTrap(const ClapTrap &copy);
