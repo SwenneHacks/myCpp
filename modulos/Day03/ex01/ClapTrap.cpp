@@ -1,22 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ClapTrap.cpp                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/24 14:36:20 by swofferh      #+#    #+#                 */
+/*   Updated: 2023/03/24 18:36:53 by swofferh      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "ClapTrap.hpp"
 
-
-
-ClapTrap::ClapTrap(std::string Name) : _name(Name), _health(10), _energy(10), _damage(0) {   
-    std::cout << Name << " is ready to fight" << std::endl;
+ClapTrap::ClapTrap(void) : _name("ClapTrap"), _health(10), _energy(10), _damage(0) 
+{ 
+    std::cout << CYAN << "default ClapTrap has been constructed" << std::endl;
+    std::cout << "Health and Energy initialized with 10" << END;
+    return ;
 }
 
-ClapTrap::ClapTrap(void) : _name("default"), _health(10), _energy(10), _damage(0) { 
-    std::cout << CYAN << "Default ClapTrap has been constructed" << std::endl;
-    std::cout << "Health and Energy initialized with 10" << END; 
+ClapTrap::ClapTrap(std::string Name) : _name(Name), _health(10), _energy(10), _damage(0) 
+{   
+    std::cout << Name << " is ready to fight [ClapTrap]" << std::endl;
+    return ;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& copy){   
+ClapTrap::ClapTrap(const ClapTrap& copy)
+{   
     *this = copy;
+    return ;
 }
 
-ClapTrap::~ClapTrap() { 
+ClapTrap::~ClapTrap() 
+{ 
     std::cout << "Destructor called for " << this->_name << std::endl;
+    return ;
 }
 
 /*_______________________ OPERATORS _________________________*/
@@ -31,9 +50,11 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& target){
 
 /*_______________________ MEMBER FUNCTIONS _______________________*/
 
-void 	ClapTrap::attack(const std::string& target) { std::cout << BLUE << this->_name << " ATTACK " << "[ClapTrap]" << END;   
+void 	ClapTrap::attack(const std::string& target) 
+{ 
+    std::cout << BLUE << this->_name << " ATTACK " << "- ClapTrap" << END;
 
-    if (this->_energy <= 0) // NO ENERGY
+    if (this->_energy <= 0)
     {
         std::cout << RED << "No energy points left for " << this->_name << END;
         return ;
@@ -47,7 +68,9 @@ void 	ClapTrap::attack(const std::string& target) { std::cout << BLUE << this->_
     }
 }
 
-void 	ClapTrap::takeDamage(unsigned int amount) { std::cout << BLUE << this->_name <<" DAMAGE " << "[ClapTrap]" << END;
+void 	ClapTrap::takeDamage(unsigned int amount) 
+{
+    std::cout << BLUE << this->_name <<" DAMAGE " << "- ClapTrap" << END;
 
     if (amount == 0){
         std::cout << "No Damage was taken." << std::endl;
@@ -66,7 +89,9 @@ void 	ClapTrap::takeDamage(unsigned int amount) { std::cout << BLUE << this->_na
     }
 }
 
-void 	ClapTrap::beRepaired(unsigned int amount) { std::cout << BLUE << this->_name << " REPARE " << " [ClapTrap] " << END;
+void 	ClapTrap::beRepaired(unsigned int amount) 
+{ 
+    std::cout << BLUE << this->_name << " REPARE " << " ClapTrap " << END;
     if (this->_health <= 0)
     {
         std::cout << RED << "Too late, " << this->_name << " is already dead." << END;
@@ -75,7 +100,7 @@ void 	ClapTrap::beRepaired(unsigned int amount) { std::cout << BLUE << this->_na
     else {
         this->_health += amount;
         this->_energy -= 1;
-        std::cout << this->_name << " taking a break and healing" << std::endl;
-        std::cout << "Health is now repaired to " << this->_health << std::endl;
+        std::cout << this->_name << " now healing itself" << std::endl;
+        std::cout << "Health now repaired to " << this->_health << std::endl;
     }
 }
