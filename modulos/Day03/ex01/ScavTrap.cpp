@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 14:36:33 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/24 15:25:34 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/03/28 19:27:37 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ScavTrap::ScavTrap(void) : ClapTrap("ScavTrap")
 
 ScavTrap::ScavTrap(std::string new_name) : ClapTrap(new_name)
 {
-	std::cout << "ScavTrap " <<new_name << " has been constructed." << std::endl;
+	std::cout << new_name << " has been constructed [ScavTrap]" << std::endl;
 	_health = 100;
 	_energy = 50;
 	_damage = 20;
@@ -53,11 +53,12 @@ void ScavTrap::attack(const std::string& target)
 	
 	if (_energy > 0 && _health > 0) 
 	{
-		std::cout << "ScavTrap attacks " << target << std::endl;
+		std::cout << this->_name << " decided to attack " << target << std::endl;
 		_energy--;
+		std::cout << "this message different enough" << std::endl;
 	}
 	else
-		std::cout << "No energy left for " << this->_name << std::endl;
+		std::cout << RED << "No energy left for " << this->_name << std::endl;
 	return ;
 }
 
@@ -69,6 +70,6 @@ void ScavTrap::guardGate(void)
 
 ScavTrap::~ScavTrap() 
 { 
-	std::cout << "default ScavTrap has been destructed" << std::endl; 
+	std::cout << "Destructor called for ScavTrap" << std::endl; 
 	return ;
 }

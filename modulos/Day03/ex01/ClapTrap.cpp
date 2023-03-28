@@ -6,12 +6,12 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 14:36:20 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/24 18:36:53 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/03/28 19:21:13 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ClapTrap.hpp"
+
 
 ClapTrap::ClapTrap(void) : _name("ClapTrap"), _health(10), _energy(10), _damage(0) 
 { 
@@ -32,14 +32,6 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
     return ;
 }
 
-ClapTrap::~ClapTrap() 
-{ 
-    std::cout << "Destructor called for " << this->_name << std::endl;
-    return ;
-}
-
-/*_______________________ OPERATORS _________________________*/
-
 ClapTrap&	ClapTrap::operator=(const ClapTrap& target){   
     this->_name = target._name;
 	this->_health = target._health;
@@ -47,8 +39,6 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& target){
 	this->_damage = target._damage;
     return (*this);
 }
-
-/*_______________________ MEMBER FUNCTIONS _______________________*/
 
 void 	ClapTrap::attack(const std::string& target) 
 { 
@@ -91,7 +81,7 @@ void 	ClapTrap::takeDamage(unsigned int amount)
 
 void 	ClapTrap::beRepaired(unsigned int amount) 
 { 
-    std::cout << BLUE << this->_name << " REPARE " << " ClapTrap " << END;
+    std::cout << BLUE << this->_name << " REPARE " << " - ClapTrap " << END;
     if (this->_health <= 0)
     {
         std::cout << RED << "Too late, " << this->_name << " is already dead." << END;
@@ -103,4 +93,10 @@ void 	ClapTrap::beRepaired(unsigned int amount)
         std::cout << this->_name << " now healing itself" << std::endl;
         std::cout << "Health now repaired to " << this->_health << std::endl;
     }
+}
+
+ClapTrap::~ClapTrap() 
+{ 
+    std::cout << "Destructor called for " << this->_name << std::endl;
+    return ;
 }
