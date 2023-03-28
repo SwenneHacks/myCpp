@@ -6,11 +6,8 @@
 
 void my_own_test(void)
 {
-	ClapTrap Bob("Alessandro");
-	ScavTrap test("Giacomo");
-	FragTrap last("Damiano");
-
 	std::cout << std::endl << " >>>> ClapTrap <<<< " << std::endl;
+	ClapTrap Bob("Alessandro");
 	Bob.takeDamage(5);
 	Bob.beRepaired(3);
 	Bob.attack("Xander");
@@ -18,6 +15,7 @@ void my_own_test(void)
 	Bob.beRepaired(3);
 
 	std::cout << std::endl << " >>>> ScavTrap <<<< " << std::endl;
+	ScavTrap test("Giacomo");
 	test.attack("Bob");
 	test.beRepaired(10);
 	test.takeDamage(1200);
@@ -25,6 +23,7 @@ void my_own_test(void)
 	test.guardGate();
 
 	std::cout << std::endl << " >>>> FragTrap <<<< " << std::endl;
+	FragTrap last("Damiano");
 	last.attack("Tim");
 	last.beRepaired(10);
 	last.takeDamage(300);
