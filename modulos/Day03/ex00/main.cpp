@@ -21,8 +21,11 @@ void my_own_test(void)
 	Jelle.attack("Dudi");
 	Jelle.attack("Dudi");
 	Jelle.attack("Dudi");
-	Jelle.attack("Dudi");
+	Jelle.attack("Dudi"); // 10 times
 	Dudi.takeDamage(10);
+	Dudi.beRepaired(1);
+	Jelle.beRepaired(1);
+	Jelle.attack("Xander");
 
 }
 

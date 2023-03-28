@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ClapTrap.cpp                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/28 18:42:26 by swofferh      #+#    #+#                 */
+/*   Updated: 2023/03/28 18:45:26 by swofferh      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
-
-
 
 ClapTrap::ClapTrap(void) : _name("ClapTrap"), _health(10), _energy(10), _damage(0) 
 { 
@@ -21,14 +31,6 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
     return ;
 }
 
-ClapTrap::~ClapTrap() 
-{ 
-    std::cout << "Destructor called for " << this->_name << std::endl;
-    return ;
-}
-
-/*_______________________ OPERATORS _________________________*/
-
 ClapTrap&	ClapTrap::operator=(const ClapTrap& target)
 {   
     this->_name = target._name;
@@ -38,22 +40,23 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& target)
     return (*this);
 }
 
-/*_______________________ MEMBER FUNCTIONS _______________________*/
-
 void 	ClapTrap::attack(const std::string& target) 
 { 
     std::cout << BLUE << this->_name << " ATTACK " << "[ClapTrap]" << END;
-
     if (this->_energy <= 0)
     {
         std::cout << RED << "No energy points left for " << this->_name << END;
         return ;
 	}
-    else {
+    else 
+    {
         //ClapTrap Target(target);
         //CurrentTarget = target;
         //Target.takeDamage(10);
         this->_energy -= 1;
+        if (this->_energy == 1)
+            std::cout << RED << "Beware! Using last bit of energy" << END;
+        std::cout << this->_name << " now attacking " << target << std::endl;
         std::cout << target << " got attacked badly" << std::endl;
     }
 }
@@ -70,25 +73,43 @@ void 	ClapTrap::takeDamage(unsigned int amount)
         this->_damage += amount;
         std::cout << this->_name << " has taken " << this->_damage << " damage" << std::endl;
         this->_health -= amount;
-        if (this->_health <= 0) {
+        if (this->_health <= 0) 
+        {
             std::cout << RED << "Oh no, " << this->_name << " has been killed" << END;
             this->_energy = 0;
+            return ;
         }
         else
             std::cout << "And health is now " << this->_health << " left" << std::endl;
     }
 }
 
-void 	ClapTrap::beRepaired(unsigned int amount) { std::cout << BLUE << this->_name << " REPARE " << " [ClapTrap] " << END;
+void 	ClapTrap::beRepaired(unsigned int amount) 
+{ 
+    std::cout << BLUE << this->_name << " REPARE " << " [ClapTrap] " << END;
     if (this->_health <= 0)
     {
-        std::cout << RED << "Too late, " << this->_name << " is already dead." << END;
+        std::cout << RED << this->_name << " is already dead, too late" << END;
         this->_energy = 0;
+        return ;
+    }
+    else if (this->_energy <= 0)
+    {
+        std::cout << RED << "Not enough points for healing" << END;
+        return ;
     }
     else {
         this->_health += amount;
         this->_energy -= 1;
         std::cout << this->_name << " now healing himself" << std::endl;
+        std::cout << "Health restored with " << amount << " points"<< std::endl;
         std::cout << "Health now repaired to " << this->_health << std::endl;
+        std::cout << "Energy now repaired to " << this->_energy << std::endl;
     }
+}
+
+ClapTrap::~ClapTrap() 
+{ 
+    std::cout << "Destructor called for " << this->_name << std::endl;
+    return ;
 }
