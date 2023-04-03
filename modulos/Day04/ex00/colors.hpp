@@ -1,5 +1,5 @@
-#ifndef __COLOR_H__
-#define __COLOR_H__
+#ifndef __COLOR_HPP__
+#define __COLOR_HPP__
 
 # define RESET_COLOR	"\033[0m"
 # define BLACK   		"\033[30m"

@@ -6,7 +6,7 @@
 #    By: xander <xander@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2023/03/23 18:43:44 by swofferh      ########   odam.nl          #
+#    Updated: 2023/04/03 14:45:20 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,12 @@ G = \x1b[32m
 R = \x1b[31m
 W = \x1b[0m
 
+#OBJECTS:
 %.o: %.cpp
 	@echo "$(P)Compiling$(W) $<"
 	@$(CC) $(FLAGS) -I $(DIRS) -c $< -o $@ 
 
+#RULES:
 all: $(NAME)
 
 $(NAME): $(OBJS)
