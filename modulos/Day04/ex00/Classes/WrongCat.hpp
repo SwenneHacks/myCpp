@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 17:30:31 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/23 17:30:35 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/03 15:22:04 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ class WrongCat : public WrongAnimal
 public:
 	WrongCat(void);
 	WrongCat(const WrongCat& ref);
-	~WrongCat(void);
-	
 	WrongCat& operator=(const WrongCat& ref);
-	
-	void makeSound(void) const;
+	~WrongCat(void);
 };
 
 #endif //WRONG_CAT_HPP
