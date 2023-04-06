@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Animal.hpp                                         :+:    :+:            */
+/*   Dog.hpp                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/23 18:36:50 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:36:53 by swofferh      ########   odam.nl         */
+/*   Created: 2023/03/23 17:30:58 by swofferh      #+#    #+#                 */
+/*   Updated: 2023/04/06 13:52:46 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#define NUMBER_ANIMALS 100
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-#include <iostream>
-
-class Animal
+class Dog : public Animal
 {
 public:
-	Animal(void);
-	Animal(const std::string& kind);
-	Animal(const Animal& ref);
-	virtual ~Animal(void);
+	Dog(void);
+	~Dog(void);
 	
-	Animal& operator=(const Animal& ref);
+	Dog(const Dog& ref);
+	Dog& operator=(const Dog& ref);
 	
-	virtual void makeSound(void) const;
-	const std::string getType(void) const;
-protected:
-	std::string	_type;
+	void makeSound(void) const;
+	Brain *getBrain() const;
+
+private:
+	Brain*	_brain;
 };
 
-#endif //ANIMAL_HPP
+#endif 

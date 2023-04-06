@@ -6,18 +6,19 @@
 #    By: xander <xander@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2023/03/23 18:38:32 by swofferh      ########   odam.nl          #
+#    Updated: 2023/04/06 15:31:55 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	polymorphism
+NAME		=	world_on_fireee
 FLAGS		= 	-Wall -Werror -Wextra -std=c++98
 
+#SETUP:
 CC			=	c++
 RM			= 	rm -rf
 NEW_DIR		= 	mkdir -p
 
-#SETUP:
+#FILES:
 DIRS		:= Classes
 SRCS		:= $(shell find ./* -type f -name "*.cpp")
 INCS		:= $(shell find ./* -type f -name "*.hpp")
@@ -54,7 +55,7 @@ re:	fclean all
 	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
 
 run: all
-	./$(NAME)
+	@./$(NAME)
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
 .PHONY:	all clean fclean re

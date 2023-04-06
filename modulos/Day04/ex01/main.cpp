@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 18:37:37 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:37:40 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/06 15:35:56 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,20 @@
 
 void test_array(void)
 {
-	std::cout << "Test basics" << std::endl;
+	int number_of_animals;
+	std::cout << "\nChoose how many animals you want to create: ";
+	std::cin >> number_of_animals;
 
-	const Animal* animals[NUMBER_ANIMALS];
-
-	for (int i = 0; i < NUMBER_ANIMALS; i++) {
-		if (i % 2 == 0) {
+	// ARRAY OF ANIMALS
+	const Animal* animals[number_of_animals];
+	for (int i = 0; i <= number_of_animals; i++) 
+	{
+		if (i % 2 == 0)
 			animals[i] = new Dog();
-		} else {
-			animals[i] = new Cat();
-		}
+		else
+			animals[i] = new Cat();	
 	}
-
-	for (int i = 0; i < NUMBER_ANIMALS; i++) {
-		delete animals[i];
-	}
+	// DELETE ALL ANIMALS
 }
 
 void test_deepness_dog(void)
@@ -49,8 +48,8 @@ void test_deepness_dog(void)
 
 void test_deepness_cat(void)
 {
-	std::cout << "Deep Copy Cat" << std::endl;
 	Cat Cat_outter_scope;
+	std::cout << "Deep Copy Cat" << std::endl;
 
 	if (true)
 	{
@@ -60,11 +59,23 @@ void test_deepness_cat(void)
 	}
 }
 
-int main(void)
+void check_leaks(char **av)
+{
+	std::cout << RED_BOLD << "\nLEAKS: " << WHITE_BOLD << std::endl;
+	std::string	s = av[0];
+	s = "leaks " + s.erase(0,2);
+	s += " >> leaks.txt";
+	system(s.c_str());
+	system("grep \"total leaked bytes\" leaks.txt");
+	system("rm leaks.txt");
+}
+
+int main(int ac, char **av)
 {
     test_array();
-    test_deepness_dog();
-    test_deepness_cat();
-	system("leaks polymorphism");
+    // test_deepness_dog();
+    // test_deepness_cat();
+	(void)ac;
+	check_leaks(av);
     return 0;
 }

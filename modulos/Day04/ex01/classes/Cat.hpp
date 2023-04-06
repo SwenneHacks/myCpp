@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Dog.hpp                                            :+:    :+:            */
+/*   Cat.hpp                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/23 18:37:23 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:37:25 by swofferh      ########   odam.nl         */
+/*   Created: 2023/03/23 17:31:08 by swofferh      #+#    #+#                 */
+/*   Updated: 2023/04/06 12:58:59 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal
+class Cat : public Animal
 {
 public:
-	Dog(void);
-	Dog(const Dog& ref);
-	virtual ~Dog(void);
+	Cat(void);
+	~Cat(void);
 	
-	Dog& operator=(const Dog& ref);
+	Cat(const Cat& ref);
+	Cat& operator=(const Cat& ref);
 	
 	void makeSound(void) const;
+	Brain *getBrain() const;
+
 private:
-	Brain* _brain;
+	Brain*	_brain;
 };
 
-#endif //DOG_HPP
+#endif

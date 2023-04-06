@@ -5,46 +5,41 @@
 /*                                                     +:+                    */
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/23 18:37:07 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:37:09 by swofferh      ########   odam.nl         */
+/*   Created: 2023/03/23 17:31:12 by swofferh      #+#    #+#                 */
+/*   Updated: 2023/04/06 13:51:22 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Animal.hpp"
 
-Cat::Cat(void) : Animal("Cat"), _brain(new Brain)
-{
-	std::cout << "Cat: Default construtor called" << std::endl;
+static std::string CAT = BLUE "[cat] " RESET;
+
+Cat::Cat(void) : Animal("Cat") 
+{ std::cout << CAT << "	 Default construtor called" << std::endl;
+	_brain = new Brain();
 	return ;
 }
 
-Cat::Cat(const Cat& ref) : _brain(new Brain(*ref._brain))
-{
-	std::cout << "Cat: Copy construtor called" << std::endl;
+Cat::Cat(const Cat& ref)
+{ std::cout << CAT << "	Copy construtor called" << std::endl;
 	*this = ref;
 	return ;
 }
 
-Cat::~Cat(void)
-{
-	std::cout << "Cat: Destructor called" << std::endl;
-	if (_brain)
-		delete _brain;
-	return ;
-}
-
 Cat& Cat::operator=(const Cat& ref)
-{
-	std::cout << "Cat: Assignment operator" << std::endl;
-	for (int i = 0; i < 100; i++)
-		_brain->_ideas[i] = ref._brain->_ideas[i];
-	_type = ref._type;
+{ std::cout << CAT << "	Assignment operator" << std::endl;
+	this->_type = ref._type;
 	return (*this);
 }
 
 void Cat::makeSound(void) const
-{
-	std::cout << "Cat: Meouwww" << std::endl;
+{ std::cout << "Miauu" << std::endl;
+	return ;
+}
+
+Cat::~Cat(void)
+{ std::cout << CAT << "	 Destructor called" << std::endl;
+	delete _brain;
 	return ;
 }
