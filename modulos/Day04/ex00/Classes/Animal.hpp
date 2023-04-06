@@ -6,16 +6,15 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 17:31:16 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:09:34 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/06 13:09:58 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
-#include "../colors.hpp"
-
 #include <iostream>
+#include "../colors.hpp"
 
 class Animal
 {
