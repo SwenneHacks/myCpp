@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 18:37:37 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/06 15:35:56 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/07 13:31:10 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,19 @@ void test_array(void)
 
 	// ARRAY OF ANIMALS
 	const Animal* animals[number_of_animals];
-	for (int i = 0; i <= number_of_animals; i++) 
+	for (int i = 0; i < number_of_animals; i++) 
 	{
 		if (i % 2 == 0)
 			animals[i] = new Dog();
 		else
 			animals[i] = new Cat();	
 	}
+
+	std::cout << "\n>>>>>>>>" << RED <<" DESTRUCTORS:" << RESET << std::endl;
+	
 	// DELETE ALL ANIMALS
+	for (int i = 0; i < number_of_animals; i++) 
+		delete animals[i];
 }
 
 void test_deepness_dog(void)

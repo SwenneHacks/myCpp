@@ -6,17 +6,12 @@
 #    By: xander <xander@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2023/04/06 15:31:55 by swofferh      ########   odam.nl          #
+#    Updated: 2023/04/07 13:42:39 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	world_on_fireee
 FLAGS		= 	-Wall -Werror -Wextra -std=c++98
-
-#SETUP:
-CC			=	c++
-RM			= 	rm -rf
-NEW_DIR		= 	mkdir -p
 
 #FILES:
 DIRS		:= Classes
@@ -40,11 +35,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(P)Compiling$(W) with $(FLAGS)"
-	@$(CC) $(FLAGS) $^ -o $(NAME)
+	@c++ $(FLAGS) $^ -o $(NAME)
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
 	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
 
 fclean: clean
