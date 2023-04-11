@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 17:31:16 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/06 13:09:58 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/11 11:35:42 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define ANIMAL_HPP
 
 #include <iostream>
-#include "../colors.hpp"
+#include "_colors.hpp"
 
 class Animal
 {

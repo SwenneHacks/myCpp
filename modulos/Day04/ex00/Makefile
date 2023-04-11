@@ -6,24 +6,24 @@
 #    By: xander <xander@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2023/04/03 14:45:20 by swofferh      ########   odam.nl          #
+#    Updated: 2023/04/11 11:45:35 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	polymorphism
-FLAGS		= 	-Wall -Werror -Wextra -std=c++98
+PROJECT		= 	CPP Modulo 4 - ex00
 
-CC			=	c++
-RM			= 	rm -rf
-NEW_DIR		= 	mkdir -p
+FLAGS		= 	-Wall -Werror -Wextra 
+CPP			= 	c++ -std=c++98
 
-#SETUP:
+#FILES:
 DIRS		:= Classes
 SRCS		:= $(shell find ./* -type f -name "*.cpp")
 INCS		:= $(shell find ./* -type f -name "*.hpp")
 OBJS		:= $(SRCS:%.cpp=%.o)
 
 #COLORS:
+C = \x1b[37m
 P = \x1b[35m
 B = \x1b[34;1m
 Y = \x1b[33m
@@ -31,17 +31,18 @@ G = \x1b[32m
 R = \x1b[31m
 W = \x1b[0m
 
-#OBJECTS:
 %.o: %.cpp
 	@echo "$(P)Compiling$(W) $<"
-	@$(CC) $(FLAGS) -I $(DIRS) -c $< -o $@ 
+	@$(CPP) $(FLAGS) -I $(DIRS) -c $< -o $@ 
 
-#RULES:
 all: $(NAME)
+	@echo "\n$(G) you can now run ./$(NAME) $(W)\n"
+	@echo "\n$(P)\______ Done $(PROJECT) _____/ $(W)\n"
 
 $(NAME): $(OBJS)
-	@echo "$(P)Compiling$(W) with $(FLAGS)"
-	@$(CC) $(FLAGS) $^ -o $(NAME)
+	@$(CPP) $(FLAGS) $^ -o $(NAME)
+	@echo "$(C)Compiling$(W) with $(CPP)"
+	@echo "$(C)and flags $(W)$(FLAGS)"
 	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
 clean:
@@ -56,8 +57,7 @@ re:	fclean all
 	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
 
 run: all
-	./$(NAME)
+	@./$(NAME)
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
 .PHONY:	all clean fclean re
-

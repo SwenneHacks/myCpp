@@ -6,14 +6,14 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 17:30:53 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/06 13:27:06 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/11 16:46:24 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
-#include "colors.hpp"
+#include "_colors.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
@@ -26,6 +26,8 @@ void wrong(void)
     const WrongAnimal* a = new WrongAnimal();
     const WrongAnimal* b = new WrongCat();
     const WrongCat* c = new WrongCat();
+
+    WrongAnimal *d = new WrongAnimal("pig");
     
     std::cout << "__________________________" << std::endl;
     std::cout << "        \n SOUNDS"            << std::endl;
@@ -37,6 +39,8 @@ void wrong(void)
     b->makeSound();
     c->getType();
     c->makeSound();
+    d->getType();
+    d->makeSound();
     
     std::cout << "__________________________" << std::endl;
     std::cout << "        \n DELETE"            << std::endl;
@@ -45,6 +49,7 @@ void wrong(void)
     delete a;
     delete b;
     delete c;
+    delete d;
 }
 
 void normal(void)
@@ -71,6 +76,7 @@ void normal(void)
     std::cout << "__________________________" << std::endl;
     std::cout << "        \n DELETE"            << std::endl;
     std::cout << "__________________________" << std::endl;
+
     
     delete animal;
     delete dog;
