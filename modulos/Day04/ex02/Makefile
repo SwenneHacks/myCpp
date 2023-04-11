@@ -6,81 +6,48 @@
 #    By: xander <xander@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2022/09/11 17:02:11 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2023/04/11 14:47:23 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	polymorphism
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
-SRC_DIR	=	.
-INC_DIR	=	.
 
-SRCS	=	main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
-INCS	=	Animal.hpp Cat.hpp Dog.hpp Brain.hpp
+NAME		=	abstract_class
+PROJECT		= 	CPP Modulo 4 - ex02
 
-SHELL		:= /bin/bash
-SOURCES		:= $(shell find $(SRC_DIR) -type f -name "*.cpp")
-OBJS		:= $(SOURCES:.cpp=.o)
-OBJECTS		:= $(patsubst %,%,$(OBJS))
+FLAGS		= 	-Wall -Werror -Wextra 
+CPP			= 	c++ -std=c++98
 
-PINK = \x1b[35;01m
-BLUE = \x1b[34;01m
-YELLOW = \x1b[33;01m
-GREEN = \x1b[32;01m
-RED = \x1b[31;01m
-WHITE = \x1b[31;37m
-RESET = \x1b[0m
+#FILES:
+DIRS		:= Classes Colors
+SRCS		:= $(shell find ./* -type f -name "*.cpp")
+INCS		:= $(shell find ./* -type f -name "*.hpp")
+OBJS		:= $(SRCS:%.cpp=%.o)
 
-START			=	"$(BLUE)---\nStarting...!\n---\n$(RESET)"
-MESSAGE			=	"$(BLUE)---\nCompiling done!\n---\n$(RESET)"
-COMP_MESSAGE	=	"$(GREEN)Building C++ object... $(RESET)%-33.33s\r\n"
-REM_MESSAGE		=	"$(RED)Removing files...$(RESET)"
+%.o: %.cpp
+	@echo "$(P)Compiling$(W) $<"
+	@$(CPP) $(FLAGS) -I $(DIRS) -c $< -o $@ 
 
-ifdef FSAN
-	CFLAGS += -g -fsanitize=address
-else ifdef DEBUG
-	CFLAGS += -g
-else
-	CFLAGS += -Ofast
-endif
+all: $(NAME)
+	@echo "\n$(P) you can now run ./$(NAME) $(W)\n"
 
-all:	$(NAME)
-
-%.o: %.cpp $(INCS) | $(OBJ_DIR)
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR)
-
-$(OBJ_DIR):
-	@mkdir $@
-
-$(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
-	@printf $(START)
-	@printf $(COMP_MESSAGE) $(SOURCES)
-	@printf $(MESSAGE)
+$(NAME): $(OBJS)
+	@echo "$(P)Compiling$(W) with $(CPP) $(FLAGS)"
+	@$(CPP) $(FLAGS) $^ -o $(NAME)
+	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
 
 clean:
-	rm -f $(OBJECTS)
+	$(RM) $(OBJS)
+	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
+	@echo "\n$(R)\______ Done $(B)F$(R)cleaning _____/ $(W)\n"
 
-re: fclean all
-
-fsan:
-	make FSAN=1
-
-resan: fclean
-	make fsan
-
-debug:
-	make DEBUG=1
-
-rebug: fclean
-	make debug
+re:	fclean all
+	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
 
 run: all
-	./$(NAME)
+	@./$(NAME)
+	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
 .PHONY:	all clean fclean re
