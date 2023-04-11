@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 18:36:56 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/06 15:24:09 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/11 15:49:30 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <cstdlib>
 #include <ctime>
 
-static std::string BRAIN = RED "[brain] " RESET;
+static std::string BRAIN = MAGENTA "[brain] " RESET;
 static std::string random_ideas[5] = {"eat","run", "sit", "sleep", "jump"};
 
 Brain::Brain(void)

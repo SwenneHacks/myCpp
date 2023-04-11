@@ -1,18 +1,50 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/23 18:37:37 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/07 13:31:10 by swofferh      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
+/**
+ * @file main.cpp
+ * @author swofferh (swofferh@student.codam.nl)
+ * @brief 42 Network project CPP Modulo 4
+ * @version 0.1
+ * @date 2023-04-11
+ */
 
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+
+static std::string ARROW = "\n>>>>>>>>" RED;
+
+void _print_sounds() { std::cout << ARROW <<" TESTING SOUNDS" << RESET << std::endl;}
+void _print_inScope() {std::cout << ARROW <<" INSIDE OF SCOPE" << RESET << std::endl;}
+void _print_outScope() {std::cout << ARROW <<" OUTSIDE OF SCOPE" << RESET << std::endl;}
+void _print_destructors() { std::cout << ARROW << " DESTRUCTORS" << RESET << std::endl;}
+
+
+void test_deepness(Cat out_cat, Dog out_dog)
+{
+	_print_outScope();
+	Cat cat = out_cat;
+	Dog dog = out_dog;
+
+	_print_sounds();
+	dog.makeSound();
+	cat.makeSound();
+
+	_print_destructors();
+}
+
+void test_subject(void)
+{
+	std::cout << ARROW <<" SUBJECT TEST" << RESET << std::endl;
+	Animal* in_dog = new Dog();
+	Animal* in_cat = new Cat();
+	
+	_print_sounds();
+	in_dog->makeSound();
+	in_cat->makeSound();
+	
+	_print_destructors();
+	delete in_dog;//should not create a leak
+	delete in_cat;
+}
 
 void test_array(void)
 {
@@ -30,38 +62,12 @@ void test_array(void)
 			animals[i] = new Cat();	
 	}
 
-	std::cout << "\n>>>>>>>>" << RED <<" DESTRUCTORS:" << RESET << std::endl;
-	
+	_print_destructors();
+
 	// DELETE ALL ANIMALS
 	for (int i = 0; i < number_of_animals; i++) 
 		delete animals[i];
-}
-
-void test_deepness_dog(void)
-{
-	std::cout << "Deep Copy Dog" << std::endl;
-
-	Dog Dog_outter_scope;
 	
-	if (true)
-	{
-		Dog inner_scope1 = Dog_outter_scope;
-		Dog inner_scope2(Dog_outter_scope);
-		// Dog_outter_scope = inner_scope1; // <- Second run
-	}
-}
-
-void test_deepness_cat(void)
-{
-	Cat Cat_outter_scope;
-	std::cout << "Deep Copy Cat" << std::endl;
-
-	if (true)
-	{
-		Cat inner_scope1 = Cat_outter_scope;
-		Cat inner_scope2(Cat_outter_scope);
-		// Cat_outter_scope = inner_scope1; // <- Second run
-	}
 }
 
 void check_leaks(char **av)
@@ -76,11 +82,17 @@ void check_leaks(char **av)
 }
 
 int main(int ac, char **av)
-{
-    test_array();
-    // test_deepness_dog();
-    // test_deepness_cat();
+{	
 	(void)ac;
+	std::cout << ARROW << " STARTING TESTS" << std::endl;
+    test_array();
+	test_subject();
+	std::cout << ARROW << " INSIDE SCOPE" << std::endl;
+	Cat cat;
+	Dog dog;
+	std::cout << ARROW << " DEEP COPY ANIMALS" << std::endl;
+	test_deepness(cat, dog);
 	check_leaks(av);
+	std::cout << ARROW << " DESTRUCTORS" << std::endl;
     return 0;
 }

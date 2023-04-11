@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 17:31:21 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/06 14:56:12 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/11 17:51:32 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Animal& Animal::operator=(const Animal& ref)
 }
 
 void Animal::makeSound(void) const
-{std::cout << "?????" << std::endl;
+{ std::cout << RED << "sound:" << RESET << "?????" << std::endl;
 	return ;
 }
 

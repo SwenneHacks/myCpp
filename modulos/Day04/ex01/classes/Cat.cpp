@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 17:31:12 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/06 13:51:22 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/11 15:43:12 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,21 @@ Cat::Cat(void) : Animal("Cat")
 }
 
 Cat::Cat(const Cat& ref)
-{ std::cout << CAT << "	Copy construtor called" << std::endl;
+{ std::cout << CAT << "	 COPY construtor called" << std::endl;
 	*this = ref;
 	return ;
 }
 
 Cat& Cat::operator=(const Cat& ref)
-{ std::cout << CAT << "	Assignment operator" << std::endl;
+{ std::cout << CAT << "	 Assignment operator" << std::endl;
 	this->_type = ref._type;
 	return (*this);
 }
 
 void Cat::makeSound(void) const
-{ std::cout << "Miauu" << std::endl;
+{ 
+	std::cout << RED << "Type:" << RESET << getType();
+	std::cout << RED << " Sound:" << RESET << "Miauu" << std::endl;
 	return ;
 }
 

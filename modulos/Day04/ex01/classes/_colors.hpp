@@ -1,5 +1,5 @@
-#ifndef __COLOR_H__
-#define __COLOR_H__
+#ifndef __COLOR_HPP__
+#define __COLOR_HPP__
 
 # define RESET      	"\033[0m"
 # define BLACK   		"\033[30m"
@@ -20,4 +20,4 @@
 # define CYAN_BOLD    	"\033[1;36m"
 # define WHITE_BOLD   	"\033[1;37m"
 
-#endif // __COLOR_H__
+#endif
