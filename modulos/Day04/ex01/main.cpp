@@ -13,8 +13,8 @@
 static std::string ARROW = "\n>>>>>>>>" RED;
 
 void _print_sounds() { std::cout << ARROW <<" TESTING SOUNDS" << RESET << std::endl;}
-void _print_inScope() {std::cout << ARROW <<" INSIDE OF SCOPE" << RESET << std::endl;}
-void _print_outScope() {std::cout << ARROW <<" OUTSIDE OF SCOPE" << RESET << std::endl;}
+void _print_inScope() { std::cout << ARROW <<" INSIDE OF SCOPE" << RESET << std::endl;}
+void _print_outScope() { std::cout << ARROW <<" OUTSIDE OF SCOPE" << RESET << std::endl;}
 void _print_destructors() { std::cout << ARROW << " DESTRUCTORS" << RESET << std::endl;}
 
 
@@ -27,23 +27,22 @@ void test_deepness(Cat out_cat, Dog out_dog)
 	_print_sounds();
 	dog.makeSound();
 	cat.makeSound();
-
 	_print_destructors();
 }
 
 void test_subject(void)
 {
 	std::cout << ARROW <<" SUBJECT TEST" << RESET << std::endl;
-	Animal* in_dog = new Dog();
-	Animal* in_cat = new Cat();
+	Animal* doggo = new Dog();
+	Animal* kitty = new Cat();
 	
 	_print_sounds();
-	in_dog->makeSound();
-	in_cat->makeSound();
+	doggo->makeSound();
+	kitty->makeSound();
 	
 	_print_destructors();
-	delete in_dog;//should not create a leak
-	delete in_cat;
+	delete doggo;//should not create a leak
+	delete kitty;
 }
 
 void test_array(void)
