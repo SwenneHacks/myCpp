@@ -1,6 +1,7 @@
 // C++ program for the deep copy approach
 #include <iostream>
 using namespace std;
+static string TEST = "_________\n";
 
 // Box Class
 class box
@@ -12,14 +13,16 @@ private:
 
 public:
     // Function that sets the dimensions
-    void set_dimensions(int length1, int breadth1, int height1){
+    void set_dimensions(int length1, int breadth1, int height1)
+    {
         length = length1;
         breadth = breadth1;
         height = height1;
     }
 
     // Function to display the dimensions of the Box object
-    void show_data(){
+    void show_data()
+    {
         cout << " Length = " << length
         << "\n Breadth = " << breadth
         << "\n Height = " << height
@@ -37,32 +40,35 @@ private:
 
 public:
     // Constructor
-    box() { breadth = new int; }
+    deep() { breadth = new int; }
 
     // Destructors
-    ~box() { delete breadth; }
+    ~deep() { delete breadth; }
+
+    // Parameterized Constructor for implementing deep copy
+    deep(deep &sample)
+    {
+        length = sample.length;
+        breadth = new int;
+        *breadth = *(sample.breadth);
+        height = sample.height;
+    }
 
     // Function to set the dimensions of the Box
-    void set_dimension(int len, int brea, int heig){
+    void set_dimension(int len, int brea, int heig)
+    {
         length = len;
         *breadth = brea;
         height = heig;
     }
 
     // Function to show the dimensions of the Box
-    void show_data(){
+    void show_data()
+    {
         cout << " Length = " << length
         << "\n Breadth = " << *breadth
         << "\n Height = " << height
         << endl;
-    }
-
-    // Parameterized Constructors for for implementing deep copy
-    box(box& sample){
-        length = sample.length;
-        breadth = new int;
-        *breadth = *(sample.breadth);
-        height = sample.height;
     }
 };
 
@@ -76,19 +82,22 @@ int main()
     B1.set_dimensions(14, 12, 16);
     B1.show_data();
 
-    // When copying the data of object at the time of initialization 
-    // then copy is made through 
+    // at the time of initialization 
+    // copy is made through 
     // COPY CONSTRUCTOR
+    cout << TEST;
     box B2 = B1;
     B2.show_data();
 
-    // When copying the data of object after initialization then the
-    // copy is done through DEFAULT
+    // after initialization
+    // copy is done through 
     // ASSIGNMENT OPERATOR
+    cout << TEST;
     B3 = B1;
     B3.show_data();
 
     // DEEP COPY CLASS
+    cout << TEST;
     deep first;
 
     // Set the dimensions and then display
@@ -97,9 +106,9 @@ int main()
 
     // When the data will be copied then all the resources will also get
     // allocated to the new object
+    cout << TEST;
     deep second = first;
-
-    // Display the dimensions
     second.show_data();
+
     return 0;
 }
