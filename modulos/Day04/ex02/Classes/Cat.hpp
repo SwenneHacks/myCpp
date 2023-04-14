@@ -1,6 +1,10 @@
-//
-// Created by xvoorvaa on 13/08/2022.
-//
+/**
+ * @file Cat.hpp
+ * @author swofferh
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+ */
 
 #ifndef CAT_HPP
 #define CAT_HPP
@@ -12,14 +16,16 @@ class Cat : public Animal
 {
 public:
 	Cat(void);
-	Cat(const Cat& ref);
-	virtual ~Cat(void);
+	~Cat(void);
 	
+	Cat(const Cat& ref);
 	Cat& operator=(const Cat& ref);
 	
 	void makeSound(void) const;
+	Brain *getBrain() const;
+
 private:
-	Brain* _brain;
+	Brain*	_brain;
 };
 
-#endif //CAT_HPP
+#endif

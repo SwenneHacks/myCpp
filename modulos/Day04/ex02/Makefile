@@ -3,25 +3,33 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: xander <xander@student.codam.nl>             +#+                      #
+#    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2023/04/11 14:47:23 by swofferh      ########   odam.nl          #
+#    Created: 2023/04/11 11:25:37 by swofferh      #+#    #+#                  #
+#    Updated: 2023/04/11 17:48:18 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+NAME		=	world_on_fireee
+PROJECT		= 	CPP Modulo 4 - ex01
 
-NAME		=	abstract_class
-PROJECT		= 	CPP Modulo 4 - ex02
-
-FLAGS		= 	-Wall -Werror -Wextra 
+FLAGS		= 	-g -fsanitize=address -Wall -Werror -Wextra 
 CPP			= 	c++ -std=c++98
 
 #FILES:
-DIRS		:= Classes Colors
+DIRS		:= Classes
 SRCS		:= $(shell find ./* -type f -name "*.cpp")
 INCS		:= $(shell find ./* -type f -name "*.hpp")
 OBJS		:= $(SRCS:%.cpp=%.o)
+
+#COLORS:
+C = \x1b[36m
+P = \x1b[35m
+B = \x1b[34;1m
+Y = \x1b[33m
+G = \x1b[32m
+R = \x1b[31m
+W = \x1b[0m
 
 %.o: %.cpp
 	@echo "$(P)Compiling$(W) $<"

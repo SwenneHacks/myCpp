@@ -1,6 +1,10 @@
-//
-// Created by xvoorvaa on 13/08/2022.
-//
+/**
+ * @file Brain.hpp
+ * @author swofferh  
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+*/
 
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
@@ -11,11 +15,12 @@ class Brain
 {
 public:
 	Brain(void);
-	Brain(const Brain& ref);
 	~Brain(void);
 	
+	Brain(const Brain& ref);
 	Brain& operator=(const Brain& ref);
 
+protected:
 	std::string _ideas[100];
 };
 

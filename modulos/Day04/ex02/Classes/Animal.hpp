@@ -1,8 +1,15 @@
+/**
+ * @file Animal.hpp
+ * @author swofferh  
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+*/
 
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
-#define NUMBER_ANIMALS 100
+#include "_colors.hpp"
 
 #include <iostream>
 
@@ -10,17 +17,17 @@ class Animal
 {
 public:
 	Animal(void);
+	virtual ~Animal(void);
+	
 	Animal(const std::string& kind);
 	Animal(const Animal& ref);
-	virtual ~Animal(void);
-
 	Animal& operator=(const Animal& ref);
-
-	virtual void makeSound(void) const = 0;
+	
+	virtual void makeSound(void) const;
 	const std::string getType(void) const;
 
 protected:
 	std::string	_type;
 };
 
-#endif //ANIMAL_HPP
+#endif

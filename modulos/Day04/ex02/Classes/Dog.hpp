@@ -1,6 +1,10 @@
-//
-// Created by xvoorvaa on 13/08/2022.
-//
+/**
+ * @file Dog.hpp
+ * @author swofferh
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+ */
 
 #ifndef DOG_HPP
 #define DOG_HPP
@@ -12,14 +16,16 @@ class Dog : public Animal
 {
 public:
 	Dog(void);
-	Dog(const Dog& ref);
-	virtual ~Dog(void);
+	~Dog(void);
 	
+	Dog(const Dog& ref);
 	Dog& operator=(const Dog& ref);
 	
 	void makeSound(void) const;
+	Brain *getBrain() const;
+
 private:
-	Brain* _brain;
+	Brain*	_brain;
 };
 
-#endif //DOG_HPP
+#endif 

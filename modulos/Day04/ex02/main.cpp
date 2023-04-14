@@ -15,8 +15,7 @@ int main(void)
     delete cat;
 
     /* Shouldn't work <- comment out when doing eval... */
-    // Animal test; // <-- ERROR: Abstract class
-    // const Animal* meta = new Animal(); // <-- Same here!
+    //const Animal *meta = new Animal();  // <-- ERROR: Abstract class
 
     return 0;
 }
