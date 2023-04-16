@@ -6,14 +6,14 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/11 11:25:37 by swofferh      #+#    #+#                  #
-#    Updated: 2023/04/16 17:29:53 by swofferh      ########   odam.nl          #
+#    Updated: 2023/04/16 18:49:47 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	world_on_fireee
 PROJECT		= 	CPP Modulo 4 - ex01
 
-FLAGS		= 	-Wall -Werror -Wextra # -g -fsanitize=address
+FLAGS		= 	-Wall -Werror -Wextra #-g -fsanitize=address
 CPP			= 	c++ -std=c++98
 
 #FILES:

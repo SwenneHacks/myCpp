@@ -17,15 +17,20 @@ Cat::Cat(void) : Animal("Cat")
 	return ;
 }
 
-Cat::Cat(const Cat& ref)
+Cat::Cat(const Cat& ref): _brain()
 { std::cout << CAT << "	 COPY construtor called" << std::endl;
+	//this->_brain = new Brain(*ref._brain);
 	*this = ref;
 	return ;
 }
 
 Cat& Cat::operator=(const Cat& ref)
 { std::cout << CAT << "	 Assignment operator" << std::endl;
-	this->_type = ref._type;
+	if (this != &ref){
+		delete this->_brain;
+		this->_brain = new Brain(*ref._brain);
+		this->_type = ref._type;
+	}
 	return (*this);
 }
 

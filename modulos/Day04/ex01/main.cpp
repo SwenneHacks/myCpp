@@ -13,31 +13,45 @@
 
 static std::string ARROW = "\n>>>>>>>>" RED;
 
-void _print_sounds() { std::cout << ARROW <<" TESTING SOUNDS" << RESET << std::endl;}
+void _print_sounds() { std::cout << ARROW <<" TESTING SOUNDS\n" << RESET << std::endl;}
 void _print_inScope() { std::cout << ARROW <<" INSIDE OF SCOPE" << RESET << std::endl;}
 void _print_outScope() { std::cout << ARROW <<" OUTSIDE OF SCOPE" << RESET << std::endl;}
 void _print_destructors() { std::cout << ARROW << " DESTRUCTORS" << RESET << std::endl;}
 void _print_unchanged() { std::cout << ARROW << " UNCHANGED IDEAS" << RESET << std::endl;}
 void _print_copychange() { std::cout << ARROW << " COPY/CHANGED IDEAS" << RESET << std::endl;}
+void _print_testoperator() { std::cout << ARROW << " TESTING OPERATOR" << BLUE << " (with brain allocation) \n"<< RESET << std::endl;}
+void _print_dogunchanged() { std::cout << ARROW << " TESTING OPERATOR" << BLUE << " (with brain allocation) \n"<< RESET << std::endl;}
+
 
 void test_deepness()
 {
     Cat oldCat;
+    Cat copyCat(oldCat);
+    oldCat.setIdea("NEW IDEA ");
+
     _print_unchanged();
+	std::cout << BLUE <<std::endl;
+	std::cout << oldCat.getBrain()
+	<< RESET << std::endl;
     oldCat.printIdeas();
-
-    Cat CopyCat(oldCat);
-    CopyCat.setIdea("NEW IDEA");
 	_print_copychange();
+	std::cout << BLUE <<std::endl; 
+	std::cout << copyCat.getBrain()
+	<< RESET << std::endl;
     oldCat.printIdeas();
 
-    // Dog oldDog;
-    // Dog CopyDog(oldDog);
-    // oldDog.getBrain()->setIdea(newIdea, 99);
-    // std::cout << "---------------- COPY DOG HAS NOT CHANGED ITS IDEA 99 ----------------" << std::endl;
-    // CopyDog.getBrain()->printIdeas();
-    // std::cout << "---------------- CHANGED OLDDOG IDEA 99 ----------------" << std::endl;
-    // oldDog.getBrain()->printIdeas();
+	_print_testoperator();
+	Cat cat_one, cat_two, cat_six;
+	cat_one = cat_two;
+	cat_one = cat_six;
+
+    Dog oldDog;
+    Dog CopyDog(oldDog);
+    oldDog.setIdea("YOLOOOO ");
+    std::cout << ARROW << " COPY_DOG HAS NOT CHANGED ITS IDEA: " << RESET << std::endl;
+    CopyDog.printIdeas();
+    std::cout << ARROW << " CHANGED OLD_DOG IDEA: " << RESET << std::endl;
+    oldDog.printIdeas();
 
 	std::cout << ARROW << " DESTRUCTORS" << std::endl;
 }
