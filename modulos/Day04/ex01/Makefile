@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/11 11:25:37 by swofferh      #+#    #+#                  #
-#    Updated: 2023/04/11 17:48:18 by swofferh      ########   odam.nl          #
+#    Updated: 2023/04/16 17:12:44 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ fclean: clean
 re:	fclean all
 	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
 
-run: all
+run: re
 	@./$(NAME)
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
