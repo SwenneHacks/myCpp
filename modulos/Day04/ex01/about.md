@@ -15,3 +15,16 @@ Fix the Animal class so nobody can instantiate it.
 Everything should work as before.
 
 If you want to, you can update the class name by adding a A prefix to Animal.
+
+
+
+____ 
+
+lldb shorkeys:
+
+> first compile with -g then run:
+lldb [program_name]
+b main
+run
+frame variable
+print [variable_name]
