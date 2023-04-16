@@ -1,14 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   Brain.cpp                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/23 18:36:56 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/11 15:49:30 by swofferh      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
+/**
+ * @file Brain.cpp
+ * @author swofferh  
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+*/
 
 #include "Brain.hpp"
 #include "Animal.hpp"
@@ -17,13 +13,13 @@
 #include <ctime>
 
 static std::string BRAIN = MAGENTA "[brain] " RESET;
-static std::string random_ideas[5] = {"eat","run", "sit", "sleep", "jump"};
+static std::string random_ideas[5] = {"eat ","run ", "sit ", "sleep ", "jump "};
 
 Brain::Brain(void)
 { std::cout << BRAIN << " Constructing new ideas. ";
     for (int i = 0; i < 100; i++)
         _ideas[i] = random_ideas[rand() % 5];
-	std::cout <<"Current one: " << _ideas[0] << std::endl;
+	std::cout <<"Current ones: " << _ideas[0] << _ideas[1] << _ideas[2] << std::endl;
 	return ;
 }
 
@@ -38,6 +34,18 @@ Brain& Brain::operator=(const Brain& ref)
 	for (int i = 0; i < 100; i++)
         _ideas[i] = ref._ideas[i];
 	return (*this);
+}
+
+void    Brain::setIdea(std::string newIdea) 
+{ std::cout << BRAIN << " Changing the first idea " << std::endl;
+	_ideas[0] = newIdea;
+}
+
+void    Brain::printIdeas() 
+{
+    for (int i = 0; i < 5; i++)
+		std::cout << "[ " << i << " ] " << _ideas[i] << std::endl;
+	std::cout << "----------" << std::endl;
 }
 
 Brain::~Brain(void)

@@ -1,14 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   Cat.cpp                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/23 17:31:12 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/11 15:43:12 by swofferh      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
+/**
+ * @file Cat.cpp
+ * @author swofferh  
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+*/
 
 #include "Cat.hpp"
 #include "Animal.hpp"
@@ -44,4 +40,16 @@ Cat::~Cat(void)
 { std::cout << CAT << "	 Destructor called" << std::endl;
 	delete _brain;
 	return ;
+}
+
+Brain	*Cat::getBrain() const {
+	return (_brain);
+}
+
+void	Cat::setIdea(const std::string& idea) {
+	_brain->setIdea(idea);
+}
+
+void	Cat::printIdeas() {
+	_brain->printIdeas();
 }

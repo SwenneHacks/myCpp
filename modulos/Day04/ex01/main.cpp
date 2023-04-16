@@ -9,6 +9,7 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 static std::string ARROW = "\n>>>>>>>>" RED;
 
@@ -16,18 +17,29 @@ void _print_sounds() { std::cout << ARROW <<" TESTING SOUNDS" << RESET << std::e
 void _print_inScope() { std::cout << ARROW <<" INSIDE OF SCOPE" << RESET << std::endl;}
 void _print_outScope() { std::cout << ARROW <<" OUTSIDE OF SCOPE" << RESET << std::endl;}
 void _print_destructors() { std::cout << ARROW << " DESTRUCTORS" << RESET << std::endl;}
+void _print_unchanged() { std::cout << ARROW << " UNCHANGED IDEAS" << RESET << std::endl;}
+void _print_copychange() { std::cout << ARROW << " COPY/CHANGED IDEAS" << RESET << std::endl;}
 
-
-void test_deepness(Cat out_cat, Dog out_dog)
+void test_deepness()
 {
-	_print_outScope();
-	Cat cat = out_cat;
-	Dog dog = out_dog;
+    Cat oldCat;
+    _print_unchanged();
+    oldCat.printIdeas();
 
-	_print_sounds();
-	dog.makeSound();
-	cat.makeSound();
-	_print_destructors();
+    Cat CopyCat(oldCat);
+    CopyCat.setIdea("NEW IDEA");
+	_print_copychange();
+    oldCat.printIdeas();
+
+    // Dog oldDog;
+    // Dog CopyDog(oldDog);
+    // oldDog.getBrain()->setIdea(newIdea, 99);
+    // std::cout << "---------------- COPY DOG HAS NOT CHANGED ITS IDEA 99 ----------------" << std::endl;
+    // CopyDog.getBrain()->printIdeas();
+    // std::cout << "---------------- CHANGED OLDDOG IDEA 99 ----------------" << std::endl;
+    // oldDog.getBrain()->printIdeas();
+
+	std::cout << ARROW << " DESTRUCTORS" << std::endl;
 }
 
 void test_subject(void)
@@ -86,12 +98,8 @@ int main(int ac, char **av)
 	std::cout << ARROW << " STARTING TESTS" << std::endl;
     test_array();
 	test_subject();
-	std::cout << ARROW << " INSIDE SCOPE" << std::endl;
-	Cat cat;
-	Dog dog;
-	std::cout << ARROW << " DEEP COPY ANIMALS" << std::endl;
-	test_deepness(cat, dog);
+	std::cout << ARROW << " TEST DEAPNESS" << std::endl;
+	test_deepness();
 	check_leaks(av);
-	std::cout << ARROW << " DESTRUCTORS" << std::endl;
     return 0;
 }

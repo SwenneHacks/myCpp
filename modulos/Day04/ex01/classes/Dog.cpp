@@ -1,14 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   Dog.cpp                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/23 17:31:03 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/11 17:50:14 by swofferh      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
+/**
+ * @file Dog.cpp
+ * @author swofferh  
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+ */
 
 #include "Dog.hpp"
 #include "Animal.hpp"
@@ -44,4 +40,16 @@ Dog::~Dog(void)
 { std::cout << DOG << "	 Destructor called" << std::endl;
 	delete _brain;
 	return ;
+}
+
+void	Dog::setIdea(const std::string& idea){
+	_brain->setIdea(idea);
+}
+
+void	Dog::printIdeas() {
+	_brain->printIdeas();
+}
+
+Brain	*Dog::getBrain() const {
+	return (_brain);
 }

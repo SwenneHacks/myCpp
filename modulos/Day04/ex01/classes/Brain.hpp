@@ -1,14 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   Brain.hpp                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/23 18:37:02 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/06 15:12:54 by swofferh      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
+/**
+ * @file Brain.hpp
+ * @author swofferh  
+ * @brief 
+ * @version 0.1
+ * @date 2023-04-14
+*/
 
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
@@ -24,7 +20,10 @@ public:
 	Brain(const Brain& ref);
 	Brain& operator=(const Brain& ref);
 
-protected:
+	void    setIdea(std::string newIdea);
+    void    printIdeas();
+
+private:
 	std::string _ideas[100];
 };
 
