@@ -19,8 +19,9 @@ void _print_outScope() { std::cout << ARROW <<" OUTSIDE OF SCOPE" << RESET << st
 void _print_destructors() { std::cout << ARROW << " DESTRUCTORS" << RESET << std::endl;}
 void _print_unchanged() { std::cout << ARROW << " UNCHANGED IDEAS" << RESET << std::endl;}
 void _print_copychange() { std::cout << ARROW << " COPY/CHANGED IDEAS" << RESET << std::endl;}
-void _print_testoperator() { std::cout << ARROW << " TESTING OPERATOR" << BLUE << " (with brain allocation) \n"<< RESET << std::endl;}
-void _print_dogunchanged() { std::cout << ARROW << " TESTING OPERATOR" << BLUE << " (with brain allocation) \n"<< RESET << std::endl;}
+void _print_test_operator() { std::cout << ARROW << " TESTING OPERATOR" << BLUE << " (with brain allocation) \n"<< RESET << std::endl;}
+void _print_dog_unchanged() { std::cout << ARROW << " COPY_DOG HAS NOT CHANGED ITS IDEA: "<< RESET << std::endl;}
+void _print_dog_changed() { std::cout << ARROW << " CHANGED OLD_DOG IDEA: "<< RESET << std::endl;}
 
 
 void test_deepness()
@@ -30,28 +31,34 @@ void test_deepness()
     oldCat.setIdea("NEW IDEA ");
 
     _print_unchanged();
-	std::cout << BLUE <<std::endl;
-	std::cout << oldCat.getBrain()
-	<< RESET << std::endl;
-    oldCat.printIdeas();
-	_print_copychange();
-	std::cout << BLUE <<std::endl; 
-	std::cout << copyCat.getBrain()
-	<< RESET << std::endl;
+	// printing pointer
+	std::cout << BLUE << std::endl << oldCat.getBrain() << RESET << std::endl;
     oldCat.printIdeas();
 
-	_print_testoperator();
+	_print_copychange();
+	// printing pointer
+	std::cout << BLUE << std::endl << copyCat.getBrain() << RESET << std::endl;
+    copyCat.printIdeas();
+
+	_print_test_operator();
 	Cat cat_one, cat_two, cat_six;
 	cat_one = cat_two;
 	cat_one = cat_six;
 
     Dog oldDog;
-    Dog CopyDog(oldDog);
+    Dog copyDog(oldDog);
     oldDog.setIdea("YOLOOOO ");
-    std::cout << ARROW << " COPY_DOG HAS NOT CHANGED ITS IDEA: " << RESET << std::endl;
-    CopyDog.printIdeas();
-    std::cout << ARROW << " CHANGED OLD_DOG IDEA: " << RESET << std::endl;
+	
+	_print_dog_unchanged();
+	// printing pointer
+	std::cout << BLUE << std::endl << oldDog.getBrain() << RESET << std::endl;
+    copyDog.printIdeas();
+
+	_print_dog_changed();
+	// printing pointer
+	std::cout << BLUE << std::endl << copyDog.getBrain() << RESET << std::endl;
     oldDog.printIdeas();
+
 
 	std::cout << ARROW << " DESTRUCTORS" << std::endl;
 }
