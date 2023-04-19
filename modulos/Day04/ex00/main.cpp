@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 17:30:53 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/04/11 16:46:24 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/04/19 15:06:05 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ int	 main(int ac, char **av)
 
 	(void)ac;
 	check_leaks(av);
-    
+
 	return (0);
 }
