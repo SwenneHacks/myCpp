@@ -17,7 +17,7 @@ Dog::Dog(void) : Animal("Dog")
 	return ;
 }
 
-Dog::Dog(const Dog& ref)
+Dog::Dog(const Dog& ref) : _brain()
 { std::cout << DOG << "	 COPY construtor called" << std::endl;
 	*this = ref;
 	return ;
@@ -25,15 +25,12 @@ Dog::Dog(const Dog& ref)
 
 Dog& Dog::operator=(const Dog& ref)
 { std::cout << DOG << "	 Assignment operator" << std::endl;
-	// if (this != &ref){
-	// 	delete this->_brain;
-	// 	this->_brain = new Brain(*ref._brain);
-	// 	this->_type = ref._type;
-	// }
-
-	Animal::operator=(ref);
+	if (this != &ref){
+		delete this->_brain;
+		this->_brain = new Brain(*ref._brain);
+		this->_type = ref._type;
+	}
 	// this->_brain = ref._brain; //shallow copy
-	*this->_brain = *ref._brain; //deep copy
 	return (*this);
 }
 
