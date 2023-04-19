@@ -6,7 +6,7 @@
 #    By: xander <xander@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2023/04/11 11:45:35 by swofferh      ########   odam.nl          #
+#    Updated: 2023/04/19 15:16:35 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ fclean: clean
 re:	fclean all
 	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
 
-run: all
+run: all clean
 	@./$(NAME)
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
