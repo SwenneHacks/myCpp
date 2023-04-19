@@ -18,7 +18,7 @@ void _print_inScope() { std::cout << ARROW <<" INSIDE OF SCOPE" << RESET << std:
 void _print_outScope() { std::cout << ARROW <<" OUTSIDE OF SCOPE" << RESET << std::endl;}
 void _print_destructors() { std::cout << ARROW << " DESTRUCTORS" << RESET << std::endl;}
 void _print_unchanged() { std::cout << ARROW << " UNCHANGED IDEAS" << RESET << std::endl;}
-void _print_copychange() { std::cout << ARROW << " COPY/CHANGED IDEAS" << RESET << std::endl;}
+void _print_copychange() { std::cout << ARROW << " COPIED IDEAS" << RESET << std::endl;}
 void _print_test_operator() { std::cout << ARROW << " TESTING OPERATOR" << BLUE << " (with brain allocation) \n"<< RESET << std::endl;}
 void _print_dog_unchanged() { std::cout << ARROW << " COPY_DOG HAS NOT CHANGED ITS IDEA: "<< RESET << std::endl;}
 void _print_dog_changed() { std::cout << ARROW << " CHANGED OLD_DOG IDEA: "<< RESET << std::endl;}
@@ -30,21 +30,17 @@ void test_deepness()
     Cat copyCat(oldCat);
     oldCat.setIdea("NEW IDEA ");
 
-    _print_unchanged();
-	// printing pointer
-	std::cout << BLUE << std::endl << oldCat.getBrain() << RESET << std::endl;
-    oldCat.printIdeas();
-
 	_print_copychange();
 	// printing pointer
 	std::cout << BLUE << std::endl << copyCat.getBrain() << RESET << std::endl;
     copyCat.printIdeas();
 
-	_print_test_operator();
-	Cat cat_one, cat_two, cat_six;
-	cat_one = cat_two;
-	cat_one = cat_six;
+    _print_unchanged();
+	// printing pointer
+	std::cout << BLUE << std::endl << oldCat.getBrain() << RESET << std::endl;
+    oldCat.printIdeas();
 
+	std::cout << ARROW << " Doggos :D" << std::endl;
     Dog oldDog;
     Dog copyDog(oldDog);
     oldDog.setIdea("YOLOOOO ");
@@ -58,10 +54,16 @@ void test_deepness()
 	// printing pointer
 	std::cout << BLUE << std::endl << copyDog.getBrain() << RESET << std::endl;
     oldDog.printIdeas();
-
-
-	std::cout << ARROW << " DESTRUCTORS" << std::endl;
 }
+
+void test_operators()
+{
+	_print_test_operator();
+	Cat cat_one, cat_two, cat_six;
+	cat_one = cat_two;
+	cat_one = cat_six;
+}
+
 
 void test_subject(void)
 {
@@ -92,6 +94,7 @@ void test_array(void)
 			animals[i] = new Dog();
 		else
 			animals[i] = new Cat();	
+		animals[i]->makeSound();
 	}
 
 	_print_destructors();
@@ -121,6 +124,7 @@ int main(int ac, char **av)
 	test_subject();
 	std::cout << ARROW << " TEST DEAPNESS" << std::endl;
 	test_deepness();
+	//test_operators();
 	check_leaks(av);
     return 0;
 }
