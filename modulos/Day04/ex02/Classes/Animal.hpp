@@ -23,7 +23,7 @@ public:
 	Animal(const Animal& ref);
 	Animal& operator=(const Animal& ref);
 	
-	virtual void makeSound(void) const;
+	virtual void makeSound(void) const = 0;
 	const std::string getType(void) const;
 
 protected:
