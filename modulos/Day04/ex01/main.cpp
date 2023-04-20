@@ -23,7 +23,7 @@ void _print_test_operator() { std::cout << ARROW << " TESTING OPERATOR" << BLUE 
 void _print_dog_unchanged() { std::cout << ARROW << " COPY_DOG HAS NOT CHANGED ITS IDEA: "<< RESET << std::endl;}
 void _print_dog_changed() { std::cout << ARROW << " CHANGED OLD_DOG IDEA: "<< RESET << std::endl;}
 
-
+/*==========================================  DEEP COPY TEST ============================================= */
 void test_deepness()
 {
     Cat oldCat;
@@ -56,6 +56,8 @@ void test_deepness()
     oldDog.printIdeas();
 }
 
+/*========================================== DOUBLE ALLOCATION TEST ============================================= */
+
 void test_operators()
 {
 	_print_test_operator();
@@ -64,6 +66,7 @@ void test_operators()
 	cat_one = cat_six;
 }
 
+/*========================================== SIMPLE SUBJECT TEST ============================================= */
 
 void test_subject(void)
 {
@@ -79,6 +82,8 @@ void test_subject(void)
 	delete doggo;//should not create a leak
 	delete kitty;
 }
+
+/*========================================== TESTING MULTIPLE ANIMALS ============================================= */
 
 void test_array(void)
 {
@@ -104,6 +109,8 @@ void test_array(void)
 		delete animals[i];
 	
 }
+
+/*========================================== MAIN AND LEAKS ============================================= */
 
 void check_leaks(char **av)
 {
