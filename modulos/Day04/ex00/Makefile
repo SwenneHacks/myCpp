@@ -3,10 +3,10 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: xander <xander@student.codam.nl>             +#+                      #
+#    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/06/29 14:21:50 by xander        #+#    #+#                  #
-#    Updated: 2023/04/19 15:16:35 by swofferh      ########   odam.nl          #
+#    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
+#    Updated: 2023/08/04 16:38:47 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
