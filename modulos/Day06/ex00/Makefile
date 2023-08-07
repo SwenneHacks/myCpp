@@ -6,12 +6,17 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/04 16:39:32 by swofferh      ########   odam.nl          #
+#    Updated: 2023/08/07 11:11:31 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	polymorphism
+NAME		=	cpp_casting
 PROJECT		= 	CPP Modulo 06 - ex00
+
+#Testing
+EX00 		=	scalar_converter
+EX01		= 	serialization
+EX02		=	indentify_types
 
 FLAGS		= 	-Wall -Werror -Wextra 
 CPP			= 	c++ -std=c++98

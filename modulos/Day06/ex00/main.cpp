@@ -6,195 +6,44 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/04 16:40:28 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/07 11:10:36 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define RED "\e[0;31m"
+#define COLOR "\e[0;32m"
 #define RESET "\e[0m"
 
-#include <iostream>
-#include <iomanip>
+#include <limits> // INT_MAX INT_MIN 
+#include <iostream> // cout readi
+#include <iomanip> // setPrecision (for floats)
+#include <exception> // invalid_argument
 
-class NonDisplayableException : public std::exception
+#include "ScalarConverter.hpp"
+
+void testClass()
 {
-public:
-	virtual const char* what() const throw()
-	{
-		return ("Non Displayable");
-	}
-};
-
-class ImpossibleException : public std::exception
-{
-public:
-	virtual const char* what() const throw()
-	{
-		return ("Impossible");
-	}
-};
-
-int32_t CountDecimals(std::string OriginalValue)
-{
-	bool CheckDot = false;
-	int32_t AmountDecimals = 0;
-
-	for (unsigned long i = 0; OriginalValue.length() > i; i++)
-	{
-		if (isdigit(OriginalValue[i]) == false && OriginalValue[i] != '.')
-			break ;
-		while (!CheckDot && OriginalValue[i] != '.')
-			i++;
-		CheckDot = true;
-		AmountDecimals++;
-	}
-	AmountDecimals--;
-	return (AmountDecimals);
+	std::cout << "TESTING CHARS:" << std::endl;
+	ScalarConverter("a");
+	ScalarConverter("b");
+	ScalarConverter("c");
+	std::cout << "TESTING INTS:" << std::endl;
+	ScalarConverter("99");
+	ScalarConverter("99");
+	ScalarConverter("255");
+	std::cout << "TESTING FLOATS:" << std::endl;
+	ScalarConverter("2.55");
+	ScalarConverter("-255.6666");
+	ScalarConverter("0.6666f");
+	std::cout << "TESTING DOUBLES:" << std::endl;
+	ScalarConverter("0.6666");
+	ScalarConverter("0.6666");
+	ScalarConverter("0.6666");
 }
 
-// Conversions
-
-void PrintChar(char *arg)
-{
-	try
-	{
-		long double OriginalValue = std::stol(arg);
-
-		if (OriginalValue < 32 || OriginalValue > 126)
-			throw (NonDisplayableException());
-		std::cout << "'" << static_cast<char>(OriginalValue) << "'" << std::endl;
-	}
-	catch (const std::invalid_argument& e)
-	{
-		throw (ImpossibleException());
-	}
-}
-
-void PrintInt(char *arg)
-{
-	try
-	{
-		if (std::string(arg) == "-inff"
-			|| std::string(arg) == "+inff"
-			|| std::string(arg) == "nanf"
-			|| std::string(arg) == "nan"
-			|| std::string(arg) == "-inf"
-			|| std::string(arg) == "+inf")
-			throw (ImpossibleException());
-
-		int OriginalValue = std::stod(arg);
-		
-		if (std::stol(arg) > INT_MAX || std::stol(arg) < INT_MIN)
-			throw (ImpossibleException());
-
-		std::cout << static_cast<int>(OriginalValue) << std::endl;
-	}
-	catch (const std::invalid_argument& e)
-	{
-		throw (ImpossibleException());
-	}
-}
-
-// Number shouldn't be higher than 7 digits. Otherwise the precision wont work.
-void PrintFloat(char *arg)
-{
-    try
-    {
-        long double OriginalValue = std::stof(arg);
-        int32_t AmountDecimals = CountDecimals(arg);
-
-        std::cout << std::fixed << std::setprecision(AmountDecimals) 
-		<< static_cast<float>(OriginalValue) << "f" << std::endl;
-    }
-    catch (const std::invalid_argument& e)
-    {
-        throw (ImpossibleException());
-    }
-}
-
-void PrintDouble(char *arg)
-{
-    try
-    {
-        long double OriginalValue = std::stod(arg);
-        int32_t AmountDecimals = CountDecimals(arg);
-
-        std::cout << std::fixed << std::setprecision(AmountDecimals)
-		<< static_cast<double>(OriginalValue) << std::endl;
-    }
-    catch (const std::invalid_argument& e)
-    {
-        throw (ImpossibleException());
-    }
-}
-
-int32_t	main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	if (argc != 2)
-		return (1);
-
-	try
-	{
-		PrintChar(argv[1]);
-	}
-	catch (const NonDisplayableException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const ImpossibleException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << "Impossible" << std::endl;
-	}
-
-	try
-	{
-		PrintInt(argv[1]);
-	}
-	catch (const ImpossibleException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::out_of_range& e)
-	{
-		std::cout << "Impossible" << std::endl;
-	}
-
-	try
-	{
-		PrintFloat(argv[1]);
-	}
-	catch (const NonDisplayableException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const ImpossibleException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-    catch (const std::exception& e)
-    {
-        std::cout << "Impossible" << std::endl;
-    }
-
-	try
-	{
-		PrintDouble(argv[1]);
-	}
-	catch (const NonDisplayableException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const ImpossibleException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-    catch (const std::exception& e)
-    {
-        std::cout << "Impossible" << std::endl;
-    }
-	return (0);
+		return 1;
+	ScalarConverter(argv[1]);
+	return 0;
 }
