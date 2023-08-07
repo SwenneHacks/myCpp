@@ -7,9 +7,7 @@
 #define COLOR "\e[0;32m"
 #define RESET "\e[0m"
 
-static std::string INTRO = COLOR "[ScalarConverter] " RESET;
-
-static bool CheckLiterals(std::string input)
+bool ScalarConverter::CheckLiterals(std::string input)
 {
 	if (std::string(input) == "-inff"
 		|| std::string(input) == "+inff"
@@ -22,7 +20,7 @@ static bool CheckLiterals(std::string input)
 		return false;
 }
 
-static int CheckDigits(std::string value)
+int ScalarConverter::CheckDigits(std::string value)
 {
 	bool check_dot = false;
 	int counter = 0;
@@ -40,33 +38,7 @@ static int CheckDigits(std::string value)
 	return (counter);
 }
 
-ScalarConverter::ScalarConverter()
-{std::cout << INTRO <<"Constructor called" << std::endl;}
-
-ScalarConverter::~ScalarConverter()
-{std::cout << INTRO << "Destructor called" << std::endl;}
-
-ScalarConverter::ScalarConverter(std::string input)
-{std::cout << INTRO << "Result for: " << input << std::endl;
-
-	long double value = std::stol(input); // to ascii
-	CastChar(value, CheckLiterals(input));
-	CastInt(value, CheckLiterals(input));
-	long double value = std::stof(input); // to float
-	CastFloat(value, CheckDigits(input));
-	CastDouble(value, CheckDigits(input));
-}
-
-ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& ref)
-{std::cout << INTRO << "Operator called" << std::endl;}
-
-ScalarConverter::ScalarConverter(const ScalarConverter &copy)
-{std::cout << INTRO << "Copy construtor called" << std::endl;
-	*this = copy;
-	return ;
-}
-
-static void CastChar(long double value, bool literals)
+void ScalarConverter::CastChar(long double value, bool literals)
 {
 	try {
 		if (literals == true)
@@ -79,7 +51,7 @@ static void CastChar(long double value, bool literals)
 	catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
 }
 
-static void CastInt(long double value, bool literals)
+void ScalarConverter::CastInt(long double value, bool literals)
 {
 	try {
 		if (value > INT_MAX || value < INT_MIN || literals == true)
@@ -91,7 +63,7 @@ static void CastInt(long double value, bool literals)
 }
 
 
-static void CastFloat(long double value, int digits)
+void ScalarConverter::CastFloat(long double value, int digits)
 {
 	try {
         std::cout << std::fixed << std::setprecision(digits) 
@@ -101,7 +73,7 @@ static void CastFloat(long double value, int digits)
 
 }
 
-static void CastDouble(long double value, int digits)
+void ScalarConverter::CastDouble(long double value, int digits)
 {
 	try {
         std::cout << std::fixed << std::setprecision(digits) 

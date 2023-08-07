@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/07 11:10:36 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/07 18:03:37 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,41 @@
 
 #include "ScalarConverter.hpp"
 
-void testClass()
+void startConverter(std::string input)
 {
-	std::cout << "TESTING CHARS:" << std::endl;
-	ScalarConverter("a");
-	ScalarConverter("b");
-	ScalarConverter("c");
-	std::cout << "TESTING INTS:" << std::endl;
-	ScalarConverter("99");
-	ScalarConverter("99");
-	ScalarConverter("255");
-	std::cout << "TESTING FLOATS:" << std::endl;
-	ScalarConverter("2.55");
-	ScalarConverter("-255.6666");
-	ScalarConverter("0.6666f");
-	std::cout << "TESTING DOUBLES:" << std::endl;
-	ScalarConverter("0.6666");
-	ScalarConverter("0.6666");
-	ScalarConverter("0.6666");
+	long double value = std::stol(input); // to ascii
+	ScalarConverter::CastChar(value, ScalarConverter::CheckLiterals(input));
+	ScalarConverter::CastInt(value, ScalarConverter::CheckLiterals(input));
+	value = std::stof(input); // to float
+	ScalarConverter::CastFloat(value, ScalarConverter::CheckDigits(input));
+	value = std::stof(input); // to float
+	ScalarConverter::CastDouble(value, ScalarConverter::CheckDigits(input));
 }
 
-int	main(int argc, char *argv[])
+void testConverter()
+{
+	std::cout << "TESTING CHARS:" << std::endl;
+	startConverter("a");
+	startConverter("b");
+	startConverter("c");
+	std::cout << "TESTING INTS:" << std::endl;
+	startConverter("99");
+	startConverter("99");
+	startConverter("255");
+	std::cout << "TESTING FLOATS:" << std::endl;
+	startConverter("2.55");
+	startConverter("-255.6666");
+	startConverter("0.6666f");
+	std::cout << "TESTING DOUBLES:" << std::endl;
+	startConverter("0.6666");
+	startConverter("0.6666");
+	startConverter("0.6666");
+}
+
+int	main(int argc, char argv[1])
 {
 	if (argc != 2)
 		return 1;
-	ScalarConverter(argv[1]);
+	testConverter();
 	return 0;
 }

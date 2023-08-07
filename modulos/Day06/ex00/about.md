@@ -21,7 +21,7 @@ Examples of char literals: ’c’, ’a’, ...
 To make things simple, please note that non displayable characters shouldn’t be used as
 inputs. If a conversion to char is not displayable, prints an informative message.
 Examples of int literals: 0, -42, 42...
-Examples of float literals: 0.0f, -4.2f, 4.2f...
+Examples of float literals: 0.0f, -4.2000000, 4.2f...
 
 You have to handle these pseudo literals as well (you know, for science): -inff, +inff
 and nanf.
@@ -31,14 +31,17 @@ You have to handle these pseudo literals as well (you know, for fun): -inf, +inf
 
 
 #### #### ####
-# STUDY NOTES: STATIC CAST
 
-C++ supports 4 types of casting:
+# STUDY NOTES: static classes
 
-Static Cast
-Dynamic Cast
-Const Cast
-Reinterpret Cast
+Static members are functions that belong to the class rather than to an instance of the class. This means that they can be accessed without creating an instance of the class, and they are shared by all instances of the class. 
+ 
+ Static classes are often used for utility classes, such as mathematical functions or string manipulation functions, where it is not necessary to create an instance of the class to use the functions.
+
+
+# STUDY NOTES: static casting
+
+C++ supports 4 types of casting: Static Cast, Dynamic Cast, Const Cast, Reinterpret Cast
 
 Static Cast
 This is the simplest type of cast that can be used. It is a compile-time cast. 
@@ -50,7 +53,7 @@ static_cast <dest_type> (source);
 The return value of static_cast will be of dest_type.
 
 
-# STUDY NOTE: PRESCISION IN FLOATING POINT NUMBERS
+# STUDY NOTE: precision in floats
 
 The data type float has 24 bits of precision. 
 This is equivalent to only about 7 decimal places. 

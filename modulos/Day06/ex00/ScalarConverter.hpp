@@ -13,12 +13,13 @@ class	ScalarConverter
 	
 		static int CheckDigits(std::string value);
 		static bool CheckLiterals(std::string input);
-	
+
+	private:
 		ScalarConverter();
-		ScalarConverter(std::string input);
-		ScalarConverter(const ScalarConverter &copy);
-		ScalarConverter& operator=(const ScalarConverter &ref);
-		~ScalarConverter();
+		// ScalarConverter(std::string input);
+		// ScalarConverter(const ScalarConverter &copy);
+		// ScalarConverter& operator=(const ScalarConverter &ref);
+		// ~ScalarConverter();
 };
 
 class NonDisplayable : public std::exception

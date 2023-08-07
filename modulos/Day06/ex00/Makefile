@@ -6,25 +6,18 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/07 11:11:31 by swofferh      ########   odam.nl          #
+#    Updated: 2023/08/07 16:42:25 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	cpp_casting
+NAME		=	converter
 PROJECT		= 	CPP Modulo 06 - ex00
-
-#Testing
-EX00 		=	scalar_converter
-EX01		= 	serialization
-EX02		=	indentify_types
 
 FLAGS		= 	-Wall -Werror -Wextra 
 CPP			= 	c++ -std=c++98
 
 #FILES:
-DIRS		:= Classes
-SRCS		:= $(shell find ./* -type f -name "*.cpp")
-INCS		:= $(shell find ./* -type f -name "*.hpp")
+SRCS		:= main.cpp ScalarConverter.cpp
 OBJS		:= $(SRCS:%.cpp=%.o)
 
 #COLORS:
@@ -38,7 +31,7 @@ W = \x1b[0m
 
 %.o: %.cpp
 	@echo "$(P)Compiling$(W) $<"
-	@$(CPP) $(FLAGS) -I $(DIRS) -c $< -o $@ 
+	@$(CPP) $(FLAGS) -I . -c $< -o $@ 
 
 all: $(NAME)
 	@echo "\n$(G) you can now run ./$(NAME) $(W)\n"
@@ -59,7 +52,7 @@ fclean: clean
 	@echo "\n$(R)\______ Done $(B)F$(R)cleaning _____/ $(W)\n"
 
 re:	fclean all
-	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
+	@echo "\n$(G)\______ Done Remaking _____/ $(W)\n"
 
 run: all clean
 	@./$(NAME)
