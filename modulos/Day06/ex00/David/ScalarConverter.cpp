@@ -7,7 +7,7 @@
 
 // ScalarConverter::ScalarConverter(){
 	// std::cout << "Contructed ScalarConverter"<< std::endl;
-}
+//}
 
 // ScalarConverter::ScalarConverter( const ScalarConverter& other) {
 // 	std::cout << "Copy constructor called ScalarConverter" << std::endl;

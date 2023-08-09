@@ -2,12 +2,51 @@
 
 #include <string> // stol(), stof(), stod
 #include <iomanip> // setprecision()
-#include <iostream> 
+#include <cctype> // isdigit()
 
 #define COLOR "\e[0;32m"
 #define RESET "\e[0m"
 
-bool ScalarConverter::CheckLiterals(std::string input)
+bool ScalarConverter::CheckImpossible(std::string input)
+{
+	if (input.empty())
+		return true;
+	if (input.length() > 5)
+	{
+		if (std::isdigit(input[0]) == false)
+			return false;
+		if (ScalarConverter::CheckPseudos(input) == true)
+			return false;
+		return true;
+	}
+	else
+		return false;
+}
+
+int ScalarConverter::FindType(std::string input)
+{
+	int type = 0;
+	if (ScalarConverter::CheckImpossible(input) == true)
+		type = e_impossible;
+	if (input.length() == 1)
+	{
+		if (std::isdigit(input[0]) == true)
+			type = e_int;
+		else
+			type = e_char; // from 0 to 9, non displayable
+	}
+	if (input.front() == '-' || input.front() == '+')
+		type = e_int;
+	else if (input.back() = 'f')
+		type = e_float;
+	else if (input.find('.') == std::string::npos)
+		type = e_double;
+	if (input.length() == 3)
+		
+	return type;
+}
+
+bool ScalarConverter::CheckPseudos(std::string input)
 {
 	if (std::string(input) == "-inff"
 		|| std::string(input) == "+inff"
