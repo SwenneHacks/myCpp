@@ -66,6 +66,6 @@ int main(int argc, char* argv[])
         return 1;
     }
     std::string input = argv[1];
-    startConverter(input);
+    //startConverter(input);
     return 0;
 }

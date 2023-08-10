@@ -3,27 +3,14 @@
 
 #include <iostream> // std
 
-enum e_type {
-	e_char = 0,
-	e_int,
-	e_float,
-	e_double,
-	e_impossible,
-	e_nondisplayable
-};
-
 class	ScalarConverter
 {
 	public:
-		static void CastInt(long double value, bool literals);
-		static void CastChar(long double value, bool literals);
-		static void CastDouble(long double value, int digits);
-		static void CastFloat(long double value, int digits);
-	
-		static int FindType(std::string input);
-		static int CheckDigits(std::string value);
-		static bool CheckPseudos(std::string input);
-		static bool CheckImpossible(std::string input);
+		static std::string CastInt(long double value, bool literals);
+		static std::string CastChar(long double value, bool literals);
+		static std::string CastDouble(long double value, int digits);
+		static std::string CastFloat(long double value, int digits);
+
 	private:
 		ScalarConverter();
 		// ScalarConverter(std::string input);
