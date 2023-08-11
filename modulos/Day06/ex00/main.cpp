@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/11 19:37:58 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/11 20:00:37 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <limits> // INT_MAX INT_MIN 
 #include <iostream> // cout readi
 #include <string> // compare()
-#include <sstream> // stringstream
 #include <iomanip> // setPrecision (for floats)
 #include <exception> // invalid_argument
 
@@ -124,60 +123,66 @@ e_type findType(std::string input)
 			else
 				return e_impossible;
 		}
-		if (input.back() == 'f')
-			return e_float;
+		if (input.find('.') == 1)
+		{
+			if (input.back() == 'f')
+				return e_float;
+			else
+				return e_double;
+		}
 		if (stol(input) < INT_MAX)
 			return e_int;
-		else 
-			return e_double;
 	}
 	return e_nondisplayable;
 }
-
-// static void checkChar(long double value)
-// {
-// 	std::cout << COLOR << "char: " << RESET;
-// 	try {
-// 		if (value < 32 || value > 126)
-// 			throw(NonDisplayable());
-// 		else
-// 			ScalarConverter::castChar();
-// 	}
-// 	catch(const std::exception& e) { throw(Impossible());}
-// }
-
 
 static void printType(e_type type)
 {
 	std::cout << COLOR << "Type: " << RESET;
 	switch(type) {
-		case e_int: std::cout << "INT" << std::endl;
-			break;
-		case e_char: std::cout << "CHAR" << std::endl;
-			break;
-		case e_float: std::cout << "FLOAT" << std::endl;
-			break;
-		case e_double: std::cout << "DOUBLE" << std::endl;
-			break;
-		case e_impossible: std::cout << "STRING" << std::endl;
-			break;
-		case e_nondisplayable: std::cout << "???" << std::endl;
-			break ;
+		case e_int: 
+			std::cout << "INT" << std::endl;
+
+			return;
+		case e_char: 
+			std::cout << "CHAR" << std::endl;
+			
+			return;
+		case e_float: 
+			std::cout << "FLOAT" << std::endl;
+			
+			return;
+		case e_double: 
+			std::cout << "DOUBLE" << std::endl;
+
+			return;
+		case e_impossible: 
+			std::cout << "STRING" << std::endl;
+			
+			return;
+		case e_nondisplayable: 
+			std::cout << "???" << std::endl;
+			
+			return;
 	}
-	std::cout << COLOR << "Converting: " << RESET;
 }
 
 static void startConverter(std::string input)
 {
 	e_type type = findType(input);
 	long double value = stol(input);
+
 	printType(type);
-	ScalarConverter::CastInt(value);
-	ScalarConverter::CastChar(value);
-	ScalarConverter::CastFloat(value, checkDigits(input));
-	ScalarConverter::CastDouble(value, checkDigits(input));
+	if (type < 3) {
+		ScalarConverter::CastChar(value);
+		ScalarConverter::CastInt(value);
+		ScalarConverter::CastFloat(value, checkDigits(input));
+		ScalarConverter::CastDouble(value, checkDigits(input));
+	}
+	else
+		std::cout << "Not a scalar" << std::endl;
 }
-`
+
 void testConverter()
 {
 	std::cout << "TESTING CHARS:" << std::endl;
@@ -206,6 +211,7 @@ int	main(int argc, char *argv[])
 		<< "Usage: [./program] [value]" << std::endl;
 		return (EXIT_FAILURE);
 	}
-    startConverter(argv[0]);
+	std::string input = argv[1];
+    startConverter(input);
 	return 0;
 }

@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/07 16:42:25 by swofferh      ########   odam.nl          #
+#    Updated: 2023/08/11 20:04:22 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,15 @@ fclean: clean
 re:	fclean all
 	@echo "\n$(G)\______ Done Remaking _____/ $(W)\n"
 
-run: all clean
-	@./$(NAME)
+run: re clean
+	./$(NAME) 5
+	./$(NAME) 99
+	./$(NAME) 33
+	./$(NAME) 2.5
+	./$(NAME) 0
+	./$(NAME) 66666666666666
+	./$(NAME) tttttt
+	
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
 .PHONY:	all clean fclean re
