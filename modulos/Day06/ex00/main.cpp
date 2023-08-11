@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/10 17:02:49 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/11 19:37:58 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <limits> // INT_MAX INT_MIN 
 #include <iostream> // cout readi
 #include <string> // compare()
+#include <sstream> // stringstream
 #include <iomanip> // setPrecision (for floats)
 #include <exception> // invalid_argument
 
@@ -43,6 +44,24 @@ static bool checkPseudos(std::string input)
 		return false;
 }
 
+static int checkDigits(std::string value)
+{
+	bool check_dot = false;
+	int counter = 0;
+
+	for (unsigned long i = 0; value.length() > i; i++)
+	{
+		if (isdigit(value[i]) == false && value[i] != '.')
+			break ;
+		while (!check_dot && value[i] != '.')
+			i++;
+		check_dot = true;
+		counter++;
+	}
+	counter--;
+	return (counter);
+}
+
 static bool checkImpossible(std::string input)
 {
 	if (input.empty())
@@ -56,17 +75,18 @@ static bool checkImpossible(std::string input)
 			else
 				return true;
 		}
-		if (input.front() == '-' || input.front() == '+' || input.back() = 'f')
-			return false;	
-		for (int i; i = 1; i++)
+		for (int i = 1; i < checkDigits(input); i++)
 		{
 			if (std::isdigit(input[i]))
 				continue;
-		if (input.find('.') != std::string::npos)
-			return e_double;
+			if (i == checkDigits(input))
+				return false;
 			else
-				return e_impossible;
+				return true;
 		}
+		if (input.find('.') == 1 || input.back() == 'f' ||
+			input.front() == '+' || input.front() == '-')
+				return false;
 	}
 	return false;
 }
@@ -77,7 +97,7 @@ e_type findType(std::string input)
 		return e_impossible;
 	if (input.length() == 1)
 	{
-		if (!std::isdigit(input[0]))
+		if (std::isdigit(input[0]) == false)
 			return e_char;
 		else
 			return e_int;
@@ -97,68 +117,67 @@ e_type findType(std::string input)
 					return e_double;
 			}
 		}
-		if (input.front() == '-' || input.front() == '+')
+		for (int i = 1; i < checkDigits(input); i++)
 		{
-			for (int i; i = 1; i++)
-			{
-				if (std::isdigit(input[i]))
-					continue;
-				else
-					return e_impossible;
-			}
-			
-		}	
-		if (input.back() = 'f')
-			return e_float;	
-		if (input.find('.') != std::string::npos)
+			if (std::isdigit(input[i]))
+				continue;
+			else
+				return e_impossible;
+		}
+		if (input.back() == 'f')
+			return e_float;
+		if (stol(input) < INT_MAX)
+			return e_int;
+		else 
 			return e_double;
 	}
+	return e_nondisplayable;
 }
 
+// static void checkChar(long double value)
+// {
+// 	std::cout << COLOR << "char: " << RESET;
+// 	try {
+// 		if (value < 32 || value > 126)
+// 			throw(NonDisplayable());
+// 		else
+// 			ScalarConverter::castChar();
+// 	}
+// 	catch(const std::exception& e) { throw(Impossible());}
+// }
 
-static int checkDigits(std::string value)
+
+static void printType(e_type type)
 {
-	bool check_dot = false;
-	int counter = 0;
-
-	for (unsigned long i = 0; value.length() > i; i++)
-	{
-		if (isdigit(value[i]) == false && value[i] != '.')
+	std::cout << COLOR << "Type: " << RESET;
+	switch(type) {
+		case e_int: std::cout << "INT" << std::endl;
+			break;
+		case e_char: std::cout << "CHAR" << std::endl;
+			break;
+		case e_float: std::cout << "FLOAT" << std::endl;
+			break;
+		case e_double: std::cout << "DOUBLE" << std::endl;
+			break;
+		case e_impossible: std::cout << "STRING" << std::endl;
+			break;
+		case e_nondisplayable: std::cout << "???" << std::endl;
 			break ;
-		while (!check_dot && value[i] != '.')
-			i++;
-		check_dot = true;
-		counter++;
 	}
-	counter--;
-	return (counter);
+	std::cout << COLOR << "Converting: " << RESET;
 }
 
-void startConverter(std::string input)
+static void startConverter(std::string input)
 {
-	int type = findType(input);
-	long double value = std::stol(input);
-	try {
-        if (input.find('.') == std::string::npos) 
-		{
-            int value = std::stoi(input);
-            std::cout << "Input type: int" << std::endl
-            << "Char: " << ScalarConverter::CastChar(value, checkPseudos(input)) << std::endl
-            << "Float: " << ScalarConverter::CastFloat(value, checkDigits(input)) << std::endl
-            << "Double: " << ScalarConverter::CastDouble(value, checkDigits(input)) << std::endl;
-        } 
-		else 
-		{
-            double value = std::stod(input);
-            std::cout << "Input type: double" << std::endl
-            << "Char: " << ScalarConverter::CastChar(value, checkPseudos(input)) << std::endl
-            << "Int: " << ScalarConverter::CastInt(value, checkPseudos(input)) << std::endl
-            << "Float: " << ScalarConverter::CastFloat(value, checkDigits(input)) << std::endl;
-        }
-    } 
-	catch (const std::exception& e) { std::cout << "Error: Invalid input" << std::endl;}
+	e_type type = findType(input);
+	long double value = stol(input);
+	printType(type);
+	ScalarConverter::CastInt(value);
+	ScalarConverter::CastChar(value);
+	ScalarConverter::CastFloat(value, checkDigits(input));
+	ScalarConverter::CastDouble(value, checkDigits(input));
 }
-
+`
 void testConverter()
 {
 	std::cout << "TESTING CHARS:" << std::endl;
@@ -183,10 +202,10 @@ int	main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		std::cout << "Invalid number of arguments. Usage: ./program <value>\n";
+		std::cout << std::endl
+		<< "Usage: [./program] [value]" << std::endl;
 		return (EXIT_FAILURE);
 	}
-	std::string input = argv[1];
-    startConverter(input);
+    startConverter(argv[0]);
 	return 0;
 }
