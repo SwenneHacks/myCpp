@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/11 20:04:22 by swofferh      ########   odam.nl          #
+#    Updated: 2023/08/15 18:31:39 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ FLAGS		= 	-Wall -Werror -Wextra
 CPP			= 	c++ -std=c++98
 
 #FILES:
-SRCS		:= main.cpp ScalarConverter.cpp
+DIRS		:= llasses
+SRCS		:= $(shell find ./* -type f -name "*.cpp")
 OBJS		:= $(SRCS:%.cpp=%.o)
 
 #COLORS:
@@ -31,7 +32,7 @@ W = \x1b[0m
 
 %.o: %.cpp
 	@echo "$(P)Compiling$(W) $<"
-	@$(CPP) $(FLAGS) -I . -c $< -o $@ 
+	@$(CPP) $(FLAGS) -I $(DIRS) -c $< -o $@ 
 
 all: $(NAME)
 	@echo "\n$(G) you can now run ./$(NAME) $(W)\n"
@@ -55,13 +56,28 @@ re:	fclean all
 	@echo "\n$(G)\______ Done Remaking _____/ $(W)\n"
 
 run: re clean
-	./$(NAME) 5
-	./$(NAME) 99
-	./$(NAME) 33
-	./$(NAME) 2.5
-	./$(NAME) 0
-	./$(NAME) 66666666666666
-	./$(NAME) tttttt
+	@./$(NAME) 5
+	@echo " _________________ " 
+	@./$(NAME) 99
+	@echo " _________________ " 
+	@./$(NAME) 33
+	@echo " _________________ " 
+	@./$(NAME) t
+	@echo " _________________ " 
+	@./$(NAME) 2.5
+	@echo " _________________ " 
+	@./$(NAME) 0
+	@echo " _________________ " 
+	@./$(NAME) +1
+	@echo " _________________ " 
+	@./$(NAME) -1.5
+	@echo " _________________ " 
+	@./$(NAME) 6.6666f
+	@echo " _________________ " 
+	@./$(NAME) 66666666666666
+	@echo " _________________ " 
+	@./$(NAME) tttttt
+	@echo " _________________ "  
 	
 	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
 
