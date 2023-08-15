@@ -61,3 +61,22 @@ This is equivalent to only about 7 decimal places.
 
 std::setprecision(int 'number_of_decimals') 
 Defined in header <iomanip>
+
+
+
+# STUDY NOTE: numerical data types 
+( INT, FLOATS, DOUBLES )
+
+
+PRIMITIVE BUILTIN TYPES:
+
+intigers (4bytes)
+floats (4bytes)
+doubles (8bytes)
+
+MODIFIERS:
+
+signed (+ -)
+unsigned (above 0)
+short (2bytes)
+long (8bytes - 12bytes)
