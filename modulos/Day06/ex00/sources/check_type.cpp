@@ -1,5 +1,7 @@
 #include "scalar_program.hpp"
 
+#define NOT_PRESENT std::string::npos
+
 bool checkPseudos(std::string input)
 {
 	if (std::string(input) == "-inff"
@@ -13,21 +15,46 @@ bool checkPseudos(std::string input)
 		return false;
 }
 
-int checkDigits(std::string value)
+// int checkDigits(std::string value)
+// {
+// 	bool check_dot = false;
+// 	int counter = 0;
+
+// 	for (unsigned long i = 0; value.length() > i; i++)
+// 	{
+// 		if (isdigit(value[i]) == false && value[i] != '.')
+// 			break ;
+// 		while (!check_dot && value[i] != '.')
+// 			i++;
+// 		check_dot = true;
+// 		counter++;
+// 	}
+// 	counter--;
+// 	return (counter);
+// }
+int checkRange(std::string value)
 {
+	unsigned long end_string = value.length();
 	bool check_dot = false;
 	int counter = 0;
 
-	for (unsigned long i = 0; value.length() > i; i++)
+	for (unsigned long i = 0; i < end_string; i++)
 	{
-		if (isdigit(value[i]) == false && value[i] != '.')
-			break ;
+		// std::cout << value[i];
+		if (value[end_string] == 'f')
+			end_string--;
+		if (value[i] == '+' || value[i] == '-')
+			i++;
+		if (check_dot)
+			counter++;
 		while (!check_dot && value[i] != '.')
 			i++;
-		check_dot = true;
-		counter++;
+		if (value[i] == '.'){
+			check_dot = true;
+			i++;
+		}
 	}
-	counter--;
+	// std::cout << std::endl;
 	return (counter);
 }
 
@@ -37,8 +64,10 @@ bool checkImpossible(std::string input)
 		return true;
 	if (input.length() > 1)
 	{
-		if (input.find('.') == 1 || input.back() == 'f' ||
-			input.front() == '+' || input.front() == '-')
+		if (input.find('.') != NOT_PRESENT 
+			|| input.back() == 'f' 
+			|| input.front() == '+' 
+			|| input.front() == '-')
 				return false;
 		if (std::isdigit(input[1]) == false)
 		{
@@ -47,7 +76,7 @@ bool checkImpossible(std::string input)
 			else
 				return true;
 		}
-		for (int i = 1; i < checkDigits(input); i++)
+		for (unsigned long i = 1; i < input.length(); i++)
 		{
 			if (std::isdigit(input[i]))
 				continue;
@@ -56,6 +85,20 @@ bool checkImpossible(std::string input)
 		}
 	}
 	return false;
+}
+
+e_type	checkNumber(std::string input)
+{
+	if (input.front() == '+' || input.front() == '-')
+		return e_signed;
+	for (unsigned long i = 1; i < input.length(); i++)
+	{
+		if (std::isdigit(input[i]))
+			continue;
+		else
+			return e_impossible;
+	}
+	return e_nondisplayable;
 }
 
 e_type findType(std::string input)
@@ -84,26 +127,18 @@ e_type findType(std::string input)
 					return e_double;
 			}
 		}
-		if (input.front() == '+' || input.front() == '-')
-			return e_signed;
-		// for (int i = 1; i < checkDigits(input); i++)
-		// {
-		// 	if (std::isdigit(input[i]))
-		// 		continue;
-		// 	else
-		// 		return e_impossible;
-		// }
-		if (input.find('.') == 1)
+		if (input.find('.') != NOT_PRESENT)
 		{
 			if (input.back() == 'f')
 				return e_float;
 			else
 				return e_double;
 		}
-		if (stol(input) < INT_MAX)
-			return e_int;
 		if (input.length() > 11)
 			return e_long;
+		if (stol(input) < INT_MAX 
+			|| stol(input) > INT_MIN)
+			return e_int;
 	}
 	return e_nondisplayable;
 }
