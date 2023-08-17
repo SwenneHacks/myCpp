@@ -76,7 +76,14 @@ doubles (8bytes)
 
 MODIFIERS:
 
-signed (+ -)
-unsigned (above 0)
-short (2bytes)
-long (8bytes - 12bytes)
+signed (+ - takes one bit)
+unsigned ( above 0 )
+short ( 2 bytes )
+float ( 4 bytes )
+double ( 8 bytes )
+long ( 8 bytes - 12 bytes)
+
+ARBITRARY PRECISION
+
+double = 64 bit [1][ 11 bit exponent ].[ 52 bit significand ] =  6-7 significant digits
+float  = 32 bit [1][ 8 bit exponent ].[ 23 bit significand ] = 15-16 significant digits
