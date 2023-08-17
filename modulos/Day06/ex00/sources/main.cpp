@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/15 18:38:03 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/17 19:43:55 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ void printType(e_type type)
 
 int	main(int argc, char *argv[])
 {
-	if (argc != 2)
-	{
+	if (argc != 2){
 		std::cout << std::endl
 		<< "Usage: [./program] [value]" << std::endl;
 		return (EXIT_FAILURE);
@@ -72,10 +71,10 @@ int	main(int argc, char *argv[])
 			ss << num;
 			input = ss.str();
 		}
-		if (type == e_float)
-			input.pop_back();
-		if (type == e_signed)
-			input.erase(0, 1);
+		// if (type == e_float)
+		// 	input.pop_back();
+		// if (type == e_signed)
+		// 	input.erase(0, 1);
 		if (type == e_impossible)
 			throw (Impossible());
 		printChar(input);
