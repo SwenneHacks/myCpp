@@ -20,7 +20,7 @@ enum e_type {
 	e_nondisplayable
 };
 
-int checkDigits(std::string value);
+int checkRange(std::string value);
 bool checkPseudos(std::string input);
 bool checkImpossible(std::string input);
 
