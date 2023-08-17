@@ -87,3 +87,11 @@ ARBITRARY PRECISION
 
 double = 64 bit [1][ 11 bit exponent ].[ 52 bit significand ] =  6-7 significant digits
 float  = 32 bit [1][ 8 bit exponent ].[ 23 bit significand ] = 15-16 significant digits
+
+
+
+
+ABOUT SECOND AND THIRD EXERCISE
+
+second, cout &address to prove/test it
+third, cout std::typeinfo return to prove/test it
