@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/15 18:31:39 by swofferh      ########   odam.nl          #
+#    Updated: 2023/08/17 20:36:10 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FLAGS		= 	-Wall -Werror -Wextra
 CPP			= 	c++ -std=c++98
 
 #FILES:
-DIRS		:= llasses
+DIRS		:= sources
 SRCS		:= $(shell find ./* -type f -name "*.cpp")
 OBJS		:= $(SRCS:%.cpp=%.o)
 
@@ -72,7 +72,7 @@ run: re clean
 	@echo " _________________ " 
 	@./$(NAME) -1.5
 	@echo " _________________ " 
-	@./$(NAME) 6.6666f
+	@./$(NAME) 6.666666666f
 	@echo " _________________ " 
 	@./$(NAME) 66666666666666
 	@echo " _________________ " 
