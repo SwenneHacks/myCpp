@@ -6,44 +6,50 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:50 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/04 16:37:52 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/18 19:30:31 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.h"
 
-Data::Data(void)
-    : _SpookyData(42)
-{
+// Struct
+
+void Data::HelloWorld(void) {
+    std::cout << "Hello World" << std::endl;
     return ;
 }
 
-Data::Data(const Data& ref)
-        : _SpookyData(42)
-{
-    *this = ref;
+void Data::SpookyPrint(void) {
+    std::cout << Data::value << std::endl;
     return ;
 }
 
-Data::~Data(void)
-{
+// Serializer
+
+Serializer::Serializer(void){
     return ;
 }
 
-Data& Data::operator=(const Data& ref)
-{
-    (void) ref;
+Serializer::Serializer(const Serializer&copy) {
+    *this = copy;
+    return ;
+}
+
+Serializer& Serializer::operator=(const Serializer&other) {
+    (void)other;
     return (*this);
 }
 
-// Functions
-
-void Data::HelloWorld(void)
-{
-    std::cout << "Hello World" << std::endl;
+Serializer::~Serializer(void) {
+    return ;
 }
 
-void Data::SpookyPrint(void)
-{
-    std::cout << _SpookyData << std::endl;
+// Static Members
+
+Data* Serializer::deserialize(uintptr_t raw){
+	return reinterpret_cast<Data*>(raw);
+}
+
+uintptr_t Serializer::serialize(Data* ptr){
+	return reinterpret_cast<uintptr_t>(ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:55 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/04 16:37:55 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/18 19:29:58 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 
 #include <iostream>
 
-class Data
-{
-public:
-    Data(void);
-    Data(const Data& ref);
-    ~Data(void);
-
-    Data& operator=(const Data& ref);
-
-    // Functions
+struct Data{
+	int value;
+	std::string test;
     void HelloWorld(void);
     void SpookyPrint(void);
-private:
-    const int32_t   _SpookyData;
 };
 
+class Serializer {
+    public:
+        Serializer(void);
+        ~Serializer(void);
+        Serializer(const Serializer&copy);
+        Serializer& operator=(const Serializer&other);
+
+        static uintptr_t 	serialize(Data* ptr);
+		static  Data* deserialize(uintptr_t raw);
+};
 
 #endif //CPP06_DATA_H
