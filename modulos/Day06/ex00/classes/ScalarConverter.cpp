@@ -7,25 +7,32 @@
 #define COLOR "\e[0;35m"
 #define RESET "\e[0m"
 
-// ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter() 
+{
+    std::cerr << "using static class" << std::endl;
+}
 
-// void ScalarConverter::CastChar(long double value)
-// {
+char ScalarConverter::CastChar(std::string input)
+{
+    long value = stol(input);
+    return static_cast<char>(value);
+}
 
-// }
+int ScalarConverter::CastInt(std::string input)
+{
+    int value = stoi(input);
+    return static_cast<int>(value);
+}
 
-// void ScalarConverter::CastInt(long double value)
-// {
 
-// }
+float ScalarConverter::CastFloat(std::string input)
+{
+    float value = stof(input);
+    return static_cast<float>(value);
+}
 
-
-// void ScalarConverter::CastFloat(long double value, int digits)
-// {
-
-// }
-
-// void ScalarConverter::CastDouble(long double value, int digits)
-// {
-
-// }
+double ScalarConverter::CastDouble(std::string input)
+{
+    double value = stod(input);
+    return static_cast<double>(value);
+}

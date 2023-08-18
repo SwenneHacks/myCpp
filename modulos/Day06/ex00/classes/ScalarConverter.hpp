@@ -6,10 +6,10 @@
 class	ScalarConverter
 {
 	public:
-		static void CastInt(long double value);
-		static void CastChar(long double value);
-		static void CastDouble(long double value, int digits);
-		static void CastFloat(long double value, int digits);
+		static int CastInt(std::string input);
+		static char CastChar(std::string input);
+		static float CastFloat(std::string input);
+		static double CastDouble(std::string input);
 
 	private:
 		ScalarConverter();
