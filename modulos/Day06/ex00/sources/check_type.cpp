@@ -15,23 +15,39 @@ bool checkPseudos(std::string input)
 		return false;
 }
 
-// int checkDigits(std::string value)
-// {
-// 	bool check_dot = false;
-// 	int counter = 0;
+int checkDigits(std::string value)
+{
+	bool check_dot = false;
+	int counter = 0;
 
-// 	for (unsigned long i = 0; value.length() > i; i++)
-// 	{
-// 		if (isdigit(value[i]) == false && value[i] != '.')
-// 			break ;
-// 		while (!check_dot && value[i] != '.')
-// 			i++;
-// 		check_dot = true;
-// 		counter++;
-// 	}
-// 	counter--;
-// 	return (counter);
-// }
+	for (unsigned long i = 0; value.length() > i; i++)
+	{
+		if (isdigit(value[i]) == false && value[i] != '.')
+			break ;
+		while (!check_dot && value[i] != '.')
+			i++;
+		check_dot = true;
+		counter++;
+	}
+	counter--;
+	return (counter);
+}
+
+int checkDot(std::string value)
+{
+	int counter = 0;
+	for (unsigned long i = 0; value.length() > i; i++)
+	{
+		if (isdigit(value[i]) == false && value[i] != '.')
+			break ;
+		while (value[i] != '.')
+			i++;
+		if (value[i] == '.')
+			counter++;
+	}
+	return (counter);
+}
+
 int checkRange(std::string value)
 {
 	unsigned long end_string = value.length();
@@ -40,21 +56,19 @@ int checkRange(std::string value)
 
 	for (unsigned long i = 0; i < end_string; i++)
 	{
-		// std::cout << value[i];
-		if (value[end_string] == 'f')
-			end_string--;
-		if (value[i] == '+' || value[i] == '-')
+		if (value[0] == '+' || value[0] == '-')
 			i++;
-		if (check_dot)
-			counter++;
 		while (!check_dot && value[i] != '.')
 			i++;
 		if (value[i] == '.'){
 			check_dot = true;
 			i++;
 		}
+		if (check_dot == true)
+			counter++;
 	}
-	// std::cout << std::endl;
+	if (value[end_string-1] == 'f')
+		counter--;
 	return (counter);
 }
 
