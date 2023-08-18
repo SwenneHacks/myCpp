@@ -7,64 +7,67 @@
 #define COLOR "\e[0;35m"
 #define RESET "\e[0m"
 
-void printChar(std::string input)
+void printChar(std::string input, e_type type)
 {
-	long double value = stol(input);
 	std::cout << COLOR << "char:	" << RESET;
 	try {
-		if (value < 32 || value > 126)
+		if (type == e_impossible || checkPseudos(input) == true)
+			throw(Impossible());
+		if (stol(input) < 32 || stol(input) > 126)
 			throw(NonDisplayable());
 		else
-			std::cout <<"'"<< static_cast<char>(value) 
+			std::cout <<"'"<< ScalarConverter::CastChar(input)  
 			<<"'"<< std::endl; // adding single quotes
 	}
 	catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
 }
 
-void printInt(std::string input)
+void printInt(std::string input, e_type type)
 {
-	long value = stol(input);
+
+	(void)type;
 	std::cout << COLOR << "int:	" << RESET;
 	try {
-		if (value > INT_MAX || value < INT_MIN)
+		if (type == e_impossible || checkPseudos(input) == true)
+			throw(Impossible());
+		if (stol(input) > INT_MAX || stol(input) < INT_MIN)
 			throw (NonDisplayable());
 		else
-			std::cout << static_cast<int>(value) 
-			<< std::endl; //checking for int max
+			std::cout << ScalarConverter::CastInt(input) 
+			<< std::endl; // checking for MAX/MIN
 	}
 	catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
 }
 
 
-void printFloat(std::string input)
+void printFloat(std::string input, e_type type)
 {
-    float value = stof(input);
 	int digits = checkRange(input);
-	std::cout << digits << std::endl;
 	std::cout << COLOR << "float:	" << RESET;
 	try {
-		if (input.length() > 8)
+		if (type == e_impossible)
+			throw(Impossible());
+		if (input.length() > 6)
 			throw (NonDisplayable());
 		std::cout << std::fixed << std::setprecision(digits) 
-		<< static_cast<float>(value);
-		if (input.find('.') == std::string::npos)
-			std::cout << ".0";
+		<< ScalarConverter::CastFloat(input);
 		std::cout << "f" << std::endl; // ading f and precision
     }
     catch (const std::exception& e) { std::cerr << e.what() << std::endl; }
 
 }
 
-void printDouble(std::string input)
+void printDouble(std::string input, e_type type)
 {
-	double value = stod(input);
 	int digits = checkRange(input);
 	std::cout << COLOR << "double:	" << RESET;
 	try {
+		if (type == e_impossible)
+			throw(Impossible());
 		std::cout << std::fixed << std::setprecision(digits) 
-		<< static_cast<double>(value);
-		if (input.find('.') == std::string::npos)
-			std::cout << ".0";
+		<< ScalarConverter::CastDouble(input);
+		// if (input.find('.') == std::string::npos)
+		// 	std::cout << ".0";
 		std::cout << std::endl;
     }
     catch (const std::exception& e) { std::cerr << e.what() << std::endl; }
