@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/17 19:43:55 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/18 16:45:09 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,10 @@ int	main(int argc, char *argv[])
 			ss << num;
 			input = ss.str();
 		}
-		// if (type == e_float)
-		// 	input.pop_back();
-		// if (type == e_signed)
-		// 	input.erase(0, 1);
-		if (type == e_impossible)
-			throw (Impossible());
-		printChar(input);
-		printInt(input);
-		printFloat(input);
-		printDouble(input);
+		printChar(input, type);
+		printInt(input, type);
+		printFloat(input, type);
+		printDouble(input, type);
 	}
 	catch (const std::exception& e) { std::cout << e.what() << std::endl; }
 	return 0;
