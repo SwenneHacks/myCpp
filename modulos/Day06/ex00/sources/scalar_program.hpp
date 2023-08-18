@@ -21,15 +21,16 @@ enum e_type {
 };
 
 int checkRange(std::string value);
+int checkDigits(std::string value);
 bool checkPseudos(std::string input);
 bool checkImpossible(std::string input);
 
 e_type findType(std::string input);
 void printType(e_type type);
 
-void printInt(std::string input);
-void printChar(std::string input);
-void printDouble(std::string input);
-void printFloat(std::string input);
+void printInt(std::string input, e_type type);
+void printChar(std::string input, e_type type);
+void printDouble(std::string input, e_type type);
+void printFloat(std::string input, e_type type);
 
 #endif
