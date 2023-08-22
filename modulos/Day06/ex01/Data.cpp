@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:50 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/18 19:30:31 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/22 19:35:59 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ Serializer::~Serializer(void) {
 // Static Members
 
 Data* Serializer::deserialize(uintptr_t raw){
-	return reinterpret_cast<Data*>(raw);
+    struct Data* p = new Data;
+    p = reinterpret_cast<Data*>(raw);
+	return p;
 }
 
 uintptr_t Serializer::serialize(Data* ptr){
-	return reinterpret_cast<uintptr_t>(ptr);
+    uintptr_t p = reinterpret_cast<uintptr_t>(ptr);
+	return p;
 }
