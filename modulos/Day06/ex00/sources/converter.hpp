@@ -1,5 +1,5 @@
-#ifndef SCALAR_PROGRAM_HPP
-# define SCALAR_PROGRAM_HPP
+#ifndef CONVERTER_HPP
+# define CONVERTER_HPP
 
 #include <iostream> // std
 

@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/18 16:45:09 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/23 11:35:03 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <sstream> // ostream (for chars)
 #include <iomanip> // setPrecision (for floats)
 #include <exception> // invalid_argument
-#include "scalar_program.hpp"
+#include "converter.hpp"
 
 void printType(e_type type)
 {
