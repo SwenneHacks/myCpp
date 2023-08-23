@@ -34,9 +34,9 @@ You have to handle these pseudo literals as well (you know, for fun): -inf, +inf
 
 # STUDY NOTES: static classes
 
-Static members are functions that belong to the class rather than to an instance of the class. This means that they can be accessed without creating an instance of the class, and they are shared by all instances of the class. 
- 
- Static classes are often used for utility classes, such as mathematical functions or string manipulation functions, where it is not necessary to create an instance of the class to use the functions.
+In C++, a static class is a class that can only have static members. Static members are members that belong to the class rather than to an instance of the class. This means that they can be accessed without creating an instance of the class, and they are shared by all instances of the class. 
+
+Static classes are often used for utility classes, such as mathematical functions or string manipulation functions, where it is not necessary to create an instance of the class to use the functions.
 
 
 # STUDY NOTES: static casting
