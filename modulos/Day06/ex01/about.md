@@ -36,11 +36,14 @@ Deserialization is the reverse process of serialization, where the serialized da
 reinterpret_cast
 
 The reinterpret_cast operator is used to convert a pointer of one type to a pointer of another type, or to convert an integer value to a pointer and vice versa.
+
 In the code, we use reinterpret_cast<uintptr_t>(ptr) to convert the Data* pointer to uintptr_t for serialization, and reinterpret_cast<Data*>(raw) to convert uintptr_t back to Data* for deserialization. Note that this type of casting should be used with caution, as it bypasses normal type checking.
 
-reinterpret_cast is the <most dangerous cast>, and should be used very sparingly. It turns one type directly into another — such as casting the value from one pointer to another, or storing a pointer in an int, or all sorts of other nasty things. Largely, the only guarantee you get with reinterpret_cast is that normally if you cast the result back to the original type, you will get the exact same value (but not if the intermediate type is smaller than the original type). 
+reinterpret_cast is the <most dangerous cast>, and should be used very sparingly. It turns one type directly into another — such as casting the value from one pointer to another, or storing a pointer in an int, or all sorts of other nasty things. 
 
-There are a number of conversions that reinterpret_cast cannot do, too. It's used primarily for particularly weird conversions and bit manipulations, like turning a raw data stream into actual data, or storing data in the low bits of a pointer to aligned data
+Largely, the only guarantee you get with reinterpret_cast is that normally if you cast the result back to the original type, <you will get the exact same value> (but not if the intermediate type is smaller than the original type).
+
+There are a number of conversions that reinterpret_cast cannot do, too. It's used primarily for particularly weird conversions and bit manipulations, like turning a raw data stream into actual data, or storing data in the low bits of a pointer to aligned data.
 
 
 uintptr_t:

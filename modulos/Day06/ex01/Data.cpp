@@ -6,23 +6,11 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/04 16:37:50 by swofferh      #+#    #+#                 */
-/*   Updated: 2023/08/22 19:35:59 by swofferh      ########   odam.nl         */
+/*   Updated: 2023/08/24 12:30:27 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.h"
-
-// Struct
-
-void Data::HelloWorld(void) {
-    std::cout << "Hello World" << std::endl;
-    return ;
-}
-
-void Data::SpookyPrint(void) {
-    std::cout << Data::value << std::endl;
-    return ;
-}
+#include "Data.hpp"
 
 // Serializer
 
@@ -47,7 +35,7 @@ Serializer::~Serializer(void) {
 // Static Members
 
 Data* Serializer::deserialize(uintptr_t raw){
-    struct Data* p = new Data;
+    Data* p = new Data;
     p = reinterpret_cast<Data*>(raw);
 	return p;
 }
