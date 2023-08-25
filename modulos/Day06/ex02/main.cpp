@@ -2,17 +2,15 @@
 #define RED "\e[0;31m"
 #define RESET "\e[0m"
 
-#include "Base.h"
+#include "Base.hpp"
 
 int32_t	main(void)
 {
-    Base*   Decoy = generate();
+    Base*   Test = generate();
 
-    identify_from_pointer(Decoy);
-    identify_from_reference(*Decoy);
+    identify_from_pointer(Test);
+    identify_from_reference(*Test);
 
-    delete Decoy;
-
-//    system("leaks Convert");
+    delete Test;
     return (0);
 }

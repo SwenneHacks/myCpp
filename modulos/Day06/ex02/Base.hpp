@@ -1,18 +1,16 @@
 
-#ifndef CPP06_BASE_H
-#define CPP06_BASE_H
+#ifndef BASE_HPP
+#define BASE_HPP
 
 #include <iostream>
 #include <random>
 
-class Base
-{
+class Base {
 public:
     virtual ~Base();
 };
 
-enum e_ClassNumbers
-{
+enum e_ClassNumbers {
     e_ClassA,
     e_ClassB,
     e_ClassC

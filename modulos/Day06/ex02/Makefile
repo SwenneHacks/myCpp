@@ -6,11 +6,11 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/18 19:02:05 by swofferh      ########   odam.nl          #
+#    Updated: 2023/08/25 17:59:26 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	serializer
+NAME		=	base
 PROJECT		= 	CPP Modulo 06 - ex00
 
 FLAGS		= 	-Wall -Werror -Wextra 

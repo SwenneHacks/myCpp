@@ -1,13 +1,9 @@
 
-#include "Base.h"
-#include "A.h"
-#include "B.h"
-#include "C.h"
+#include "Base.hpp"
 
-Base::~Base()
-{
-    return ;
-}
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
 
 Base*   generate(void)
 {
@@ -16,11 +12,10 @@ Base*   generate(void)
     std::uniform_int_distribution<> distr(0, 2);
 
     switch (distr(gen) % 3)
-    {
+	{
         case e_ClassA:
             std::cout << "Returning Class A" << std::endl;
             return (new A);
-
 
         case e_ClassB:
             std::cout << "Returning Class B" << std::endl;
@@ -56,9 +51,7 @@ void identify_from_reference(Base& p)
 		(void) ClassA;
 		std::cout << "Im class A" << std::endl;
 	}
-	catch(const std::bad_cast& e)
-	{
-	}
+	catch(const std::bad_cast& e){}
 
 	try
 	{
@@ -66,9 +59,7 @@ void identify_from_reference(Base& p)
 		(void) ClassB;
 		std::cout << "Im class B" << std::endl;
 	}
-	catch(const std::bad_cast& e)
-	{
-	}
+	catch(const std::bad_cast& e){}
 
 	try
 	{
@@ -76,7 +67,7 @@ void identify_from_reference(Base& p)
 		(void) ClassC;
 		std::cout << "Im class C" << std::endl;
 	}
-	catch (const std::bad_cast& e)
-	{
-	}
+	catch (const std::bad_cast& e){}
 }
+
+Base::~Base(){}
