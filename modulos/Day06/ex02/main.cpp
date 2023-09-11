@@ -6,11 +6,11 @@
 
 int32_t	main(void)
 {
-    Base*   Test = generate();
+    Base*   T = generate();
+    //Base*   T = nullptr;
+    identify(T);
+    identify(*T);
+    delete T;
 
-    identify_from_pointer(Test);
-    identify_from_reference(*Test);
-
-    delete Test;
     return (0);
 }

@@ -16,8 +16,8 @@ enum e_ClassNumbers {
     e_ClassC
 };
 
-void identify_from_pointer(Base* p);
-void identify_from_reference(Base& p);
+void identify(Base* p);
+void identify(Base& p);
 Base* generate(void);
 
 

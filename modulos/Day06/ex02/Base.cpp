@@ -12,7 +12,7 @@ Base*   generate(void)
     std::uniform_int_distribution<> distr(0, 2);
 
     switch (distr(gen) % 3)
-	{
+    {
         case e_ClassA:
             std::cout << "Returning Class A" << std::endl;
             return (new A);
@@ -28,7 +28,7 @@ Base*   generate(void)
     return (nullptr);
 }
 
-void identify_from_pointer(Base* p)
+void identify(Base* p)
 {
 	A* ClassA = dynamic_cast<A*>(p);
 	B* ClassB = dynamic_cast<B*>(p);
@@ -40,31 +40,27 @@ void identify_from_pointer(Base* p)
         std::cout << "Im class B" << std::endl;
     else if (ClassC != nullptr)
         std::cout << "Im class C" << std::endl;
-    return ;
+    else
+		std::cout << "Dynamic cast failed" << std::endl;
+	return ;
 }
 
-void identify_from_reference(Base& p)
+void identify(Base& p)
 {
-	try
-	{
+	try{
 		A ClassA = dynamic_cast<A&>(p);
-		(void) ClassA;
 		std::cout << "Im class A" << std::endl;
 	}
 	catch(const std::bad_cast& e){}
 
-	try
-	{
+	try{
 		B ClassB = dynamic_cast<B&>(p);
-		(void) ClassB;
 		std::cout << "Im class B" << std::endl;
 	}
 	catch(const std::bad_cast& e){}
 
-	try
-	{
+	try{
 		C ClassC = dynamic_cast<C&>(p);
-		(void) ClassC;
 		std::cout << "Im class C" << std::endl;
 	}
 	catch (const std::bad_cast& e){}
