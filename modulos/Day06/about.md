@@ -1,3 +1,7 @@
+first, check if you are really recognizing type
+second, cout &address to prove/test it 
+third, cout std::typeinfo return to prove/test it
+
 # Chapter I
 ## Introduction
 
