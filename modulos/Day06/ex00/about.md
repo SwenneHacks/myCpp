@@ -39,7 +39,7 @@ In C++, a static class is a class that can only have static members. Static memb
 Static classes are often used for utility classes, such as mathematical functions or string manipulation functions, where it is not necessary to create an instance of the class to use the functions.
 
 
-# STUDY NOTES: static casting
+# static casting
 
 C++ supports 4 types of casting: Static Cast, Dynamic Cast, Const Cast, Reinterpret Cast
 
@@ -53,7 +53,7 @@ static_cast <dest_type> (source);
 The return value of static_cast will be of dest_type.
 
 
-# STUDY NOTE: precision in floats
+# precision in floats
 
 The data type float has 24 bits of precision. 
 This is equivalent to only about 7 decimal places. 
@@ -64,10 +64,9 @@ Defined in header <iomanip>
 
 
 
-# STUDY NOTE: numerical data types 
+# numerical data types 
+
 ( INT, FLOATS, DOUBLES )
-
-
 PRIMITIVE BUILTIN TYPES:
 
 intigers (4bytes)
@@ -88,10 +87,3 @@ ARBITRARY PRECISION
 double = 64 bit [1][ 11 bit exponent ].[ 52 bit significand ] =  6-7 significant digits
 float  = 32 bit [1][ 8 bit exponent ].[ 23 bit significand ] = 15-16 significant digits
 
-
-
-
-ABOUT SECOND AND THIRD EXERCISE
-
-second, cout &address to prove/test it
-third, cout std::typeinfo return to prove/test it
