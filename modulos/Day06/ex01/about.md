@@ -3,9 +3,11 @@
 Serialization
 
 Implement a static class Serializer with the following methods:
+
 uintptr_t serialize(Data* ptr);
 
 It takes a pointer and converts it to the unsigned integer type uintptr_t.
+
 Data* deserialize(uintptr_t raw);
 
 It takes an unsigned integer parameter and converts it to a pointer to Data.
@@ -46,7 +48,7 @@ Largely, the only guarantee you get with reinterpret_cast is that normally if yo
 There are a number of conversions that reinterpret_cast cannot do, too. It's used primarily for particularly weird conversions and bit manipulations, like turning a raw data stream into actual data, or storing data in the low bits of a pointer to aligned data.
 
 
-uintptr_t:
+## uintptr_t:
 
 uintptr_t is an unsigned integer type provided by the <cstdint> header in C++. It is guaranteed to be able to hold a pointer value.
 We use uintptr_t to store the serialized representation of the pointer, as it ensures that the pointer value is preserved without any loss of information.
