@@ -6,12 +6,12 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/08/04 16:38:45 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/25 17:59:26 by swofferh      ########   odam.nl          #
+#    Updated: 2023/09/28 18:26:51 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	base
-PROJECT		= 	CPP Modulo 06 - ex00
+PROJECT		= 	CPP Modulo 06 - ex02
 
 FLAGS		= 	-Wall -Werror -Wextra 
 CPP			= 	c++ -std=c++98
@@ -20,6 +20,12 @@ CPP			= 	c++ -std=c++98
 DIRS		:= sources
 SRCS		:= $(shell find ./* -type f -name "*.cpp")
 OBJS		:= $(SRCS:%.cpp=%.o)
+
+#MESSAGES:
+START_MSG 	= "$(P)Compiling$(W) $<"
+FLAGS_MSG 	= "$(P)Compiling$(W) using $(CPP) \n$(P)and flags $(W)$(FLAGS)\n"
+RUN_MSG 	= "$(G)run tests $(W)with $(Y)'make run'\n"
+DONE_MSG 	= "\n$(R)\______ Done $(B)$@$(R) _____/ $(W)\n"
 
 #COLORS:
 C = \x1b[37m
@@ -31,33 +37,31 @@ R = \x1b[31m
 W = \x1b[0m
 
 %.o: %.cpp
-	@echo "$(P)Compiling$(W) $<"
+	@echo $(START_MSG)
 	@$(CPP) $(FLAGS) -I $(DIRS) -c $< -o $@ 
 
-all: $(NAME)
-	@echo "\n$(G) you can now run ./$(NAME) $(W)\n"
-	@echo "\n$(P)\______ Done $(PROJECT) _____/ $(W)\n"
+all: start $(NAME) 
+	@echo $(DONE_MSG)
+
+start:
+	@echo $(START_MSG)$(PROJECT)
 
 $(NAME): $(OBJS)
 	@$(CPP) $(FLAGS) $^ -o $(NAME)
-	@echo "$(C)Compiling$(W) with $(CPP)"
-	@echo "$(C)and flags $(W)$(FLAGS)"
-	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
+	@echo $(FLAGS_MSG)$(RUN_MSG) $(DONE_MSG) 
 
 clean:
-	$(RM) $(OBJS)
-	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
+	@$(RM) $(OBJS) 
+	@echo $(DONE_MSG)
 
 fclean: clean
-	$(RM) $(NAME)
-	@echo "\n$(R)\______ Done $(B)F$(R)cleaning _____/ $(W)\n"
+	@$(RM) $(NAME)
+	@echo $(DONE_MSG)
 
 re:	fclean all
-	@echo "\n$(G)\______ Done Remaking _____/ $(W)\n"
+	@echo $(DONE_MSG)
 
 run: re clean
-	@./$(NAME)
-	
-	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
+	./$(NAME)
 
 .PHONY:	all clean fclean re

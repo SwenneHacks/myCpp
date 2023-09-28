@@ -10,11 +10,10 @@ public:
     virtual ~Base();
 };
 
-enum e_ClassNumbers {
-    e_ClassA,
-    e_ClassB,
-    e_ClassC
-};
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+class D : public Base {};
 
 void identify(Base* p);
 void identify(Base& p);
