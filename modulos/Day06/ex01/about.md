@@ -1,39 +1,20 @@
 
-# Exercise : 01
-Serialization
-
-Implement a static class Serializer with the following methods:
-uintptr_t serialize(Data* ptr);
-
-It takes a pointer and converts it to the unsigned integer type uintptr_t.
-Data* deserialize(uintptr_t raw);
-
-It takes an unsigned integer parameter and converts it to a pointer to Data.
-Write a program to test that your class works as expected.
-
-You must create a non-empty (it means it has data members) Data structure.
-
-Use serialize() on the address of the Data object and pass its return value todeserialize(). Then, ensure the return value of deserialize() compares equal to the original pointer.
-
-Do not forget to turn in the files of your Data structure.
-
-
 ## STUDY NOTES
 
 the implementation and usage of the Serializer static class:
 
 
-SERIALIZATION
+# SERIALIZATION
 
 Serialization is the process of converting an object or data structure into a format that can be stored or transmitted. In this case, we are serializing the address of the Data object.
 
 
-DESERIALIZATION
+# DESERIALIZATION
 
 Deserialization is the reverse process of serialization, where the serialized data is converted back into its original form. Here, we are deserializing the serialized value back into a pointer to Data.
 
 
-reinterpret_cast
+# reinterpret_cast
 
 The reinterpret_cast operator is used to convert a pointer of one type to a pointer of another type, or to convert an integer value to a pointer and vice versa.
 
@@ -46,7 +27,7 @@ Largely, the only guarantee you get with reinterpret_cast is that normally if yo
 There are a number of conversions that reinterpret_cast cannot do, too. It's used primarily for particularly weird conversions and bit manipulations, like turning a raw data stream into actual data, or storing data in the low bits of a pointer to aligned data.
 
 
-uintptr_t:
+# uintptr_t:
 
 uintptr_t is an unsigned integer type provided by the <cstdint> header in C++. It is guaranteed to be able to hold a pointer value.
 We use uintptr_t to store the serialized representation of the pointer, as it ensures that the pointer value is preserved without any loss of information.
