@@ -1,7 +1,7 @@
 #include "converter.hpp"
 
 #include <string> // stol(), stof(), stod
-#include <iomanip> // setprecision()
+#include <iomanip> // std::setprecision(int 'number_of_decimals') 
 #include <cctype> // isdigit()
 
 #define COLOR "\e[0;35m"
@@ -39,7 +39,6 @@ void printInt(std::string input, e_type type)
 	catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
 }
 
-
 void printFloat(std::string input, e_type type)
 {
 	int digits = checkRange(input);
@@ -72,3 +71,12 @@ void printDouble(std::string input, e_type type)
     }
     catch (const std::exception& e) { std::cerr << e.what() << std::endl; }
 }
+
+/**
+ * @brief precision in floats
+ * The data type float has 24 bits of precision. 
+
+This is equivalent to only about 7 decimal places. 
+(The rest of the 32 bits are used for the sign and size of the number.)
+ */
+

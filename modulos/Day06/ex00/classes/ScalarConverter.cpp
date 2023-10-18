@@ -7,6 +7,7 @@
 #define COLOR "\e[0;35m"
 #define RESET "\e[0m"
 
+
 ScalarConverter::ScalarConverter() 
 {
     std::cerr << "using static class" << std::endl;
@@ -36,3 +37,16 @@ double ScalarConverter::CastDouble(std::string input)
     double value = stod(input);
     return static_cast<double>(value);
 }
+
+
+/**
+ * @brief static CAST
+ * This is the simplest type of cast that can be used. It is a compile-time cast. 
+
+It does things like implicit conversions between types (such as int to float, 
+or pointer to void*), and it can also call explicit conversion functions.
+
+Syntax of static_cast:
+    static_cast <dest_type> (source);
+    The return value of static_cast will be of dest_type.
+ */

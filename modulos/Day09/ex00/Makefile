@@ -6,47 +6,62 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/08/01 16:03:03 by swofferh      ########   odam.nl          #
+#    Updated: 2023/09/29 17:08:52 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	btc
 SRC			=	main.cpp BitcoinExchange.cpp
-FLAGS		=	-Wall -Wextra -Werror 
-OBJ			=	$(SRC:%.cpp=%.o)
-CPP			=	c++ -std=c++98
 
-#RAINBOW
+FLAGS		= 	-Wall -Werror -Wextra 
+CPP			= 	c++ -std=c++98
+
+#FILES:
+INC			:= include
+SRCS		:= $(shell find ./* -type f -name "*.cpp")
+OBJS		:= $(SRCS:%.cpp=%.o)
+
+#MESSAGES:
+START_MSG 	= "$(P)Compiling$(W) $<"
+FLAGS_MSG 	= "$(P)Compiling$(W) using $(CPP) \n$(P)and flags $(W)$(FLAGS)\n"
+RUN_MSG 	= "$(G)run tests $(W)with $(Y)'make run'\n"
+DONE_MSG 	= "\n$(R)\______ Done $(B)$@$(R) _____/ $(W)\n"
+
+#COLORS:
+C = \x1b[37m
 P = \x1b[35m
-B = \x1b[34m
+B = \x1b[34;1m
 Y = \x1b[33m
 G = \x1b[32m
 R = \x1b[31m
 W = \x1b[0m
 
-all: $(NAME)
+%.o: %.cpp
+	@echo $(START_MSG)
+	@$(CPP) $(FLAGS) -I $(DIRS) -c $< -o $@ 
 
-$(NAME): $(OBJ)
-	$(CPP) $(FLAGS) $^ -o $(NAME)
-	@echo "\n$(P)\______ Done Compiling _____/ $(W)\n"
+all: start $(NAME) 
+	@echo $(DONE_MSG)
 
-%.o: %.c
-	@echo "$(P)Compiling$(W) $< $@"
-	$(CPP) $(FLAGS) -c $< -o $@
+start:
+	@echo $(START_MSG)$(PROJECT)
 
-run: re
-	./$(NAME)
-	@echo "\n$(B)\______ Done Testing _____/\n$(W)"
+$(NAME): $(OBJS)
+	@$(CPP) $(FLAGS) $^ -o $(NAME)
+	@echo $(FLAGS_MSG)$(RUN_MSG) $(DONE_MSG) 
 
 clean:
-	$(RM) $(OBJ) 
-	@echo "\n$(R)\______ Done Cleaning _____/ $(W)\n"
+	@$(RM) $(OBJS) 
+	@echo $(DONE_MSG)
 
 fclean: clean
-	$(RM) $(NAME)
-	@echo "\n$(R)\______ Done $(B)f$(R)cleaning _____/ $(W)\n"
+	@$(RM) $(NAME)
+	@echo $(DONE_MSG)
 
 re:	fclean all
-	@echo "\n$(G)\______ Done with Re _____/ $(W)\n"
+	@echo $(DONE_MSG)
+
+run: re clean
+	./$(NAME)
 
 .PHONY:	all clean fclean re
