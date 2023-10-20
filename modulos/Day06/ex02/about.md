@@ -23,8 +23,7 @@ void identify(Base* p);
 It prints the actual type of the object pointed to by p: "A", "B" or "C".
 
 void identify(Base& p);
-It prints the actual type of the object pointed to by p: "A", "B" or "C". 
-Using a pointer inside this function is forbidden.
+It prints the actual type of the object pointed to by p: "A", "B" or "C". Using a pointer inside this function is forbidden.
 
 Including the typeinfo header is forbidden.
 Write a program to test that everything works as expected.
