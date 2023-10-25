@@ -39,3 +39,8 @@ dynamic_cast is exclusively used for handling polymorphism. You can cast a point
 dynamic_cast has some limitations, though. It doesn't work if there are multiple objects of the same type in the inheritance hierarchy (the so-called 'dreaded diamond') and you aren't using virtual inheritance. 
 
 It also can only go through public inheritance - it will always fail to travel through protected or private inheritance. This is rarely an issue, however, as such forms of inheritance are rare.
+
+
+# USAGE
+
+In a large codebase with polymorphic hierarchies, you might encounter situations where you have a pointer or reference to a base class, but you need to know or work with the actual derived type at runtime. dynamic_cast can be used for such runtime type identification.
