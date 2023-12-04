@@ -6,11 +6,12 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/09/29 17:08:52 by swofferh      ########   odam.nl          #
+#    Updated: 2023/12/04 17:04:02 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	btc
+PROJECT		= 	Exercise 00: Bitcoin Exchange
 SRC			=	main.cpp BitcoinExchange.cpp
 
 FLAGS		= 	-Wall -Werror -Wextra 
