@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/12/04 17:11:25 by swofferh      ########   odam.nl          #
+#    Updated: 2023/12/15 20:19:58 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,9 @@ re:	fclean all
 	@echo $(DONE_MSG)
 
 run: re clean
-	./$(NAME)
+	./$(NAME) `jot -r 3000 1 1000 | tr '\n' ' '`
 
-test: re
+test: re clean
 	./PmergeMe 3 5 9 7 4
 	echo $P Before: 3 5 9 7 4
 	echo $P After: 3 4 5 7 9
