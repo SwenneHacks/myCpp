@@ -14,3 +14,4 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& ref)
 
 BitcoinExchange::~BitcoinExchange()
 {}
+
