@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/07 20:56:32 by swofferh      #+#    #+#                  #
-#    Updated: 2023/12/04 17:11:40 by swofferh      ########   odam.nl          #
+#    Updated: 2023/12/15 20:18:26 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,5 +74,10 @@ test: re
 	echo $P 0
 	./RPN "(1 + 1)"
 	echo $P Error
+	run: 	all
+	./$(NAME) "5 5 * 1 - 1 +"
+	
+test: 	re
+		./test.sh
 
 .PHONY:	all clean fclean re
